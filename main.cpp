@@ -1,3 +1,6 @@
+#include "widget.h"
+#include "odbchelper.h"
+#include <QApplication>
 #include <vtkSphereSource.h>
 #include <vtkPolyData.h>
 #include <vtkSmartPointer.h>
@@ -11,8 +14,13 @@ VTK_MODULE_INIT(vtkRenderingOpenGL2)
 VTK_MODULE_INIT(vtkInteractionStyle)
 VTK_MODULE_INIT(vtkRenderingFreeType)
 
+
 int main(int, char *[])
 {
+
+    odbchelper w;
+    //w.getjtype();
+
   // 创建一个球体
 //  vtkSmartPointer<vtkSphereSource> sphereSource = vtkSmartPointer<vtkSphereSource>::New();
 //  sphereSource->SetCenter(0.0, 0.0, 0.0);   // 设置中心
@@ -29,7 +37,7 @@ int main(int, char *[])
   // 渲染器
   vtkSmartPointer<vtkRenderer> renderer = vtkSmartPointer<vtkRenderer>::New();
   // 渲染窗口
-//  vtkSmartPointer<vtkRenderWindow> renderWindow = vtkSmartPointer<vtkRenderWindow>::New();
+  vtkSmartPointer<vtkRenderWindow> renderWindow = vtkSmartPointer<vtkRenderWindow>::New();
 
   renderWindow->AddRenderer(renderer);
   // 渲染窗口交互
