@@ -7,6 +7,7 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QToolBar>
+#include <QPushButton>
 
 #pragma execution_character_set("utf-8")
 
@@ -17,6 +18,8 @@ class Widget : public QMainWindow
 public:
     Widget(QWidget *parent = 0);
     ~Widget();
+public slots:
+    void enterSystem();
 private:
     QMenu *drillingView;
     QMenu *lithologyView;
@@ -37,6 +40,7 @@ private:
     QAction *addDrilling;
     QAction *removeDrilling;
 
+    QPushButton *enterSys;
 };
 
 #endif // WIDGET_H

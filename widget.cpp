@@ -64,9 +64,20 @@ Widget::Widget(QWidget *parent)
     drillingEdit->addAction(addDrilling);
     drillingEdit->addAction(removeDrilling);
 
+    menuBar()->hide();
+
+    enterSys = new QPushButton(this);
+    enterSys->setText("进入系统");
+    enterSys->setGeometry(200,150,200,100);
+    connect(enterSys,SIGNAL(clicked()),this,SLOT(enterSystem()));
 }
 
 Widget::~Widget()
 {
 
+}
+
+void Widget::enterSystem()
+{
+    menuBar()->show();
 }
