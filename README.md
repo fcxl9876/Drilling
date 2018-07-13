@@ -1,10 +1,13 @@
 ﻿# Drilling
 ## 开发环境
-操作系统：Windows 10
-
-Qt Creator + PostgreSQL + VTK
-
-## 开发人员
-2016级本科生：胡二雄 林家辉 高丽 傅淑旎 江小婷
+- Qt 5.11.1
+- PostgreSQL 9.3
 ## 开发时间
-2018.7.12-至今
+2018-07-12 --- 至今
+## 开发人员
+中国地质大学（北京）2016级本科生：
+- [胡二雄](https://github.com/Georgehu716) 
+- [林家辉](https://github.com/fcxl9876) 
+- [江小婷](https://github.com/XiaoJZZ)
+- [傅淑旎](https://github.com/RitaFool)
+- [高丽](https://github.com/gaoliaaa)
