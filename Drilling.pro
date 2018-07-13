@@ -141,7 +141,11 @@ LIBS += D:/VTK_debug/VTK/lib/vtkzlib-7.1.lib
 
 SOURCES += \
         main.cpp \
-        widget.cpp
+        widget.cpp \
+    odbchelper.cpp \
+    layer.cpp
 
 HEADERS += \
-        widget.h
+        widget.h \
+    odbchelper.h \
+    layer.h

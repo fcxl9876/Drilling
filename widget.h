@@ -1,15 +1,51 @@
-#ifndef WIDGET_H
+﻿#ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QWidget>
+#include "layer.h"
 
-class Widget : public QWidget
+#include <QApplication>
+#include <QMainWindow>
+#include <QWidget>
+#include <QMenu>
+#include <QMenuBar>
+#include <QToolBar>
+#include <QPushButton>
+#include <QVBoxLayout>
+
+#pragma execution_character_set("utf-8")
+
+class Widget : public QMainWindow
 {
     Q_OBJECT
 
 public:
     Widget(QWidget *parent = 0);
     ~Widget();
+public slots:
+    void enterSystem();
+private:
+    QMenu *drillingView;
+    QMenu *lithologyView;
+    QMenu *drillingCode;
+    QMenu *drillingTest;
+    QMenu *drillingEdit;
+
+    QAction *viewDrilling;
+    QAction *hideDrilling;
+
+    QAction *lithologyDrilling;
+
+    QAction *viewCode;
+    QAction *hideCode;
+
+    QAction *testDrilling;
+
+    QAction *addDrilling;
+    QAction *removeDrilling;
+
+    QPushButton *enterSys;
+
+    Layer *layer;
 };
 
 #endif // WIDGET_H
