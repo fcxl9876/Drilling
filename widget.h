@@ -1,6 +1,8 @@
 ﻿#ifndef WIDGET_H
 #define WIDGET_H
 
+#include "layer.h"
+
 #include <QApplication>
 #include <QMainWindow>
 #include <QWidget>
@@ -8,6 +10,7 @@
 #include <QMenuBar>
 #include <QToolBar>
 #include <QPushButton>
+#include <QVBoxLayout>
 
 #pragma execution_character_set("utf-8")
 
@@ -41,6 +44,8 @@ private:
     QAction *removeDrilling;
 
     QPushButton *enterSys;
+
+    Layer *layer;
 };
 
 #endif // WIDGET_H

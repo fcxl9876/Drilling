@@ -80,4 +80,10 @@ Widget::~Widget()
 void Widget::enterSystem()
 {
     menuBar()->show();
+    Layer layer;
+    QVTKWidget *a;
+    a = new QVTKWidget(this);
+    a->GetRenderWindow()->AddRenderer(layer.renderer);
+    delete enterSys;
+    setCentralWidget(a);
 }
