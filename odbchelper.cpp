@@ -23,71 +23,144 @@ void odbchelper::getjtype()
     }
 }
 
-int odbchelper::getdatacount()
+int odbchelper::getdatacount1()
 {
-    int n;
-    QSqlQuery *query=new QSqlQuery(db);
-    QString sql="select count(*) from mycollardata";
-    query->exec(sql);
+    int n=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from mycollardata";
+    query1->exec(sql1);
 
-    while (query->next()) {
-        n=query->value(0).toInt();
+    while (query1->next()) {
+        n+=query1->value(0).toInt();
     }
+
     return n;
 }
 
-int* odbchelper::getjeast()
+int odbchelper::getdatacount2()
 {
-    int n=getdatacount();
+    int n=0;
 
-    int *arr = new int[n];
+    QSqlQuery *query2=new QSqlQuery(db);
+    QString sql2="select count(*) from myvirtualcollardata";
+    query2->exec(sql2);
+
+    while (query2->next()) {
+        n+=query2->value(0).toInt();
+    }
+
+    return n;
+}
+
+double* odbchelper::getjeast1()
+{
+    int m=getdatacount1();
+
+    double *arr = new double[m];
     int i=0;
 
-    QSqlQuery *query=new QSqlQuery(db);
-    QString sql="select jeast from mycollardata";
-    query->exec(sql);
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jeast from mycollardata";
+    query1->exec(sql1);
 
-    while (query->next()&&i<n) {
-        arr[i]=query->value(0).toDouble();
+    while (query1->next()&&i<m) {
+        arr[i]=query1->value(0).toDouble();
         i++;
     }
 
     return arr;
 }
 
-int* odbchelper::getjnorth()
+double* odbchelper::getjeast2()
 {
-    int n=getdatacount();
+    int n=getdatacount2();
 
-    int *arr = new int[n];
+    double *arr = new double[n];
+    int j=0;
+
+    QSqlQuery *query2=new QSqlQuery(db);
+    QString sql2="select jeast from myvirtualcollardata";
+    query2->exec(sql2);
+
+    while (query2->next()&&j<n) {
+        arr[j]=query2->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjnorth1()
+{
+    int m=getdatacount1();
+
+    double *arr = new double[m];
     int i=0;
 
-    QSqlQuery *query=new QSqlQuery(db);
-    QString sql="select jaltitude from mycollardata";
-    query->exec(sql);
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorth from mycollardata";
+    query1->exec(sql1);
 
-    while (query->next()&&i<n) {
-        arr[i]=query->value(0).toDouble();
+    while (query1->next()&&i<m) {
+        arr[i]=query1->value(0).toDouble();
         i++;
     }
 
     return arr;
 }
 
-int* odbchelper::getjaltitude()
+double* odbchelper::getjnorth2()
 {
-    int n=getdatacount();
+    int n=getdatacount2();
 
-    int *arr = new int[n];
+    double *arr = new double[n];
+    int j=0;
+
+    QSqlQuery *query2=new QSqlQuery(db);
+    QString sql2="select jnorth from myvirtualcollardata";
+    query2->exec(sql2);
+
+    while (query2->next()&&j<n) {
+        arr[j]=query2->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjaltitude1()
+{
+    int m=getdatacount1();
+
+    double *arr = new double[m];
     int i=0;
 
-    QSqlQuery *query=new QSqlQuery(db);
-    QString sql="select jaltitude from mycollardata";
-    query->exec(sql);
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jaltitude from mycollardata";
+    query1->exec(sql1);
 
-    while (query->next()&&i<n) {
-        arr[i]=query->value(0).toDouble();
+    while (query1->next()&&i<m) {
+        arr[i]=query1->value(0).toDouble();
         i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjaltitude2()
+{
+    int n=getdatacount2();
+
+    double *arr = new double[n];
+    int j=0;
+
+    QSqlQuery *query2=new QSqlQuery(db);
+    QString sql2="select jaltitude from myvirtualcollardata";
+    query2->exec(sql2);
+
+    while (query2->next()&&j<n) {
+        arr[j]=query2->value(0).toDouble();
+        j++;
     }
 
     return arr;
