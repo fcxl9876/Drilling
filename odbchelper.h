@@ -12,6 +12,10 @@ public:
     odbchelper();
     QSqlDatabase db;
     void getjtype();
+    int getdatacount();
+    int* getjeast();
+    int* getjnorth();
+    int* getjaltitude();
 };
 
 #endif // ODBCHELPER_H
