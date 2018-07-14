@@ -19,12 +19,23 @@ VTK_MODULE_INIT(vtkRenderingFreeType)
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
     odbchelper sql;
     //sql.getjtype();
+    int n = sql.getdatacount();
+    int *east = new int[n];
+    east=sql.getjeast();
+    int *north = new int[n];
+    north=sql.getjnorth();
+    int *altitude = new int[n];
+    altitude=sql.getjaltitude();
+    for(int i=0;i<n;i++){
+        qDebug()<<"("<<east[i]<<","<<north[i]<<","<<altitude[i]<<")";
+    }
 
-    Widget *w;
-    w = new Widget;
-    w->show();
+//    Widget *w;
+//    w = new Widget;
+//    w->show();
 
     return a.exec();
 }

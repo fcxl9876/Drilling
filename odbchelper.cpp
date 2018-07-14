@@ -22,3 +22,73 @@ void odbchelper::getjtype()
         qDebug()<<query->value(0);
     }
 }
+
+int odbchelper::getdatacount()
+{
+    int n;
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql="select count(*) from mycollardata";
+    query->exec(sql);
+
+    while (query->next()) {
+        n=query->value(0).toInt();
+    }
+    return n;
+}
+
+int* odbchelper::getjeast()
+{
+    int n=getdatacount();
+
+    int *arr = new int[n];
+    int i=0;
+
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql="select jeast from mycollardata";
+    query->exec(sql);
+
+    while (query->next()&&i<n) {
+        arr[i]=query->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+int* odbchelper::getjnorth()
+{
+    int n=getdatacount();
+
+    int *arr = new int[n];
+    int i=0;
+
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql="select jaltitude from mycollardata";
+    query->exec(sql);
+
+    while (query->next()&&i<n) {
+        arr[i]=query->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+int* odbchelper::getjaltitude()
+{
+    int n=getdatacount();
+
+    int *arr = new int[n];
+    int i=0;
+
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql="select jaltitude from mycollardata";
+    query->exec(sql);
+
+    while (query->next()&&i<n) {
+        arr[i]=query->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
