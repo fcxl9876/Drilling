@@ -1,16 +1,34 @@
 #include "layer.h"
+#include "odbchelper.h"
 
 Layer::Layer()
 {
     unsigned int gridSize = 196;
     vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
-    for (unsigned int x = 0; x < gridSize; x++)
+
+
+    odbchelper sql;
+    //sql.getjtype();
+    int n = sql.getdatacount();
+    int *east = new int[n];
+    east=sql.getjeast();
+    int *north = new int[n];
+    north=sql.getjnorth();
+    int *altitude = new int[n];
+    altitude=sql.getjaltitude();
+    for(int i=0;i<n;i++)
     {
-        for (unsigned int y = 0; y < gridSize; y++)
-        {
-            points->InsertNextPoint(x, y, vtkMath::Random(0.0, 2.0));
-        }
+        points->InsertNextPoint(east[i],north[i],altitude[i]);
     }
+
+
+//    for (unsigned int x = 0; x < gridSize; x++)
+//    {
+//        for (unsigned int y = 0; y < gridSize; y++)
+//        {
+//            points->InsertNextPoint(x, y, vtkMath::Random(0.0, 2.0));
+//        }
+//    }
 
     vtkSmartPointer<vtkPolyData> polydata = vtkSmartPointer<vtkPolyData>::New();
     polydata->SetPoints(points);
@@ -37,20 +55,21 @@ Layer::Layer()
     triangulatedActor->GetProperty()->SetOpacity(0.1);
     triangulatedActor->GetProperty()->SetColor(0,1,0);
 
-    vtkSmartPointer<vtkLineSource> lineSource = vtkSmartPointer<vtkLineSource>::New();
-    lineSource->SetPoint1(0,0,0);
-    lineSource->SetPoint2(0,200,0);
-    vtkSmartPointer<vtkPolyDataMapper> mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-    mapper->SetInputConnection(lineSource->GetOutputPort());    // 设置映射的渲染数据
-    vtkSmartPointer<vtkActor> lineActor = vtkSmartPointer<vtkActor>::New();
-    lineActor->GetProperty()->SetColor(1,0,0);
-    lineActor->SetMapper(mapper);
+    //画线
+//    vtkSmartPointer<vtkLineSource> lineSource = vtkSmartPointer<vtkLineSource>::New();
+//    lineSource->SetPoint1(0,0,0);
+//    lineSource->SetPoint2(0,200,0);
+//    vtkSmartPointer<vtkPolyDataMapper> mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+//    mapper->SetInputConnection(lineSource->GetOutputPort());    // 设置映射的渲染数据
+//    vtkSmartPointer<vtkActor> lineActor = vtkSmartPointer<vtkActor>::New();
+//    lineActor->GetProperty()->SetColor(1,0,0);
+//    lineActor->SetMapper(mapper);
 
     //renderer renderWindow renderWindowInteractor
     renderer = vtkSmartPointer<vtkRenderer>::New();
     renderer->AddActor(pointsActor);
     renderer->AddActor(triangulatedActor);
-    renderer->AddActor(lineActor);
+//    renderer->AddActor(lineActor);
     renderer->SetBackground(0, 0, 0);
 
 //    vtkSmartPointer<vtkRenderWindow> renderWindow = vtkSmartPointer<vtkRenderWindow>::New();
