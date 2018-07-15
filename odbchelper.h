@@ -20,6 +20,8 @@ public:
     double* getjeast2();
     double* getjnorth2();
     double* getjaltitude2();
+    double* getjdepth1();
+    double* getjdepth2();
 };
 
 #endif // ODBCHELPER_H

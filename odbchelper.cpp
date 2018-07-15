@@ -165,3 +165,42 @@ double* odbchelper::getjaltitude2()
 
     return arr;
 }
+
+double* odbchelper::getjdepth1()
+{
+    int m = getdatacount1();
+
+    double *arr = new double[m];
+    int i = 0;
+
+    QSqlQuery *query1 = new QSqlQuery(db);
+    QString sql1 = "select jdepth from mycollardata";
+    query1->exec(sql1);
+
+    while(query1->next()&&i<m)
+    {
+        arr[i] = query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+double* odbchelper::getjdepth2()
+{
+    int n = getdatacount2();
+
+    double *arr = new double[n];
+    int j = 0;
+
+    QSqlQuery *query2 = new QSqlQuery(db);
+    QString sql2 = "select jdepth from myvirtualcollardata";
+    query2->exec(sql2);
+
+    while(query2->next()&&j<n)
+    {
+        arr[j] = query2->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
