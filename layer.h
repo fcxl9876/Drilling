@@ -17,6 +17,9 @@
 #include <vtkLineSource.h>
 #include <QVTKWidget.h>
 #include <vtkCellArray.h>
+#include <vtkLine.h>
+#include <vtkFloatArray.h>
+#include <vtkCellData.h>
 
 class Layer
 {
