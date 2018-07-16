@@ -21,7 +21,8 @@ Renderer::Renderer()
     for(k = 0; k<m; k++)
     {
         Line line;
-        renderer->AddActor(line.lineActor);
+        renderer->AddActor(line.lineActor1);
+        renderer->AddActor(line.lineActor2);
     }
     for(p = 0; p<n; p++)
     {

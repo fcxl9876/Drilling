@@ -69,10 +69,20 @@ Line::Line()
         lineSource1->SetPoint2(east1[k],north1[k],altitude1[k]+depth1[k]);
         vtkSmartPointer<vtkPolyDataMapper> mapper1 = vtkSmartPointer<vtkPolyDataMapper>::New();
         mapper1->SetInputConnection(lineSource1->GetOutputPort());    // 设置映射的渲染数据
-        lineActor = vtkSmartPointer<vtkActor>::New();
-        lineActor->GetProperty()->SetColor(1,0,0);
-        lineActor->GetProperty()->SetLineWidth(3);
-        lineActor->SetMapper(mapper1);
+        lineActor1 = vtkSmartPointer<vtkActor>::New();
+        lineActor1->GetProperty()->SetColor(1,0,0);
+        lineActor1->GetProperty()->SetLineWidth(3);
+        lineActor1->SetMapper(mapper1);
+
+        vtkSmartPointer<vtkLineSource> lineSource2 = vtkSmartPointer<vtkLineSource>::New();
+        lineSource2->SetPoint1(east1[k],north1[k],altitude1[k]+depth1[k]);
+        lineSource2->SetPoint2(east1[k],north1[k],altitude1[k]+depth1[k]*2);
+        vtkSmartPointer<vtkPolyDataMapper> mapper2 = vtkSmartPointer<vtkPolyDataMapper>::New();
+        mapper2->SetInputConnection(lineSource2->GetOutputPort());    // 设置映射的渲染数据
+        lineActor2 = vtkSmartPointer<vtkActor>::New();
+        lineActor2->GetProperty()->SetColor(0.4,0.8,1);
+        lineActor2->GetProperty()->SetLineWidth(3);
+        lineActor2->SetMapper(mapper2);
 
 
 

@@ -19,7 +19,8 @@ class Line
 public:
     Line();
     vtkSmartPointer<vtkPolyDataMapper> mapper;
-    vtkSmartPointer<vtkActor> lineActor;
+    vtkSmartPointer<vtkActor> lineActor1;
+    vtkSmartPointer<vtkActor> lineActor2;
 
     vtkSmartPointer<vtkPoints> points;
 };
