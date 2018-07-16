@@ -10,6 +10,9 @@
 #include <vtkFloatArray.h>
 #include <vtkCellData.h>
 
+#include <vtkLineSource.h>
+#include <vtkProperty.h>
+
 
 class Line
 {
@@ -17,6 +20,8 @@ public:
     Line();
     vtkSmartPointer<vtkPolyDataMapper> mapper;
     vtkSmartPointer<vtkActor> lineActor;
+
+    vtkSmartPointer<vtkPoints> points;
 };
 
 #endif // LINE_H
