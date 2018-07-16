@@ -2,6 +2,8 @@
 
 int m;
 int n;
+int q;
+
 double* east1;
 double* north1;
 double* altitude1;
@@ -10,6 +12,14 @@ double* east2;
 double* north2;
 double* altitude2;
 double* depth2;
+
+double* jeastfrom;
+double* jnorthfrom;
+double* jaltitudefrom;
+double* jeastto;
+double* jnorthto;
+double* jaltitudeto;
+QString* jlithology;
 
 odbchelper::odbchelper()
 {
@@ -23,6 +33,7 @@ odbchelper::odbchelper()
     }
     m=this->getdatacount1();
     n=this->getdatacount2();
+    q=this->getdatacount3();
 
     east1=new double[m];
     east1=this->getjeast1();
@@ -41,6 +52,21 @@ odbchelper::odbchelper()
     altitude2=this->getjaltitude2();
     depth2=new double[n];
     depth2=this->getjdepth2();
+
+    jeastfrom=new double[q];
+    jeastfrom=this->getjeastfrom();
+    jnorthfrom=new double[q];
+    jnorthfrom=this->getjnorthfrom();
+    jaltitudefrom=new double[q];
+    jaltitudefrom=this->getjaltitudefrom();
+    jeastto=new double[q];
+    jeastto=this->getjeastto();
+    jnorthto=new double[q];
+    jnorthto=this->getjnorthto();
+    jaltitudeto=new double[q];
+    jaltitudeto=this->getjaltitudeto();
+    jlithology=new QString[q];
+    jlithology=this->getjlithology();
 
 }
 
@@ -232,6 +258,160 @@ double* odbchelper::getjdepth2()
     while(query2->next()&&j<x)
     {
         arr[j] = query2->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+int odbchelper::getdatacount3()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from mylithologydata";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::getjeastfrom()
+{
+    int x = getdatacount3();
+
+    double *arr = new double[x];
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    QString sql = "select jeastfrom from mylithologydata";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjnorthfrom()
+{
+    int x = getdatacount3();
+
+    double *arr = new double[x];
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    QString sql = "select jnorthfrom from mylithologydata";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjaltitudefrom()
+{
+    int x = getdatacount3();
+
+    double *arr = new double[x];
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    QString sql = "select jaltitudefrom from mylithologydata";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjeastto()
+{
+    int x = getdatacount3();
+
+    double *arr = new double[x];
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    QString sql = "select jeastto from mylithologydata";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjnorthto()
+{
+    int x = getdatacount3();
+
+    double *arr = new double[x];
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    QString sql = "select jnorthto from mylithologydata";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjaltitudeto()
+{
+    int x = getdatacount3();
+
+    double *arr = new double[x];
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    QString sql = "select jaltitudeto from mylithologydata";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toDouble();
+        j++;
+    }
+
+    return arr;
+}
+
+QString* odbchelper::getjlithology()
+{
+    int x = getdatacount3();
+
+    QString *arr = new QString[x];
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    QString sql = "select jlithology from mylithologydata";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toString();
         j++;
     }
 
