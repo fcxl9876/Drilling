@@ -185,6 +185,7 @@ double* odbchelper::getjdepth1()
 
     return arr;
 }
+
 double* odbchelper::getjdepth2()
 {
     int n = getdatacount2();
