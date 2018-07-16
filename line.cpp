@@ -4,40 +4,17 @@
 
 Line::Line()
 {
-    //读取数据================================================================
-//    odbchelper sql;
-//    int m = sql.getdatacount1();
-//    int n = sql.getdatacount2();
 
-//    double *east1 = new double[m];
-//    east1=sql.getjeast1();
-//    double *east2 = new double[n];
-//    east2=sql.getjeast2();
-
-//    double *north1 = new double[m];
-//    north1=sql.getjnorth1();
-//    double *north2 = new double[n];
-//    north2=sql.getjnorth2();
-
-//    double *altitude1 = new double[m];
-//    altitude1=sql.getjaltitude1();
-//    double *altitude2 = new double[n];
-//    altitude2=sql.getjaltitude2();
-
-//    double* depth1 = new double[m];
-//    depth1 = sql.getjdepth1();
-//    double* depth2 = new double[n];
-//    depth2 = sql.getjdepth2();
 
     //插入数据
-    points = vtkSmartPointer<vtkPoints>::New();
-    for(int i=0;i<m;i++){
-        points->InsertNextPoint(east1[i],north1[i],altitude1[i]);
-    }
+//    points = vtkSmartPointer<vtkPoints>::New();
+//    for(int i=0;i<m;i++){
+//        points->InsertNextPoint(east1[i],north1[i],altitude1[i]);
+//    }
 
-    for(int i=0;i<n;i++){
-        points->InsertNextPoint(east2[i],north2[i],altitude2[i]);
-    }
+//    for(int i=0;i<n;i++){
+//        points->InsertNextPoint(east2[i],north2[i],altitude2[i]);
+//    }
     //END======================================================================
 
 
@@ -87,14 +64,16 @@ Line::Line()
 
     //画线===============================================================================
 
-        vtkSmartPointer<vtkLineSource> lineSource = vtkSmartPointer<vtkLineSource>::New();
-        lineSource->SetPoint1(east1[k],north1[k],altitude1[k]);
-        lineSource->SetPoint2(east1[k],north1[k],altitude1[k]+depth1[k]);
-        vtkSmartPointer<vtkPolyDataMapper> mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-        mapper->SetInputConnection(lineSource->GetOutputPort());    // 设置映射的渲染数据
+        vtkSmartPointer<vtkLineSource> lineSource1 = vtkSmartPointer<vtkLineSource>::New();
+        lineSource1->SetPoint1(east1[k],north1[k],altitude1[k]);
+        lineSource1->SetPoint2(east1[k],north1[k],altitude1[k]+depth1[k]);
+        vtkSmartPointer<vtkPolyDataMapper> mapper1 = vtkSmartPointer<vtkPolyDataMapper>::New();
+        mapper1->SetInputConnection(lineSource1->GetOutputPort());    // 设置映射的渲染数据
         lineActor = vtkSmartPointer<vtkActor>::New();
         lineActor->GetProperty()->SetColor(1,0,0);
         lineActor->GetProperty()->SetLineWidth(3);
-        lineActor->SetMapper(mapper);
+        lineActor->SetMapper(mapper1);
+
+
 
 }

@@ -33,14 +33,14 @@ odbchelper::odbchelper()
     depth1=new double[m];
     depth1=this->getjdepth1();
 
-    east2=new double[m];
+    east2=new double[n];
     east2=this->getjeast2();
-    north2=new double[m];
+    north2=new double[n];
     north2=this->getjnorth2();
-    altitude2=new double[m];
+    altitude2=new double[n];
     altitude2=this->getjaltitude2();
-    depth2=new double[m];
-    depth2=this->getjdepth1();
+    depth2=new double[n];
+    depth2=this->getjdepth2();
 
 }
 
