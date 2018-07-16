@@ -11,6 +11,8 @@
 #include <QToolBar>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QVTKWidget.h>
+#include <vtkRenderWindow.h>
 
 #pragma execution_character_set("utf-8")
 

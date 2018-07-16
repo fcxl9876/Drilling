@@ -1,4 +1,5 @@
 ﻿#include "widget.h"
+#include "renderer.h"
 
 Widget::Widget(QWidget *parent)
     : QMainWindow(parent)
@@ -80,10 +81,10 @@ Widget::~Widget()
 void Widget::enterSystem()
 {
     menuBar()->show();
-    Layer layer;
+    Renderer renderer;
     QVTKWidget *a;
     a = new QVTKWidget(this);
-    a->GetRenderWindow()->AddRenderer(layer.renderer);
+    a->GetRenderWindow()->AddRenderer(renderer.renderer);
     delete enterSys;
     setCentralWidget(a);
 }
