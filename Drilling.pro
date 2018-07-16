@@ -145,11 +145,13 @@ SOURCES += \
     odbchelper.cpp \
     layer.cpp \
     line.cpp \
-    renderer.cpp
+    renderer.cpp \
+    adddrilling.cpp
 
 HEADERS += \
         widget.h \
     odbchelper.h \
     layer.h \
     line.h \
-    renderer.h
+    renderer.h \
+    adddrilling.h
