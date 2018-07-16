@@ -1,4 +1,5 @@
 ﻿#include "widget.h"
+#include "renderer.h"
 
 Widget::Widget(QWidget *parent)
     : QMainWindow(parent)
@@ -27,6 +28,14 @@ Widget::Widget(QWidget *parent)
     hideDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     hideDrilling->setStatusTip("Drilling hide");
 
+    viewLine = new QAction("显示孔迹线",this);
+    viewLine->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
+    viewLine->setStatusTip("Drilling view");
+
+    hideLine = new QAction("隐藏孔迹线",this);
+    hideLine->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_P));
+    hideLine->setStatusTip("Drilling hide");
+
     lithologyDrilling = new QAction("钻孔分层显示",this);
     lithologyDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
     lithologyDrilling->setStatusTip("Drilling lithoLogy view");
@@ -53,6 +62,8 @@ Widget::Widget(QWidget *parent)
 
     drillingView->addAction(viewDrilling);
     drillingView->addAction(hideDrilling);
+    drillingView->addAction(viewLine);
+    drillingView->addAction(hideLine);
 
     lithologyView->addAction(lithologyDrilling);
 
@@ -80,10 +91,10 @@ Widget::~Widget()
 void Widget::enterSystem()
 {
     menuBar()->show();
-    Layer layer;
+    Renderer renderer;
     QVTKWidget *a;
     a = new QVTKWidget(this);
-    a->GetRenderWindow()->AddRenderer(layer.renderer);
+    a->GetRenderWindow()->AddRenderer(renderer.renderer);
     delete enterSys;
     setCentralWidget(a);
 }

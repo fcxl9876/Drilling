@@ -143,9 +143,13 @@ SOURCES += \
         main.cpp \
         widget.cpp \
     odbchelper.cpp \
-    layer.cpp
+    layer.cpp \
+    line.cpp \
+    renderer.cpp
 
 HEADERS += \
         widget.h \
     odbchelper.h \
-    layer.h
+    layer.h \
+    line.h \
+    renderer.h

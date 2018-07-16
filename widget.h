@@ -11,6 +11,8 @@
 #include <QToolBar>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QVTKWidget.h>
+#include <vtkRenderWindow.h>
 
 #pragma execution_character_set("utf-8")
 
@@ -21,8 +23,10 @@ class Widget : public QMainWindow
 public:
     Widget(QWidget *parent = 0);
     ~Widget();
+
 public slots:
     void enterSystem();
+
 private:
     QMenu *drillingView;
     QMenu *lithologyView;
@@ -32,6 +36,9 @@ private:
 
     QAction *viewDrilling;
     QAction *hideDrilling;
+
+    QAction *viewLine;
+    QAction *hideLine;
 
     QAction *lithologyDrilling;
 
