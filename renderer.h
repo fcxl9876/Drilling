@@ -5,6 +5,7 @@
 #include <vtkRenderer.h>
 #include <vtkActor.h>
 
+extern int k;
 
 class Renderer
 {
