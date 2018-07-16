@@ -1,6 +1,9 @@
 ﻿#include "layer.h"
+#include "line.h"
+#include "renderer.h"
 #include "widget.h"
 #include "odbchelper.h"
+#include "adddrilling.h"
 
 #include <QApplication>
 #include <vtkSphereSource.h>
@@ -23,8 +26,12 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     Widget *w;
-    w = new Widget;
+    w = new Widget();
     w->show();
+
+//    addDrilling *add;
+//    add = new addDrilling();
+//    add->show();
 
     return a.exec();
 }

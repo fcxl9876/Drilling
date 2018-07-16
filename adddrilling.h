@@ -6,8 +6,10 @@
 #include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
+#include <QVBoxLayout>
+#include <QPushButton>
 
-class addDrilling : public QMainWindow
+class addDrilling : public QWidget
 {
     Q_OBJECT
 public:
@@ -35,6 +37,11 @@ private:
     QLineEdit *jdepth;
     QLineEdit *jpath;
     QLineEdit *jdrill;
+
+    QPushButton *confirm;
+    QPushButton *cancel;
+
+    QVBoxLayout *layout;
 };
 
 #endif // ADDDRILLING_H
