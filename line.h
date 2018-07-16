@@ -1,0 +1,22 @@
+#ifndef LINE_H
+#define LINE_H
+
+#include <vtkSmartPointer.h>
+#include <vtkActor.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkPoints.h>
+#include <vtkPolyData.h>
+#include <vtkLine.h>
+#include <vtkFloatArray.h>
+#include <vtkCellData.h>
+
+
+class Line
+{
+public:
+    Line();
+    vtkSmartPointer<vtkPolyDataMapper> mapper;
+    vtkSmartPointer<vtkActor> lineActor;
+};
+
+#endif // LINE_H
