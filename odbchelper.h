@@ -8,6 +8,8 @@
 
 extern int m;
 extern int n;
+extern int q;
+
 extern double* east1;
 extern double* north1;
 extern double* altitude1;
@@ -16,6 +18,15 @@ extern double* east2;
 extern double* north2;
 extern double* altitude2;
 extern double* depth2;
+
+extern double* jeastfrom;
+extern double* jnorthfrom;
+extern double* jaltitudefrom;
+extern double* jeastto;
+extern double* jnorthto;
+extern double* jaltitudeto;
+extern QString* jlithology;
+
 
 class odbchelper
 {
@@ -33,6 +44,16 @@ public:
     double* getjnorth2();
     double* getjaltitude2();
     double* getjdepth2();
+
+    int getdatacount3();
+    double* getjeastfrom();
+    double* getjnorthfrom();
+    double* getjaltitudefrom();
+    double* getjeastto();
+    double* getjnorthto();
+    double* getjaltitudeto();
+    QString* getjlithology();
+
 };
 
 #endif // ODBCHELPER_H
