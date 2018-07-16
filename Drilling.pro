@@ -146,7 +146,8 @@ SOURCES += \
     layer.cpp \
     line.cpp \
     renderer.cpp \
-    adddrilling.cpp
+    adddrilling.cpp \
+    virtualline.cpp
 
 HEADERS += \
         widget.h \
@@ -154,4 +155,5 @@ HEADERS += \
     layer.h \
     line.h \
     renderer.h \
-    adddrilling.h
+    adddrilling.h \
+    virtualline.h

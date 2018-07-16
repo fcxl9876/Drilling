@@ -6,6 +6,7 @@
 #include <vtkActor.h>
 
 extern int k;
+extern int p;
 
 class Renderer
 {
