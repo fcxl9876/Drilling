@@ -2,7 +2,6 @@
 #define LINE_H
 
 #include "odbchelper.h"
-#include "renderer.h"
 
 #include <vtkSmartPointer.h>
 #include <vtkPolyDataMapper.h>
@@ -14,6 +13,7 @@
 #include <vtkCellData.h>
 #include <vtkLineSource.h>
 #include <vtkProperty.h>
+#include <vtkActor.h>
 
 
 class Line
