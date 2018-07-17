@@ -1,4 +1,4 @@
-#include "renderer.h"
+﻿#include "renderer.h"
 
 Renderer::Renderer()
 {
@@ -14,7 +14,7 @@ Renderer::Renderer()
 
     //实际孔迹线actor==================================================
     //L1-1层actor
-    for(int i = 0; i<m; i++)
+    for(int i = 0; i<L1_1; i++)
     {
         renderer->AddActor(line.lineActors[i]);
     }
