@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include "layer.h"
+#include "renderer.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -26,6 +27,8 @@ public:
 
 public slots:
     void enterSystem();
+    void slotViewDrilling();
+    void slotHideDrilling();
 
 private:
     QMenu *drillingView;
@@ -53,6 +56,8 @@ private:
     QPushButton *enterSys;
 
     Layer *layer;
+    Renderer renderer;
+    QVTKWidget *a;
 };
 
 #endif // WIDGET_H

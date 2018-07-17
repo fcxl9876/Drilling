@@ -16,6 +16,8 @@ class Renderer
 {
 public:
     Renderer();
+    void viewDrilling();
+    void hideDrilling();
     vtkSmartPointer<vtkRenderer> renderer;
     odbchelper sql;
     Layer layer;

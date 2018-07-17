@@ -1,5 +1,4 @@
 ﻿#include "widget.h"
-#include "renderer.h"
 
 Widget::Widget(QWidget *parent)
     : QMainWindow(parent)
@@ -23,10 +22,12 @@ Widget::Widget(QWidget *parent)
     viewDrilling = new QAction("显示钻孔",this);
     viewDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_V));
     viewDrilling->setStatusTip("Drilling view");
+    connect(viewDrilling,SIGNAL(triggered()),this,SLOT(slotViewDrilling()));
 
     hideDrilling = new QAction("隐藏钻孔",this);
     hideDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     hideDrilling->setStatusTip("Drilling hide");
+    connect(hideDrilling,SIGNAL(triggered()),this,SLOT(slotHideDrilling()));
 
     viewLine = new QAction("显示孔迹线",this);
     viewLine->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
@@ -91,10 +92,16 @@ Widget::~Widget()
 void Widget::enterSystem()
 {
     menuBar()->show();
-    Renderer renderer;
-    QVTKWidget *a;
     a = new QVTKWidget(this);
     a->GetRenderWindow()->AddRenderer(renderer.renderer);
     delete enterSys;
     setCentralWidget(a);
+}
+void Widget::slotViewDrilling()
+{
+    renderer.viewDrilling();
+}
+void Widget::slotHideDrilling()
+{
+    renderer.hideDrilling();
 }
