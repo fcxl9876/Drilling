@@ -1,6 +1,8 @@
 #ifndef LAYER_H
 #define LAYER_H
 
+#include "odbchelper.h"
+
 #include <vtkSmartPointer.h>
 #include <vtkPoints.h>
 #include <vtkPolyData.h>

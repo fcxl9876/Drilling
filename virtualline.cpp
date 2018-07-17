@@ -1,17 +1,21 @@
 #include "virtualline.h"
-#include "odbchelper.h"
-#include "renderer.h"
 
 VirtualLine::VirtualLine()
 {
+    //虚拟孔迹线============================================================================
+    for(int i = 0; i<n; i++)
+    {
+        virtualLineSources.push_back(vtkSmartPointer<vtkLineSource>::New());   //virtualLineSources
+        virtualLineSources[i]->SetPoint1(east2[i],north2[i],altitude2[i]);
+        virtualLineSources[i]->SetPoint2(east2[i],north2[i],altitude2[i]+depth2[i]);
 
-    vtkSmartPointer<vtkLineSource> lineSource2 = vtkSmartPointer<vtkLineSource>::New();
-    lineSource2->SetPoint1(east2[p],north2[p],altitude2[p]);
-    lineSource2->SetPoint2(east2[p],north2[p],altitude2[p]+depth2[p]);
-    vtkSmartPointer<vtkPolyDataMapper> mapper2 = vtkSmartPointer<vtkPolyDataMapper>::New();
-    mapper2->SetInputConnection(lineSource2->GetOutputPort());    // 设置映射的渲染数据
-    lineActor = vtkSmartPointer<vtkActor>::New();
-    lineActor->GetProperty()->SetColor(0,0,1);
-    lineActor->GetProperty()->SetLineWidth(3);
-    lineActor->SetMapper(mapper2);
+        virtualLineMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());   //virtualLineMappers
+        virtualLineMappers[i]->SetInputConnection(virtualLineSources[i]->GetOutputPort());
+
+        virtualLineActors.push_back(vtkSmartPointer<vtkActor>::New()); //virtualLineActors
+        virtualLineActors[i]->SetMapper(virtualLineMappers[i]);
+        virtualLineActors[i]->GetProperty()->SetColor(0,0,1);  //孔迹线的属性
+        virtualLineActors[i]->GetProperty()->SetLineWidth(3);
+    }
+
 }

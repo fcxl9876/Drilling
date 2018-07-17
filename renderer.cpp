@@ -1,32 +1,23 @@
 #include "renderer.h"
-#include "layer.h"
-#include "line.h"
-#include "odbchelper.h"
-#include "virtualline.h"
-
-int k = 0;
-int p = 0;
 
 Renderer::Renderer()
 {
-    //读取数据=========================================================
-    odbchelper sql;
+    Line line;
+    VirtualLine virtualLine;
 
-    Layer layer;
     renderer = vtkSmartPointer<vtkRenderer>::New();
-    renderer->AddActor(layer.pointsActor);
-    renderer->AddActor(layer.triangulatedActor);
     renderer->SetBackground(0, 0, 0);
 
-    for(k = 0; k<m; k++)
+    //将Actors添加到renderer里=========================================
+    renderer->AddActor(layer.pointsActor);
+    renderer->AddActor(layer.triangulatedActor);
+    for(int i = 0; i<m; i++)
     {
-        Line line;
-        renderer->AddActor(line.lineActor1);
-        renderer->AddActor(line.lineActor2);
+        renderer->AddActor(line.lineActors[i]);
     }
-    for(p = 0; p<n; p++)
+    for(int i = 0; i<n; i++)
     {
-        VirtualLine line2;
-        renderer->AddActor(line2.lineActor);
+        renderer->AddActor(virtualLine.virtualLineActors[i]);
     }
+
 }
