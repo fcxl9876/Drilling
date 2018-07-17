@@ -69,8 +69,8 @@ odbchelper::odbchelper()
     jlithology=new QString[q];
     jlithology=this->getjlithology();
 
-    jcolor=new QString[q];
-    jcolor=this->getjcolor(jlithology);
+//    jcolor=new QString[q];
+//    jcolor=this->getjcolor(jlithology);
 
 }
 
