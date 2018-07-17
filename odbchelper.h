@@ -26,6 +26,7 @@ extern double* jeastto;
 extern double* jnorthto;
 extern double* jaltitudeto;
 extern QString* jlithology;
+extern QString* jcolor;
 
 
 class odbchelper
@@ -53,6 +54,12 @@ public:
     double* getjnorthto();
     double* getjaltitudeto();
     QString* getjlithology();
+
+    QString* getjcolor(QString *str);
+
+    double returnR(QString str);
+    double returnG(QString str);
+    double returnB(QString str);
 
 };
 
