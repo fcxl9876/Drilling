@@ -20,6 +20,7 @@ double* jeastto;
 double* jnorthto;
 double* jaltitudeto;
 QString* jlithology;
+QString* jcolor;
 
 odbchelper::odbchelper()
 {
@@ -67,6 +68,9 @@ odbchelper::odbchelper()
     jaltitudeto=this->getjaltitudeto();
     jlithology=new QString[q];
     jlithology=this->getjlithology();
+
+    jcolor=new QString[q];
+    jcolor=this->getjcolor(jlithology);
 
 }
 
@@ -417,3 +421,58 @@ QString* odbchelper::getjlithology()
 
     return arr;
 }
+
+QString* odbchelper::getjcolor(QString *str)
+{
+    int x = getdatacount3();
+
+    QString *arr = new QString[x];
+    int i = 0;
+    int j = 0;
+
+    QSqlQuery *query = new QSqlQuery(db);
+    for(i=0,j=0;i<x,j<x;i++){
+        if(str[i]=="1"){
+            arr[j]="#00FF00";
+        } else if(str[i]=="chazhi"||str[i]=="bujialayer"){
+            arr[j]="#FF0000";
+        } else{
+            QString sql = QString("select jcolor from lithologytype where jtype = '%1'").arg(str[i]);
+            query->exec(sql);
+            while(query->next()&&j<x)
+            {
+                arr[j] = query->value(0).toString();
+                j++;
+            }
+        }
+    }
+    return arr;
+}
+
+double odbchelper::returnR(QString str)
+{
+    double r;
+    QString s = str.mid(2,2);
+    bool ok;
+    r=(s.toInt(&ok,10))/255;
+    return r;
+}
+
+double odbchelper::returnG(QString str)
+{
+    double g;
+    QString s = str.mid(4,2);
+    bool ok;
+    g=(s.toInt(&ok,10))/255;
+    return g;
+}
+
+double odbchelper::returnB(QString str)
+{
+    double b;
+    QString s = str.mid(6,2);
+    bool ok;
+    b=(s.toInt(&ok,10))/255;
+    return b;
+}
+
