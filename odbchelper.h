@@ -566,6 +566,9 @@ public:
     void addDrillingData(int a, QString b, QString c, float d, float e, float f, float g, QString h, QString i);
     void removeDrillingData(QString a);
 
+    void addDrillingDetail(int a, QString b, QString c, float d, float e, float f, float g, float h, float i, float j, float k, QString l, QString m, int n, float o);
+    void removeDrillingDetail(int a, QString b);
+
 };
 
 #endif // ODBCHELPER_H

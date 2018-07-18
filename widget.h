@@ -5,6 +5,8 @@
 #include "renderer.h"
 #include "adddrilling.h"
 #include "removedrilling.h"
+#include "adddrillingdetail.h"
+#include "removedrillingdetail.h"
 #include "lithologydrilling.h"
 
 #include <QApplication>
@@ -38,6 +40,9 @@ public slots:
     void slotHideLine();
     void slotAddDrilling();
     void slotRemoveDrilling();
+    void slotAddDrillingDetail();
+    void slotRemoveDrillingDetail();
+
 
     void slotLithologyDrilling();
     void slotCheckDrilling();
@@ -79,6 +84,10 @@ private:
 
     addD *add;
     removeD *remove;
+
+    addDD *add2;
+    removeDD *remove2;
+
 };
 
 #endif // WIDGET_H
