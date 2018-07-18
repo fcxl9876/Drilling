@@ -1,5 +1,7 @@
 ﻿#include "odbchelper.h"
 
+#pragma execution_character_set("utf-8")
+
 int m;
 int n;
 
@@ -11,6 +13,7 @@ double* east2;
 double* north2;
 double* altitude2;
 double* depth2;
+QString* jborehole;
 
 int L1_1;
 
@@ -318,6 +321,9 @@ odbchelper::odbchelper()
     altitude2=this->getjaltitude2();
     depth2=new double[n];
     depth2=this->getjdepth2();
+
+    jborehole=new QString[m];
+    jborehole=this->getjborehole();
 
     L1_1=this->getcount1();
 
@@ -773,9 +779,11 @@ odbchelper::odbchelper()
     jaltitudefrom=new double[count];
     jaltitudefrom=this->getjaltitudefrom();
     jaltitudeto=new double[count];
+
     jaltitudeto=this->getjaltitudeto();
     jlithology=new QString[count];
     jlithology=this->getjlithology();
+
 
 }
 
@@ -971,6 +979,26 @@ double* odbchelper::getjdepth2()
     }
 
     return arr;
+}
+
+QString* odbchelper::getjborehole()
+{
+    int x=getdatacount1();
+
+    QString *arr = new QString[x];
+    int j = 0;
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql="select jborehole from mycollardata;";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toChar();
+        j++;
+    }
+
+    return arr;
+
 }
 
 double odbchelper::returnR(QString str)
@@ -4911,7 +4939,26 @@ QString* odbchelper::getjlithology()
     return arr;
 }
 
-void odbchelper::addDrillingData()
+void odbchelper::addDrillingData(int a,QString b,QString c,float d,float e,float f,float g,QString h,QString i)
 {
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql=QString("insert into mycollardata values(%1,'%2','%3',%4,%5,%6,%7,'%8','%9');")
+            .arg(a).arg(b).arg(c).arg(d).arg(e).arg(f).arg(g).arg(h).arg(i);
+    query->exec(sql);
 
+    if (query->isActive()){
+        QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+    }
+}
+
+void odbchelper::removeDrillingData(QString a)
+{
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql=QString("delete from mycollardata where jborehole = '%1';")
+            .arg(a);
+    query->exec(sql);
+
+    if (query->isActive()){
+        QMessageBox::about(NULL,QString("删除成功"),QString("删除指定数据成功"));
+    }
 }

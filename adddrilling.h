@@ -10,6 +10,8 @@
 #include <QPushButton>
 #include "odbchelper.h"
 
+#pragma execution_character_set("utf-8")
+
 extern QString getid;
 extern QString getjborehole;
 extern QString getjtype;
@@ -29,6 +31,7 @@ public:
 public slots:
     void add();
     void exit();
+
 private:
     QLabel *L1;
     QLabel *L2;

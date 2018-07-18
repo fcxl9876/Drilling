@@ -1,4 +1,4 @@
-#ifndef LAYER_H
+﻿#ifndef LAYER_H
 #define LAYER_H
 
 #include "odbchelper.h"
@@ -11,6 +11,8 @@
 #include <vtkPolyDataMapper.h>
 #include <vtkActor.h>
 #include <vtkProperty.h>
+#include <vtkTextActor3D.h>
+#include <vtkTextProperty.h>
 
 class Layer
 {
@@ -25,6 +27,9 @@ public:
     vtkSmartPointer<vtkPolyDataMapper> triangulatedMapper;
     vtkSmartPointer<vtkActor> pointsActor;
     vtkSmartPointer<vtkActor> triangulatedActor;
+
+    std::vector<vtkSmartPointer<vtkTextActor3D> > textActors;
+    std::vector<vtkSmartPointer<vtkTextProperty> > textPropertys;
 };
 
 

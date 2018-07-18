@@ -62,6 +62,8 @@ addD::addD()
     layout->addWidget(cancel);
 
     this->setLayout(layout);
+    connect(confirm,SIGNAL(clicked()),this,SLOT(add()));
+    connect(cancel,SIGNAL(clicked()),this,SLOT(exit()));
 }
 
 void addD::add()
@@ -78,9 +80,11 @@ void addD::add()
     getjpath = this->jpath->text();
     getjdrill = this->jdrill->text();
 
+    odbc.addDrillingData(getid.toInt(),getjborehole,getjtype,getjeast.toFloat(),getjnorth.toFloat(),getjaltitude.toFloat(),getjdepth.toFloat(),getjpath,getjdrill);
+
 }
 
 void addD::exit()
 {
-    this->exit();
+    this->hide();
 }

@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include "QtSql/qsqlerror.h"
 
+#pragma execution_character_set("utf-8")
+
 extern int m;
 extern int n;
 
@@ -17,6 +19,7 @@ extern double* east2;
 extern double* north2;
 extern double* altitude2;
 extern double* depth2;
+extern QString* jborehole;
 
 extern int L1_1;
 
@@ -289,7 +292,6 @@ extern double* jnorthtobujialayer;
 extern double* jaltitudetobujialayer;
 
 extern int count;
-extern int getcount;
 extern double* jaltitudefrom;
 extern double* jaltitudeto;
 extern QString* jlithology;
@@ -310,6 +312,7 @@ public:
     double* getjnorth2();
     double* getjaltitude2();
     double* getjdepth2();
+    QString* getjborehole();
 
     int getcount();
     double* getjaltitudefrom();
@@ -560,7 +563,8 @@ public:
     double* getjnorthto30();
     double* getjaltitudeto30();
 
-    void addDrillingData();
+    void addDrillingData(int a, QString b, QString c, float d, float e, float f, float g, QString h, QString i);
+    void removeDrillingData(QString a);
 
 };
 
