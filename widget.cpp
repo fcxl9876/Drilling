@@ -32,10 +32,12 @@ Widget::Widget(QWidget *parent)
     viewLine = new QAction("显示孔迹线",this);
     viewLine->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
     viewLine->setStatusTip("Drilling view");
+    connect(viewLine,SIGNAL(triggered()),this,SLOT(slotViewLine()));
 
     hideLine = new QAction("隐藏孔迹线",this);
     hideLine->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_P));
     hideLine->setStatusTip("Drilling hide");
+    connect(hideLine,SIGNAL(triggered()),this,SLOT(slotHideLine()));
 
     lithologyDrilling = new QAction("钻孔分层显示",this);
     lithologyDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
@@ -70,7 +72,7 @@ Widget::Widget(QWidget *parent)
 
     drillingCode->addAction(viewCode);
     drillingCode->addAction(hideCode);
-    \
+
     drillingTest->addAction(testDrilling);
 
     drillingEdit->addAction(addDrilling);
@@ -104,4 +106,12 @@ void Widget::slotViewDrilling()
 void Widget::slotHideDrilling()
 {
     renderer.hideDrilling();
+}
+void Widget::slotViewLine()
+{
+    renderer.viewLine();
+}
+void Widget::slotHideLine()
+{
+    renderer.hideLine();
 }

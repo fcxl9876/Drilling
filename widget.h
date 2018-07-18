@@ -29,6 +29,8 @@ public slots:
     void enterSystem();
     void slotViewDrilling();
     void slotHideDrilling();
+    void slotViewLine();
+    void slotHideLine();
 
 private:
     QMenu *drillingView;

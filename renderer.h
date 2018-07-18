@@ -18,9 +18,14 @@ public:
     Renderer();
     void viewDrilling();
     void hideDrilling();
+    void viewLine();
+    void hideLine();
     vtkSmartPointer<vtkRenderer> renderer;
     odbchelper sql;
     Layer layer;
+private:
+    Line line;
+    VirtualLine virtualLine;
 };
 
 #endif // RENDERER_H

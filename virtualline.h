@@ -2,7 +2,6 @@
 #define VIRTUALLINE_H
 
 #include "odbchelper.h"
-#include "renderer.h"
 
 #include <vtkSmartPointer.h>
 #include <vtkActor.h>
