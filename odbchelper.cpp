@@ -292,7 +292,7 @@ double* jlithology;
 odbchelper::odbchelper()
 {
     this->db=QSqlDatabase::addDatabase("QODBC");
-    QString conn = "Driver={PostgreSQL UNICODE(x64)};server=127.0.0.1;port=5433;uid=postgres;pwd=123456;database=drilling";
+    QString conn = "Driver={PostgreSQL UNICODE(x64)};server=127.0.0.1;port=5432;uid=postgres;pwd=123456;database=drilling";
     this->db.setDatabaseName(conn);
     if(!this->db.open()){
         QMessageBox::critical(0,QString("odbc error"),
