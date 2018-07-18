@@ -19,6 +19,12 @@ Renderer::Renderer()
 //        renderer->AddActor(virtualLine.virtualLineActors[i]);
 //    }
 
+    //显示和隐藏编码
+    for(int i = 0; i<m ; i++)
+    {
+        renderer->AddActor(layer.textActors[i]);
+    }
+
 }
 
 
@@ -30,6 +36,23 @@ void Renderer::viewDrilling()
 void Renderer::hideDrilling()
 {
     renderer->RemoveActor(layer.pointsActor);
+}
+
+
+//显示和隐藏编码====================================================================
+void Renderer::viewCode()
+{
+    for(int i = 0; i<m ; i++)
+    {
+        renderer->AddActor(layer.textActors[i]);
+    }
+}
+void Renderer::hideCode()
+{
+    for(int i = 0; i<m ; i++)
+    {
+        renderer->RemoveActor(layer.textActors[i]);
+    }
 }
 
 
