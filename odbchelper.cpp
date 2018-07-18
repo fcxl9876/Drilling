@@ -283,6 +283,12 @@ double* jeasttobujialayer;
 double* jnorthtobujialayer;
 double* jaltitudetobujialayer;
 
+int count;
+
+double* jaltitudefrom;
+double* jaltitudeto;
+double* jlithology;
+
 odbchelper::odbchelper()
 {
     this->db=QSqlDatabase::addDatabase("QODBC");
@@ -763,6 +769,15 @@ odbchelper::odbchelper()
     jnorthtobujialayer=this->getjnorthto30();
     jaltitudetobujialayer=new double[bujialayer];
     jaltitudetobujialayer=this->getjaltitudeto30();
+
+    count=this->getcount();
+    jaltitudefrom=new double[count];
+    jaltitudefrom=getjaltitudefrom();
+    jaltitudeto=new double[count];
+    jaltitudeto=getjaltitudeto();
+    jlithology=new double[count];
+    jlithology=getjlithology();
+
 }
 
 void odbchelper::getjtype()
@@ -4824,4 +4839,80 @@ double* odbchelper::getjaltitudeto30()
     }
 
     return arr;
+}
+
+int odbchelper::getcount()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from mylithologydata;";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::getjaltitudefrom()
+{
+    int x=getcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jaltitudefrom from mylithologydata order by jborehole,jdepthfrom;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjaltitudeto()
+{
+    int x=getcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jaltitudeto from mylithologydata order by jborehole,jdepthfrom;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getjlithology()
+{
+    int x=getcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jlithology from mylithologydata order by jborehole,jdepthfrom;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+void odbchelper::addDrillingData()
+{
+
 }

@@ -8,15 +8,27 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include "odbchelper.h"
 
-class addDrilling : public QWidget
+extern QString getid;
+extern QString getjborehole;
+extern QString getjtype;
+extern QString getjeast;
+extern QString getjnorth;
+extern QString getjaltitude;
+extern QString getjdepth;
+extern QString getjpath;
+extern QString getjdrill;
+
+class addD : public QWidget
 {
     Q_OBJECT
 public:
-    addDrilling();
+    addD();
 
 public slots:
-
+    void add();
+    void exit();
 private:
     QLabel *L1;
     QLabel *L2;
@@ -42,6 +54,7 @@ private:
     QPushButton *cancel;
 
     QVBoxLayout *layout;
+
 };
 
 #endif // ADDDRILLING_H

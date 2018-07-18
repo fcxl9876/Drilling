@@ -13,7 +13,7 @@ Renderer::Renderer()
     renderer->AddActor(layer.triangulatedActor);
 
     //实际孔迹线actor==================================================================================
-    this->viewLine();
+//    this->viewLine();
 
     //虚拟孔迹线actor==================================================
 //    for(int i = 0; i<n; i++)
