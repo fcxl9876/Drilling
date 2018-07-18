@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include "QtSql/qsqlerror.h"
 
+#pragma execution_character_set("utf-8")
+
 extern int m;
 extern int n;
 extern int q;
@@ -289,10 +291,10 @@ extern double* jeasttobujialayer;
 extern double* jnorthtobujialayer;
 extern double* jaltitudetobujialayer;
 
-extern int getcount;
+extern int count;
 extern double* jaltitudefrom;
 extern double* jaltitudeto;
-extern double* jlithology;
+extern QString* jlithology;
 
 class odbchelper
 {
@@ -314,7 +316,7 @@ public:
     int getcount();
     double* getjaltitudefrom();
     double* getjaltitudeto();
-    double* getjlithology();
+    QString* getjlithology();
 
     double returnR(QString str);
     double returnG(QString str);
@@ -560,7 +562,8 @@ public:
     double* getjnorthto30();
     double* getjaltitudeto30();
 
-    void addDrillingData();
+    void addDrillingData(int a, QString b, QString c, float d, float e, float f, float g, QString h, QString i);
+    void removeDrillingData(QString a);
 
 };
 
