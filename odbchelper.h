@@ -10,7 +10,6 @@
 
 extern int m;
 extern int n;
-extern int q;
 
 extern double* east1;
 extern double* north1;

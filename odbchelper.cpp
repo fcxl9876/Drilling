@@ -4,7 +4,6 @@
 
 int m;
 int n;
-int q;
 
 double* east1;
 double* north1;
@@ -778,11 +777,13 @@ odbchelper::odbchelper()
 
     count=this->getcount();
     jaltitudefrom=new double[count];
-    jaltitudefrom=getjaltitudefrom();
+    jaltitudefrom=this->getjaltitudefrom();
     jaltitudeto=new double[count];
-    jaltitudeto=getjaltitudeto();
+
+    jaltitudeto=this->getjaltitudeto();
     jlithology=new QString[count];
-    jlithology=getjlithology();
+    jlithology=this->getjlithology();
+
 
 }
 

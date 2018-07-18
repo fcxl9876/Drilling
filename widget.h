@@ -38,10 +38,13 @@ public slots:
     void slotHideLine();
     void slotAddDrilling();
     void slotRemoveDrilling();
+
     void slotLithologyDrilling();
     void slotCheckDrilling();
     void slotViewCode();
     void slotHideCode();
+
+
 
 private:
     QMenu *drillingView;
