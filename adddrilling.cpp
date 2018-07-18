@@ -2,17 +2,7 @@
 
 #pragma execution_character_set("utf-8")
 
-QString getid;
-QString getjborehole;
-QString getjtype;
-QString getjeast;
-QString getjnorth;
-QString getjaltitude;
-QString getjdepth;
-QString getjpath;
-QString getjdrill;
-
-addD::addD()
+addDrilling::addDrilling()
 {
     this->setWindowTitle("添加钻孔");
     this->resize(400,300);
@@ -62,25 +52,4 @@ addD::addD()
     layout->addWidget(cancel);
 
     this->setLayout(layout);
-}
-
-void addD::add()
-{
-    odbchelper odbc;
-
-    getid = this->id->text();
-    getjborehole = this->jborehole->text();
-    getjtype = this->jtype->text();
-    getjeast = this->jeast->text();
-    getjnorth = this->jnorth->text();
-    getjaltitude = this->jaltitude->text();
-    getjdepth = this->jdepth->text();
-    getjpath = this->jpath->text();
-    getjdrill = this->jdrill->text();
-
-}
-
-void addD::exit()
-{
-    this->exit();
 }
