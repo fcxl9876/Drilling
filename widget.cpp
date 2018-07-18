@@ -72,7 +72,7 @@ Widget::Widget(QWidget *parent)
 
     drillingCode->addAction(viewCode);
     drillingCode->addAction(hideCode);
-    \
+
     drillingTest->addAction(testDrilling);
 
     drillingEdit->addAction(addDrilling);
