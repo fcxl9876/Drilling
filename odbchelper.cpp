@@ -2,7 +2,6 @@
 
 int m;
 int n;
-int q;
 
 double* east1;
 double* north1;
@@ -287,7 +286,7 @@ int count;
 
 double* jaltitudefrom;
 double* jaltitudeto;
-double* jlithology;
+QString* jlithology;
 
 odbchelper::odbchelper()
 {
@@ -772,11 +771,11 @@ odbchelper::odbchelper()
 
     count=this->getcount();
     jaltitudefrom=new double[count];
-    jaltitudefrom=getjaltitudefrom();
+    jaltitudefrom=this->getjaltitudefrom();
     jaltitudeto=new double[count];
-    jaltitudeto=getjaltitudeto();
-    jlithology=new double[count];
-    jlithology=getjlithology();
+    jaltitudeto=this->getjaltitudeto();
+    jlithology=new QString[count];
+    jlithology=this->getjlithology();
 
 }
 
@@ -4893,11 +4892,11 @@ double* odbchelper::getjaltitudeto()
     return arr;
 }
 
-double* odbchelper::getjlithology()
+QString* odbchelper::getjlithology()
 {
     int x=getcount();
 
-    double *arr = new double[x];
+    QString *arr = new QString[x];
     int i=0;
 
     QSqlQuery *query1=new QSqlQuery(db);
@@ -4905,7 +4904,7 @@ double* odbchelper::getjlithology()
     query1->exec(sql1);
 
     while (query1->next()&&i<x) {
-        arr[i]=query1->value(0).toDouble();
+        arr[i]=query1->value(0).toString();
         i++;
     }
 

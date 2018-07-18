@@ -8,7 +8,6 @@
 
 extern int m;
 extern int n;
-extern int q;
 
 extern double* east1;
 extern double* north1;
@@ -289,10 +288,11 @@ extern double* jeasttobujialayer;
 extern double* jnorthtobujialayer;
 extern double* jaltitudetobujialayer;
 
+extern int count;
 extern int getcount;
 extern double* jaltitudefrom;
 extern double* jaltitudeto;
-extern double* jlithology;
+extern QString* jlithology;
 
 class odbchelper
 {
@@ -314,7 +314,7 @@ public:
     int getcount();
     double* getjaltitudefrom();
     double* getjaltitudeto();
-    double* getjlithology();
+    QString* getjlithology();
 
     double returnR(QString str);
     double returnG(QString str);
