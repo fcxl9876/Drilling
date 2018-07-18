@@ -14,6 +14,7 @@ double* east2;
 double* north2;
 double* altitude2;
 double* depth2;
+QString* jborehole;
 
 int L1_1;
 
@@ -321,6 +322,9 @@ odbchelper::odbchelper()
     altitude2=this->getjaltitude2();
     depth2=new double[n];
     depth2=this->getjdepth2();
+
+    jborehole=new QString[m];
+    jborehole=this->getjborehole();
 
     L1_1=this->getcount1();
 
@@ -974,6 +978,26 @@ double* odbchelper::getjdepth2()
     }
 
     return arr;
+}
+
+QString* odbchelper::getjborehole()
+{
+    int x=getdatacount1();
+
+    QString *arr = new QString[x];
+    int j = 0;
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql="select jborehole from mycollardata;";
+    query->exec(sql);
+
+    while(query->next()&&j<x)
+    {
+        arr[j] = query->value(0).toString();
+        j++;
+    }
+
+    return arr;
+
 }
 
 double odbchelper::returnR(QString str)
