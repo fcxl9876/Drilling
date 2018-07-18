@@ -20,6 +20,8 @@ public:
     void hideDrilling();
     void viewLine();
     void hideLine();
+    void viewCode();
+    void hideCode();
 
     void showL1_1();
     void showL1_2();

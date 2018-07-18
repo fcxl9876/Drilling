@@ -44,6 +44,8 @@ public slots:
     void slotRemoveDrillingDetail();
     void slotLithologyDrilling();
     void slotCheckDrilling();
+    void slotViewCode();
+    void slotHideCode();
 
 private:
     QMenu *drillingView;

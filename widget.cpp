@@ -49,10 +49,12 @@ Widget::Widget(QWidget *parent)
     viewCode = new QAction("显示编码",this);
     viewCode->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_C));
     viewCode->setStatusTip("Drilling code view");
+    connect(viewCode,SIGNAL(triggered()),this,SLOT(slotViewCode()));
 
     hideCode = new QAction("隐藏编码",this);
     hideCode->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
     hideCode->setStatusTip("Drilling code hide");
+    connect(hideCode,SIGNAL(triggered()),this,SLOT(slotHideCode()));
 
     testDrilling = new QAction("钻孔检测",this);
     testDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
@@ -111,6 +113,7 @@ Widget::~Widget()
 
 }
 
+//进入系统按钮槽函数
 void Widget::enterSystem()
 {
     menuBar()->show();
@@ -120,21 +123,21 @@ void Widget::enterSystem()
     setCentralWidget(a);
 }
 
+//显示和隐藏钻孔槽函数
 void Widget::slotViewDrilling()
 {
     rend.viewDrilling();
 }
-
 void Widget::slotHideDrilling()
 {
     rend.hideDrilling();
 }
 
+//显示和隐藏孔迹线槽函数
 void Widget::slotViewLine()
 {
     rend.viewLine();
 }
-
 void Widget::slotHideLine()
 {
     rend.hideLine();
@@ -151,7 +154,6 @@ void Widget::slotRemoveDrilling()
     remove = new removeD();
     remove->show();
 }
-
 void Widget::slotAddDrillingDetail()
 {
     add2 = new addDD();
@@ -164,12 +166,23 @@ void Widget::slotRemoveDrillingDetail()
     remove2->show();
 }
 
+//孔迹线分层显示槽函数
 void Widget::slotLithologyDrilling()
 {
     LithologyDrilling *l;
     l = new LithologyDrilling();
     l->show();
     rend.hideLine();
+}
+
+//显示和隐藏编码槽函数
+void Widget::slotViewCode()
+{
+    rend.viewCode();
+}
+void Widget::slotHideCode()
+{
+    rend.hideCode();
 }
 
 void Widget::slotCheckDrilling()

@@ -38,6 +38,26 @@ Layer::Layer()
     triangulatedActor->SetMapper(triangulatedMapper);
     triangulatedActor->GetProperty()->SetOpacity(0.8);
     triangulatedActor->GetProperty()->SetColor(0,1,0);
+
+    //显示编码===============================================================
+    for(int i = 0; i<m; i++)
+    {
+        textPropertys.push_back(vtkSmartPointer<vtkTextProperty>::New());
+        textPropertys[i]->SetColor(1 ,1 ,0);
+        textPropertys[i]->SetFontSize(18);
+        textPropertys[i]->SetFontFamily(0);
+        textPropertys[i]->SetJustification(1);
+        textPropertys[i]->SetBold(1);
+        textPropertys[i]->SetItalic(1);
+        textPropertys[i]->SetShadow(0);
+        textActors.push_back(vtkSmartPointer<vtkTextActor3D>::New());
+        textActors[i]->SetInput("test");
+        textActors[i]->SetTextProperty(textPropertys[i]);
+        textActors[i]->SetPosition(east1[i],north1[i], altitude1[i]); //设置位置
+        textActors[i]->SetScale(0.3 ,0.3 , 0.3); //设置文字大小
+        textActors[i]->RotateX(180.0);//沿X轴旋转90度
+    }
+
 }
 
 Layer::~Layer()
