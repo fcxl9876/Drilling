@@ -289,11 +289,6 @@ extern double* jeasttobujialayer;
 extern double* jnorthtobujialayer;
 extern double* jaltitudetobujialayer;
 
-extern int getcount;
-extern double* jaltitudefrom;
-extern double* jaltitudeto;
-extern double* jlithology;
-
 class odbchelper
 {
 public:
@@ -310,11 +305,6 @@ public:
     double* getjnorth2();
     double* getjaltitude2();
     double* getjdepth2();
-
-    int getcount();
-    double* getjaltitudefrom();
-    double* getjaltitudeto();
-    double* getjlithology();
 
     double returnR(QString str);
     double returnG(QString str);
@@ -559,8 +549,6 @@ public:
     double* getjeastto30();
     double* getjnorthto30();
     double* getjaltitudeto30();
-
-    void addDrillingData();
 
 };
 

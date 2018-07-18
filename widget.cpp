@@ -42,6 +42,7 @@ Widget::Widget(QWidget *parent)
     lithologyDrilling = new QAction("钻孔分层显示",this);
     lithologyDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
     lithologyDrilling->setStatusTip("Drilling lithoLogy view");
+    connect(lithologyDrilling,SIGNAL(triggered()),this,SLOT(slotLithologyDrilling()));
 
     viewCode = new QAction("显示编码",this);
     viewCode->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_C));
@@ -63,15 +64,6 @@ Widget::Widget(QWidget *parent)
     removeDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_D));
     removeDrilling->setStatusTip("Drilling remove");
 
-    addDrillingData = new QAction("添加孔迹线信息",this);
-    addDrillingData->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_W));
-    addDrillingData->setStatusTip("Drilling add");
-
-    removeDrillingData = new QAction("删除孔迹线信息",this);
-    removeDrillingData->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_E));
-    removeDrillingData->setStatusTip("Drilling remove");
-
-
     drillingView->addAction(viewDrilling);
     drillingView->addAction(hideDrilling);
     drillingView->addAction(viewLine);
@@ -86,8 +78,6 @@ Widget::Widget(QWidget *parent)
 
     drillingEdit->addAction(addDrilling);
     drillingEdit->addAction(removeDrilling);
-    drillingEdit->addAction(addDrillingData);
-    drillingEdit->addAction(removeDrillingData);
 
     menuBar()->hide();
 
@@ -110,34 +100,23 @@ void Widget::enterSystem()
     delete enterSys;
     setCentralWidget(a);
 }
-
 void Widget::slotViewDrilling()
 {
     renderer.viewDrilling();
 }
-
 void Widget::slotHideDrilling()
 {
     renderer.hideDrilling();
 }
-
 void Widget::slotViewLine()
 {
     renderer.viewLine();
 }
-
 void Widget::slotHideLine()
 {
     renderer.hideLine();
 }
-
-void Widget::slotAddDrilling()
-{
-    addD *add;
-    add = new addD();
-}
-
-void Widget::slotRemoveDrilling()
+void Widget::slotLithologyDrilling()
 {
 
 }
