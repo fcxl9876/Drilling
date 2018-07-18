@@ -57,6 +57,7 @@ Widget::Widget(QWidget *parent)
     testDrilling = new QAction("钻孔检测",this);
     testDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
     testDrilling->setStatusTip("Drilling Test");
+    connect(testDrilling,SIGNAL(triggered()),this,SLOT(slotCheckDrilling()));
 
     addDrilling = new QAction("添加钻孔",this);
     addDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_A));
@@ -66,6 +67,7 @@ Widget::Widget(QWidget *parent)
     removeDrilling = new QAction("删除钻孔",this);
     removeDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_D));
     removeDrilling->setStatusTip("Drilling remove");
+    connect(removeDrilling,SIGNAL(triggered()),this,SLOT(slotRemoveDrilling()));
 
     addDrillingData = new QAction("添加孔迹线信息",this);
     addDrillingData->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_W));
@@ -144,12 +146,103 @@ void Widget::slotAddDrilling()
 
 void Widget::slotRemoveDrilling()
 {
-
+    remove = new removeD();
+    remove->show();
 }
+
 void Widget::slotLithologyDrilling()
 {
     LithologyDrilling *l;
     l = new LithologyDrilling();
     l->show();
     rend.hideLine();
+}
+
+void Widget::slotCheckDrilling()
+{
+    QString checkResult=QString("检测结果正常！");
+
+    bool dislocationFlag=false;//是否上下错位
+    int *dislocationArray=new int[count];//记录上下错位所在地层的数组
+    int a=0;
+    bool continueFlag=false;//是否连续多层
+    int *continueArray=new int[count];//记录连续多层所在地层的数组
+    int b=0;
+    bool noContinueFlag=false;//是否不连续多层
+    int *noContinueArray=new int[count];//记录不连续多层所在地层的数组
+    int c=0;
+    bool zeroThicknessFlag=false;//是否有厚度为零的地层
+    int *zeroThicknessArray=new int[count];//记录厚度为零的地层
+    int d=0;
+
+    for(int i=0;i<count;i++){
+        //if判断防止数组越界
+        if(i<count-1){
+            if(jlithology[i]!="chazhi" && jlithology[i]!="bujialayer" && jlithology[i]!="1"
+                    && jlithology[i+1]!="chazhi" && jlithology[i+1]!="bujialayer" && jlithology[i+1]!="1"){
+                //检测是否上下错位并记录
+                if(jlithology[i] > jlithology[i+1]){
+                    dislocationFlag=true;
+                    dislocationArray[a]=i;
+                    a++;
+                }
+                //检测是否连续多层并记录
+                if(jlithology[i] == jlithology[i+1]){
+                    continueFlag=true;
+                    continueArray[b]=i;
+                    b++;
+                 }
+            }
+        }
+        if(i<count-2){
+            if(jlithology[i]!="chazhi" && jlithology[i]!="bujialayer" && jlithology[i]!="1"
+                    && jlithology[i+2]!="chazhi" && jlithology[i+2]!="bujialayer" && jlithology[i+2]!="1"){
+                //检测是否不连续多层并记录
+                if(jlithology[i] == jlithology[i+2] && jlithology[i] != jlithology[i+1]){
+                    noContinueFlag=true;
+                    noContinueArray[c]=i;
+                    c++;
+                }
+            }
+        }
+        //检测是否有厚度为零的地层并记录
+        if(jaltitudeto[i] - jaltitudefrom[i]==0){
+            zeroThicknessFlag=true;
+            zeroThicknessArray[d]=i;
+            d++;
+        }
+    }
+    //输出
+    if(dislocationFlag || continueFlag || noContinueFlag || zeroThicknessFlag){
+        checkResult="";//清空字符串
+        if(dislocationFlag){
+            checkResult.append("上下错位！\n");
+            for(int i=0;i<a;i++){
+                checkResult.append(jlithology[dislocationArray[i]]+"和"+jlithology[dislocationArray[i]+1]+"地层上下错位。\n");
+            }
+            checkResult.append("\n");
+        }
+        if(continueFlag){
+            checkResult.append("连续多层！\n");
+            for(int i=0;i<b;i++){
+                checkResult.append(jlithology[continueArray[i]]+"地层连续多层。\n");
+            }
+            checkResult.append("\n");
+        }
+        if(noContinueFlag){
+            checkResult.append("不连续多层！\n");
+            for(int i=0;i<c;i++){
+                checkResult.append(jlithology[noContinueArray[i]]+"和"+jlithology[noContinueArray[i]+1]+"和"+jlithology[noContinueArray[i]+2]+"不连续多层。\n");
+            }
+            checkResult.append("\n");
+        }
+        if(zeroThicknessFlag){
+           checkResult.append("有厚度为零的地层！\n");
+           for(int i=0;i<d;i++){
+               checkResult.append(jlithology[zeroThicknessArray[i]]+"地层厚度为零。\n");
+           }
+           checkResult.append("\n");
+        }
+    }
+    QMessageBox::about(this,"检测结果",checkResult);
 }

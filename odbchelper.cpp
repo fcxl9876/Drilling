@@ -1,5 +1,7 @@
 ﻿#include "odbchelper.h"
 
+#pragma execution_character_set("utf-8")
+
 int m;
 int n;
 int q;
@@ -287,7 +289,7 @@ int count;
 
 double* jaltitudefrom;
 double* jaltitudeto;
-double* jlithology;
+QString* jlithology;
 
 odbchelper::odbchelper()
 {
@@ -775,7 +777,7 @@ odbchelper::odbchelper()
     jaltitudefrom=getjaltitudefrom();
     jaltitudeto=new double[count];
     jaltitudeto=getjaltitudeto();
-    jlithology=new double[count];
+    jlithology=new QString[count];
     jlithology=getjlithology();
 
 }
@@ -4893,11 +4895,11 @@ double* odbchelper::getjaltitudeto()
     return arr;
 }
 
-double* odbchelper::getjlithology()
+QString* odbchelper::getjlithology()
 {
     int x=getcount();
 
-    double *arr = new double[x];
+    QString *arr = new QString[x];
     int i=0;
 
     QSqlQuery *query1=new QSqlQuery(db);
@@ -4905,14 +4907,33 @@ double* odbchelper::getjlithology()
     query1->exec(sql1);
 
     while (query1->next()&&i<x) {
-        arr[i]=query1->value(0).toDouble();
+        arr[i]=query1->value(0).toString();
         i++;
     }
 
     return arr;
 }
 
-void odbchelper::addDrillingData()
+void odbchelper::addDrillingData(int a,QString b,QString c,float d,float e,float f,float g,QString h,QString i)
 {
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql=QString("insert into mycollardata values(%1,'%2','%3',%4,%5,%6,%7,'%8','%9');")
+            .arg(a).arg(b).arg(c).arg(d).arg(e).arg(f).arg(g).arg(h).arg(i);
+    query->exec(sql);
 
+    if (query->isActive()){
+        QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+    }
+}
+
+void odbchelper::removeDrillingData(QString a)
+{
+    QSqlQuery *query=new QSqlQuery(db);
+    QString sql=QString("delete from mycollardata where jborehole = '%1';")
+            .arg(a);
+    query->exec(sql);
+
+    if (query->isActive()){
+        QMessageBox::about(NULL,QString("删除成功"),QString("删除指定数据成功"));
+    }
 }
