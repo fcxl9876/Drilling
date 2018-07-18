@@ -20,6 +20,7 @@ extern double* east2;
 extern double* north2;
 extern double* altitude2;
 extern double* depth2;
+extern QString* jborehole;
 
 extern int L1_1;
 
@@ -312,6 +313,7 @@ public:
     double* getjnorth2();
     double* getjaltitude2();
     double* getjdepth2();
+    QString* getjborehole();
 
     int getcount();
     double* getjaltitudefrom();
