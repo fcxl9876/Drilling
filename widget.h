@@ -3,6 +3,7 @@
 
 #include "layer.h"
 #include "renderer.h"
+#include "adddrilling.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -31,7 +32,9 @@ public slots:
     void slotHideDrilling();
     void slotViewLine();
     void slotHideLine();
-    void slotLithologyDrilling();
+    void slotAddDrilling();
+    void slotRemoveDrilling();
+
 private:
     QMenu *drillingView;
     QMenu *lithologyView;
@@ -54,12 +57,16 @@ private:
 
     QAction *addDrilling;
     QAction *removeDrilling;
+    QAction *addDrillingData;
+    QAction *removeDrillingData;
 
     QPushButton *enterSys;
 
     Layer *layer;
     Renderer renderer;
     QVTKWidget *a;
+
+    addD *add;
 };
 
 #endif // WIDGET_H

@@ -42,7 +42,6 @@ Widget::Widget(QWidget *parent)
     lithologyDrilling = new QAction("钻孔分层显示",this);
     lithologyDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
     lithologyDrilling->setStatusTip("Drilling lithoLogy view");
-    connect(lithologyDrilling,SIGNAL(triggered()),this,SLOT(slotLithologyDrilling()));
 
     viewCode = new QAction("显示编码",this);
     viewCode->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_C));
@@ -59,10 +58,20 @@ Widget::Widget(QWidget *parent)
     addDrilling = new QAction("添加钻孔",this);
     addDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_A));
     addDrilling->setStatusTip("Drilling add");
+    connect(addDrilling,SIGNAL(triggered()),this,SLOT(slotAddDrilling()));
 
     removeDrilling = new QAction("删除钻孔",this);
     removeDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_D));
     removeDrilling->setStatusTip("Drilling remove");
+
+    addDrillingData = new QAction("添加孔迹线信息",this);
+    addDrillingData->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_W));
+    addDrillingData->setStatusTip("Drilling add");
+
+    removeDrillingData = new QAction("删除孔迹线信息",this);
+    removeDrillingData->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_E));
+    removeDrillingData->setStatusTip("Drilling remove");
+
 
     drillingView->addAction(viewDrilling);
     drillingView->addAction(hideDrilling);
@@ -78,6 +87,8 @@ Widget::Widget(QWidget *parent)
 
     drillingEdit->addAction(addDrilling);
     drillingEdit->addAction(removeDrilling);
+    drillingEdit->addAction(addDrillingData);
+    drillingEdit->addAction(removeDrillingData);
 
     menuBar()->hide();
 
@@ -85,6 +96,7 @@ Widget::Widget(QWidget *parent)
     enterSys->setText("进入系统");
     enterSys->setGeometry(200,150,200,100);
     connect(enterSys,SIGNAL(clicked()),this,SLOT(enterSystem()));
+
 }
 
 Widget::~Widget()
@@ -100,23 +112,34 @@ void Widget::enterSystem()
     delete enterSys;
     setCentralWidget(a);
 }
+
 void Widget::slotViewDrilling()
 {
     renderer.viewDrilling();
 }
+
 void Widget::slotHideDrilling()
 {
     renderer.hideDrilling();
 }
+
 void Widget::slotViewLine()
 {
     renderer.viewLine();
 }
+
 void Widget::slotHideLine()
 {
     renderer.hideLine();
 }
-void Widget::slotLithologyDrilling()
+
+void Widget::slotAddDrilling()
+{
+    add = new addD();
+    add->show();
+}
+
+void Widget::slotRemoveDrilling()
 {
 
 }
