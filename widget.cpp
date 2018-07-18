@@ -72,10 +72,12 @@ Widget::Widget(QWidget *parent)
     addDrillingData = new QAction("添加孔迹线信息",this);
     addDrillingData->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_W));
     addDrillingData->setStatusTip("Drilling add");
+    connect(addDrillingData,SIGNAL(triggered()),this,SLOT(slotAddDrillingDetail()));
 
     removeDrillingData = new QAction("删除孔迹线信息",this);
     removeDrillingData->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_E));
     removeDrillingData->setStatusTip("Drilling remove");
+    connect(removeDrillingData,SIGNAL(triggered()),this,SLOT(slotRemoveDrillingDetail()));
 
 
     drillingView->addAction(viewDrilling);
@@ -148,6 +150,18 @@ void Widget::slotRemoveDrilling()
 {
     remove = new removeD();
     remove->show();
+}
+
+void Widget::slotAddDrillingDetail()
+{
+    add2 = new addDD();
+    add2->show();
+}
+
+void Widget::slotRemoveDrillingDetail()
+{
+    remove2 = new removeDD();
+    remove2->show();
 }
 
 void Widget::slotLithologyDrilling()
