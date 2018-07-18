@@ -4,6 +4,7 @@
 #include "layer.h"
 #include "renderer.h"
 #include "adddrilling.h"
+#include "lithologydrilling.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -15,6 +16,8 @@
 #include <QVBoxLayout>
 #include <QVTKWidget.h>
 #include <vtkRenderWindow.h>
+
+extern Renderer rend;
 
 #pragma execution_character_set("utf-8")
 
@@ -34,6 +37,7 @@ public slots:
     void slotHideLine();
     void slotAddDrilling();
     void slotRemoveDrilling();
+    void slotLithologyDrilling();
 
 private:
     QMenu *drillingView;
@@ -62,8 +66,8 @@ private:
 
     QPushButton *enterSys;
 
+//    Renderer rend;
     Layer *layer;
-    Renderer renderer;
     QVTKWidget *a;
 
     addD *add;
