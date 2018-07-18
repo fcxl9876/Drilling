@@ -1,5 +1,7 @@
 ﻿#include "widget.h"
 
+Renderer rend;
+
 Widget::Widget(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -42,6 +44,7 @@ Widget::Widget(QWidget *parent)
     lithologyDrilling = new QAction("钻孔分层显示",this);
     lithologyDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
     lithologyDrilling->setStatusTip("Drilling lithoLogy view");
+    connect(lithologyDrilling,SIGNAL(triggered()),this,SLOT(slotLithologyDrilling()));
 
     viewCode = new QAction("显示编码",this);
     viewCode->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_C));
@@ -108,29 +111,29 @@ void Widget::enterSystem()
 {
     menuBar()->show();
     a = new QVTKWidget(this);
-    a->GetRenderWindow()->AddRenderer(renderer.renderer);
+    a->GetRenderWindow()->AddRenderer(rend.renderer);
     delete enterSys;
     setCentralWidget(a);
 }
 
 void Widget::slotViewDrilling()
 {
-    renderer.viewDrilling();
+    rend.viewDrilling();
 }
 
 void Widget::slotHideDrilling()
 {
-    renderer.hideDrilling();
+    rend.hideDrilling();
 }
 
 void Widget::slotViewLine()
 {
-    renderer.viewLine();
+    rend.viewLine();
 }
 
 void Widget::slotHideLine()
 {
-    renderer.hideLine();
+    rend.hideLine();
 }
 
 void Widget::slotAddDrilling()
@@ -142,4 +145,11 @@ void Widget::slotAddDrilling()
 void Widget::slotRemoveDrilling()
 {
 
+}
+void Widget::slotLithologyDrilling()
+{
+    LithologyDrilling *l;
+    l = new LithologyDrilling();
+    l->show();
+    rend.hideLine();
 }

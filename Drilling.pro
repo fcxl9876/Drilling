@@ -147,7 +147,8 @@ SOURCES += \
     line.cpp \
     renderer.cpp \
     adddrilling.cpp \
-    virtualline.cpp
+    virtualline.cpp \
+    lithologydrilling.cpp
 
 HEADERS += \
         widget.h \
@@ -156,4 +157,5 @@ HEADERS += \
     line.h \
     renderer.h \
     adddrilling.h \
-    virtualline.h
+    virtualline.h \
+    lithologydrilling.h
