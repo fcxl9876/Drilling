@@ -149,7 +149,9 @@ SOURCES += \
     adddrilling.cpp \
     virtualline.cpp \
     lithologydrilling.cpp \
-    removedrilling.cpp
+    removedrilling.cpp \
+    adddrillingdetail.cpp \
+    removedrillingdetail.cpp
 
 HEADERS += \
         widget.h \
@@ -160,4 +162,6 @@ HEADERS += \
     adddrilling.h \
     virtualline.h \
     lithologydrilling.h \
-    removedrilling.h
+    removedrilling.h \
+    adddrillingdetail.h \
+    removedrillingdetail.h

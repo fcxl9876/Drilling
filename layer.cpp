@@ -37,25 +37,57 @@ Layer::Layer()
     triangulatedActor = vtkSmartPointer<vtkActor>::New();
     triangulatedActor->SetMapper(triangulatedMapper);
     triangulatedActor->GetProperty()->SetOpacity(0.8);
-    triangulatedActor->GetProperty()->SetColor(0,1,0);
+    triangulatedActor->GetProperty()->SetColor(0,0.8,0.4);
 
     //显示编码===============================================================
     for(int i = 0; i<m; i++)
     {
-        textPropertys.push_back(vtkSmartPointer<vtkTextProperty>::New());
-        textPropertys[i]->SetColor(1 ,1 ,0);
-        textPropertys[i]->SetFontSize(18);
-        textPropertys[i]->SetFontFamily(0);
-        textPropertys[i]->SetJustification(1);
-        textPropertys[i]->SetBold(1);
-        textPropertys[i]->SetItalic(1);
-        textPropertys[i]->SetShadow(0);
-        textActors.push_back(vtkSmartPointer<vtkTextActor3D>::New());
-        textActors[i]->SetInput("test");
-        textActors[i]->SetTextProperty(textPropertys[i]);
-        textActors[i]->SetPosition(east1[i],north1[i], altitude1[i]); //设置位置
-        textActors[i]->SetScale(0.3 ,0.3 , 0.3); //设置文字大小
-        textActors[i]->RotateX(180.0);//沿X轴旋转90度
+
+        textVectors.push_back(vtkSmartPointer<vtkVectorText>::New());
+        textVectors[i]->SetText(jborehole[i].toLatin1().data());
+        textTransforms.push_back(vtkSmartPointer<vtkTransform>::New());
+        textTransforms[i]->Translate(east1[i], north1[i], altitude1[i]);
+        textTransforms[i]->Scale(2, 2, 2);
+        textTransformFilters.push_back(vtkSmartPointer<vtkTransformFilter>::New());
+        textTransformFilters[i]->SetTransform(textTransforms[i]);
+        textTransformFilters[i]->SetInputConnection(textVectors[i]->GetOutputPort());
+        textAppendPolyDatas.push_back(vtkSmartPointer<vtkAppendPolyData>::New());
+        textAppendPolyDatas[i]->AddInputConnection(textTransformFilters[i]->GetOutputPort());
+
+        textPolyDataMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        textPolyDataMappers[i]->ImmediateModeRenderingOn();
+        textPolyDataMappers[i]->SetInputConnection(textAppendPolyDatas[i]->GetOutputPort());
+        textActors.push_back(vtkSmartPointer<vtkActor>::New());
+        textActors[i]->SetMapper(textPolyDataMappers[i]);
+
+//        textSources.push_back(vtkSmartPointer<vtkTextSource>::New());
+//        std::string str = jborehole[i].toStdString();
+//        const char* ch = str.c_str();
+//        textSources[i]->SetText(ch);
+//        textSources[i]->SetForegroundColor(0,0,1);
+//        textMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+//        textMappers[i]->SetInputConnection(textSources[i]->GetOutputPort());
+//        textActors.push_back(vtkSmartPointer<vtkActor>::New());
+//        textActors[i]->SetMapper(textMappers[i]);
+//        textActors[i]->SetPosition(east1[i],north1[i],altitude1[i]);
+
+
+
+//        textPropertys.push_back(vtkSmartPointer<vtkTextProperty>::New());
+//        textPropertys[i]->SetColor(1 ,1 ,0);
+//        textPropertys[i]->SetFontSize(18);
+//        textPropertys[i]->SetFontFamily(0);
+//        textPropertys[i]->SetJustification(1);
+//        textPropertys[i]->SetBold(1);
+//        textPropertys[i]->SetItalic(1);
+//        textPropertys[i]->SetShadow(0);
+//        textActors.push_back(vtkSmartPointer<vtkTextActor3D>::New());
+//        textActors[i]->SetInput("test");
+//        textActors[i]->SetTextProperty(textPropertys[i]);
+//        textActors[i]->SetPosition(east1[i],north1[i], altitude1[i]); //设置位置
+//        textActors[i]->SetScale(0.3 ,0.3 , 0.3); //设置文字大小
+//        textActors[i]->RotateX(180.0);//沿X轴旋转90度
+
     }
 
 }

@@ -9,6 +9,10 @@ LithologyDrilling::LithologyDrilling()
 
     layout = new QVBoxLayout();
     label = new QLabel("请选择需要显示的地层：");
+    btn = new QPushButton("确定");
+    connect(btn,SIGNAL(clicked()),this,SLOT(close()));
+
+
     layout1 = new QHBoxLayout();
     layout2 = new QHBoxLayout();
     layout3 = new QHBoxLayout();
@@ -134,6 +138,7 @@ LithologyDrilling::LithologyDrilling()
     layout->addLayout(layout8);
     layout->addLayout(layout9);
     layout->addLayout(layout10);
+    layout->addWidget(btn);
     this->setLayout(layout);
 }
 

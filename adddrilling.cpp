@@ -15,7 +15,7 @@ QString getjdrill;
 addD::addD()
 {
     this->setWindowTitle("添加钻孔");
-    this->resize(400,300);
+    this->resize(600,200);
 
     L1 = new QLabel("id:");
     id = new QLineEdit();
@@ -39,31 +39,72 @@ addD::addD()
     confirm = new QPushButton("添加");
     cancel = new QPushButton("取消");
 
-    layout = new QVBoxLayout();
-    layout->addWidget(L1);
-    layout->addWidget(id);
-    layout->addWidget(L2);
-    layout->addWidget(jborehole);
-    layout->addWidget(L3);
-    layout->addWidget(jtype);
-    layout->addWidget(L4);
-    layout->addWidget(jeast);
-    layout->addWidget(L5);
-    layout->addWidget(jnorth);
-    layout->addWidget(L6);
-    layout->addWidget(jaltitude);
-    layout->addWidget(L7);
-    layout->addWidget(jdepth);
-    layout->addWidget(L8);
-    layout->addWidget(jpath);
-    layout->addWidget(L9);
-    layout->addWidget(jdrill);
-    layout->addWidget(confirm);
-    layout->addWidget(cancel);
+    layout01 = new QHBoxLayout();
+    layout02 = new QHBoxLayout();
+    layout03 = new QHBoxLayout();
+    layout04 = new QHBoxLayout();
+    layout05 = new QHBoxLayout();
+    layout06 = new QHBoxLayout();
+    layout07 = new QHBoxLayout();
+    layout08 = new QHBoxLayout();
+    layout09 = new QHBoxLayout();
 
-    this->setLayout(layout);
+    layout1 = new QVBoxLayout();
+    layout2 = new QVBoxLayout();
+    layout3 = new QHBoxLayout();
+    layout4 = new QHBoxLayout();
+    layout5 = new QVBoxLayout();
+
+    layout01->addWidget(L1);
+    layout01->addWidget(id);
+
+    layout02->addWidget(L2);
+    layout02->addWidget(jborehole);
+
+    layout03->addWidget(L3);
+    layout03->addWidget(jtype);
+
+    layout04->addWidget(L4);
+    layout04->addWidget(jeast);
+
+    layout05->addWidget(L5);
+    layout05->addWidget(jnorth);
+
+    layout1->addLayout(layout01);
+    layout1->addLayout(layout02);
+    layout1->addLayout(layout03);
+    layout1->addLayout(layout04);
+    layout1->addLayout(layout05);
+
+    layout06->addWidget(L6);
+    layout06->addWidget(jaltitude);
+
+    layout07->addWidget(L7);
+    layout07->addWidget(jdepth);
+
+    layout08->addWidget(L8);
+    layout08->addWidget(jpath);
+
+    layout09->addWidget(L9);
+    layout09->addWidget(jdrill);
+
+    layout2->addLayout(layout06);
+    layout2->addLayout(layout07);
+    layout2->addLayout(layout08);
+    layout2->addLayout(layout09);
+
+    layout3->addLayout(layout1);
+    layout3->addLayout(layout2);
+
+    layout4->addWidget(confirm);
+    layout4->addWidget(cancel);
+
+    layout5->addLayout(layout3);
+    layout5->addLayout(layout4);
+
+    this->setLayout(layout5);
     connect(confirm,SIGNAL(clicked()),this,SLOT(add()));
-    connect(cancel,SIGNAL(clicked()),this,SLOT(exit()));
+    connect(cancel,SIGNAL(clicked()),this,SLOT(close()));
 }
 
 void addD::add()
@@ -84,7 +125,3 @@ void addD::add()
 
 }
 
-void addD::exit()
-{
-    this->hide();
-}

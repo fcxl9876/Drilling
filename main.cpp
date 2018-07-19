@@ -29,6 +29,5 @@ int main(int argc, char *argv[])
     w = new Widget();
     w->show();
 
-
     return a.exec();
 }
