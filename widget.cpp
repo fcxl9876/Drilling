@@ -41,6 +41,12 @@ Widget::Widget(QWidget *parent)
     hideLine->setStatusTip("Drilling hide");
     connect(hideLine,SIGNAL(triggered()),this,SLOT(slotHideLine()));
 
+    linearDisplay = new QAction("线状显示", this);
+    linearDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_N));
+
+    columnDisplay = new QAction("柱状显示", this);
+    columnDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_M));
+
     lithologyDrilling = new QAction("钻孔分层显示",this);
     lithologyDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
     lithologyDrilling->setStatusTip("Drilling lithoLogy view");
@@ -55,6 +61,10 @@ Widget::Widget(QWidget *parent)
     hideCode->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
     hideCode->setStatusTip("Drilling code hide");
     connect(hideCode,SIGNAL(triggered()),this,SLOT(slotHideCode()));
+
+    drillingProperties = new QAction("钻孔属性", this);
+    drillingProperties->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
+
 
     testDrilling = new QAction("钻孔检测",this);
     testDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
@@ -86,11 +96,14 @@ Widget::Widget(QWidget *parent)
     drillingView->addAction(hideDrilling);
     drillingView->addAction(viewLine);
     drillingView->addAction(hideLine);
+    drillingView->addAction(linearDisplay);
+    drillingView->addAction(columnDisplay);
 
     lithologyView->addAction(lithologyDrilling);
 
     drillingCode->addAction(viewCode);
     drillingCode->addAction(hideCode);
+    drillingCode->addAction(drillingProperties);
 
     drillingTest->addAction(testDrilling);
 

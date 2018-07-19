@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QCheckBox>
+#include <QPushButton>
 
 class LithologyDrilling : public QWidget
 {
@@ -16,6 +17,8 @@ public:
     LithologyDrilling();
     QVBoxLayout *layout;
     QLabel *label;
+    QPushButton *btn;
+
 
     QHBoxLayout *layout1;
     QHBoxLayout *layout2;
