@@ -22,6 +22,7 @@
 #include <vtkRenderWindow.h>
 
 extern Renderer rend;
+extern QVTKWidget *a;
 
 #pragma execution_character_set("utf-8")
 
@@ -82,7 +83,7 @@ private:
 
 //    Renderer rend;
     Layer *layer;
-    QVTKWidget *a;
+
 
     addD *add;
     removeD *remove;

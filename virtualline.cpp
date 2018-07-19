@@ -1,4 +1,4 @@
-#include "virtualline.h"
+﻿#include "virtualline.h"
 
 VirtualLine::VirtualLine()
 {
