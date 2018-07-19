@@ -1,7 +1,6 @@
 ﻿#ifndef DIALOG_H
 #define DIALOG_H
 
-
 #include <QDialog>
 #include <QtWidgets>
 
@@ -16,7 +15,9 @@ extern float getcColorG;
 extern float getcColorB;
 
 extern int getThickness;
-
+extern float getcOpacity;
+extern float getcSize;
+extern float getdOpacity;
 
 class Dialog : public QDialog
 {
@@ -49,8 +50,6 @@ class Page2 : public QWidget
     Q_OBJECT
 private:
     QLineEdit *text1;
-    QLineEdit *text2;
-    QLineEdit *text3;
 
 public:
     Page2(QWidget *parent = 0);
@@ -65,14 +64,11 @@ class Page3 : public QWidget
     Q_OBJECT
 private:
     QLineEdit *text1;
-    QLineEdit *text2;
-    QLineEdit *text3;
-
 public:
     Page3(QWidget *parent = 0);
 
 public slots:
-    void Link();
+    void dOpacity();
 
 };
 
@@ -98,14 +94,12 @@ class Page5 : public QWidget
     Q_OBJECT
 private:
     QLineEdit *text1;
-    QLineEdit *text2;
-    QLineEdit *text3;
 
 public:
     Page5(QWidget *parent = 0);
 
 public slots:
-    void Link();
+    void cSize();
 
 };
 
@@ -114,14 +108,12 @@ class Page6 : public QWidget
     Q_OBJECT
 private:
     QLineEdit *text1;
-    QLineEdit *text2;
-    QLineEdit *text3;
 
 public:
     Page6(QWidget *parent = 0);
 
 public slots:
-    void Link();
+    void cOpacity();
 
 };
 
@@ -129,15 +121,12 @@ class Page7 : public QWidget
 {
     Q_OBJECT
 private:
-    QLineEdit *text1;
-    QLineEdit *text2;
-    QLineEdit *text3;
 
 public:
     Page7(QWidget *parent = 0);
 
 public slots:
-    void Link();
+    void cFont();
 
 };
 
