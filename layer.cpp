@@ -30,7 +30,7 @@ Layer::Layer()
     pointsMapper->SetInputData(glyphFilter->GetOutput());
     pointsActor = vtkSmartPointer<vtkActor>::New();
     pointsActor->SetMapper(pointsMapper);
-    pointsActor->GetProperty()->SetPointSize(5);
+    pointsActor->GetProperty()->SetPointSize(getThickness);
     pointsActor->GetProperty()->SetColor(getdColorR, getdColorG, getdColorB);
 
     triangulatedMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
@@ -50,7 +50,7 @@ Layer::Layer()
 
                 textTransforms.push_back(vtkSmartPointer<vtkTransform>::New());
                 textTransforms[i]->Translate(east1[i], north1[i], altitude1[i]);
-                textTransforms[i]->Scale(0.5, 0.5, 0.5);    //编码大小
+                textTransforms[i]->Scale(getcSize, getcSize, getcSize);    //编码大小
 
                 textTransformFilters.push_back(vtkSmartPointer<vtkTransformFilter>::New());
                 textTransformFilters[i]->SetTransform(textTransforms[i]);
@@ -64,7 +64,7 @@ Layer::Layer()
                 textActors.push_back(vtkSmartPointer<vtkActor>::New());
                 textActors[i]->SetMapper(textPolyDataMappers[i]);
                 textActors[i]->GetProperty()->SetColor(getcColorR,getcColorG,getcColorB);      //编码颜色
-                textActors[i]->GetProperty()->SetOpacity(0.8);      //编码透明度
+                textActors[i]->GetProperty()->SetOpacity(getcOpacity);      //编码透明度
 
 //        textSources.push_back(vtkSmartPointer<vtkTextSource>::New());
 //        std::string str = jborehole[i].toStdString();
