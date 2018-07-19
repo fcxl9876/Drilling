@@ -993,7 +993,7 @@ QString* odbchelper::getjborehole()
 
     while(query->next()&&j<x)
     {
-        arr[j] = query->value(0).toChar();
+        arr[j] = query->value(0).toString();
         j++;
     }
 

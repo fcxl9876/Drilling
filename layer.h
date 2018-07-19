@@ -14,6 +14,21 @@
 #include <vtkTextActor3D.h>
 #include <vtkTextProperty.h>
 
+
+//#include <vtkTextSource.h>
+//#include <vtkTextMapper.h>
+//#include <vtkTextActor3D.h>
+//#include <vtkActor.h>
+//#include <vtkPolyDataMapper.h>
+
+#include <vtkVectorText.h>
+#include <vtkTransform.h>
+#include <vtkTransformFilter.h>
+#include <vtkPolyData.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkActor.h>
+#include <vtkAppendPolyData.h>
+
 class Layer
 {
 public:
@@ -28,8 +43,20 @@ public:
     vtkSmartPointer<vtkActor> pointsActor;
     vtkSmartPointer<vtkActor> triangulatedActor;
 
-    std::vector<vtkSmartPointer<vtkTextActor3D> > textActors;
-    std::vector<vtkSmartPointer<vtkTextProperty> > textPropertys;
+//    std::vector<vtkSmartPointer<vtkTextActor3D> > textActors;
+//    std::vector<vtkSmartPointer<vtkTextProperty> > textPropertys;
+
+//    std::vector<vtkSmartPointer<vtkTextSource> > textSources;
+//    std::vector<vtkSmartPointer<vtkPolyDataMapper> > textMappers;
+//    std::vector<vtkSmartPointer<vtkActor> > textActors;
+
+        std::vector<vtkSmartPointer<vtkVectorText> > textVectors;
+        std::vector<vtkSmartPointer<vtkTransform> > textTransforms;
+        std::vector<vtkSmartPointer<vtkTransformFilter> > textTransformFilters;
+        std::vector<vtkSmartPointer<vtkPolyData> > textPolyDatas;
+        std::vector<vtkSmartPointer<vtkPolyDataMapper> > textPolyDataMappers;
+        std::vector<vtkSmartPointer<vtkActor> > textActors;
+        std::vector<vtkSmartPointer<vtkAppendPolyData> > textAppendPolyDatas;
 };
 
 
