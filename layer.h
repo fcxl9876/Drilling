@@ -2,6 +2,7 @@
 #define LAYER_H
 
 #include "odbchelper.h"
+#include "dialog.h"
 
 #include <vtkSmartPointer.h>
 #include <vtkPoints.h>

@@ -151,7 +151,9 @@ SOURCES += \
     lithologydrilling.cpp \
     removedrilling.cpp \
     adddrillingdetail.cpp \
-    removedrillingdetail.cpp
+    removedrillingdetail.cpp \
+    attribute.cpp \
+    dialog.cpp
 
 HEADERS += \
         widget.h \
@@ -164,4 +166,6 @@ HEADERS += \
     lithologydrilling.h \
     removedrilling.h \
     adddrillingdetail.h \
-    removedrillingdetail.h
+    removedrillingdetail.h \
+    attribute.h \
+    dialog.h
