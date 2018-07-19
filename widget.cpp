@@ -1,6 +1,7 @@
 ﻿#include "widget.h"
 
 Renderer rend;
+QVTKWidget *a;
 
 Widget::Widget(QWidget *parent)
     : QMainWindow(parent)
@@ -141,20 +142,24 @@ void Widget::enterSystem()
 void Widget::slotViewDrilling()
 {
     rend.viewDrilling();
+    a->GetRenderWindow()->Render();
 }
 void Widget::slotHideDrilling()
 {
     rend.hideDrilling();
+    a->GetRenderWindow()->Render();
 }
 
 //显示和隐藏孔迹线槽函数
 void Widget::slotViewLine()
 {
     rend.viewLine();
+    a->GetRenderWindow()->Render();
 }
 void Widget::slotHideLine()
 {
     rend.hideLine();
+    a->GetRenderWindow()->Render();
 }
 
 void Widget::slotAddDrilling()
@@ -187,16 +192,19 @@ void Widget::slotLithologyDrilling()
     l = new LithologyDrilling();
     l->show();
     rend.hideLine();
+    a->GetRenderWindow()->Render();
 }
 
 //显示和隐藏编码槽函数
 void Widget::slotViewCode()
 {
     rend.viewCode();
+    a->GetRenderWindow()->Render();
 }
 void Widget::slotHideCode()
 {
     rend.hideCode();
+    a->GetRenderWindow()->Render();
 }
 
 void Widget::slotCheckDrilling()
