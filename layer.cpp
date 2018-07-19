@@ -30,7 +30,7 @@ Layer::Layer()
     pointsActor = vtkSmartPointer<vtkActor>::New();
     pointsActor->SetMapper(pointsMapper);
     pointsActor->GetProperty()->SetPointSize(5);
-    pointsActor->GetProperty()->SetColor(0, 1, 0);
+    pointsActor->GetProperty()->SetColor(getdColorR, getdColorG, getdColorB);
 
     triangulatedMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
     triangulatedMapper->SetInputData(delaunay->GetOutput());

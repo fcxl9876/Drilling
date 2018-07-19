@@ -64,7 +64,8 @@ Widget::Widget(QWidget *parent)
 
     drillingProperties = new QAction("钻孔属性", this);
     drillingProperties->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-
+    drillingProperties->setStatusTip("Drilling properties");
+    connect(drillingProperties,SIGNAL(triggered()),this,SLOT(slotAttribute()));
 
     testDrilling = new QAction("钻孔检测",this);
     testDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
@@ -287,5 +288,9 @@ void Widget::slotCheckDrilling()
     QMessageBox::about(this,"检测结果",checkResult);
 }
 
-
+void Widget::slotAttribute()
+{
+    win = new attribute();
+    win->show();
+}
 
