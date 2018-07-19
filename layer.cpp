@@ -37,7 +37,7 @@ Layer::Layer()
     triangulatedActor = vtkSmartPointer<vtkActor>::New();
     triangulatedActor->SetMapper(triangulatedMapper);
     triangulatedActor->GetProperty()->SetOpacity(0.8);
-    triangulatedActor->GetProperty()->SetColor(0,1,0);
+    triangulatedActor->GetProperty()->SetColor(0,0.8,0.4);
 
     //显示编码===============================================================
     for(int i = 0; i<m; i++)
