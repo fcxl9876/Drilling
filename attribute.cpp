@@ -6,7 +6,7 @@ attribute::attribute(QWidget *parent)
     : QWidget(parent)
 {
     this->setWindowTitle("钻孔属性");
-    this->resize(480,280);
+    this->resize(480,200);
     list = new QListWidget;
     list->setCurrentRow(0);
 

@@ -8,14 +8,18 @@ float getdColorG=1;
 float getdColorB=0;
 
 float getcColorR=0;
-float getcColorG=1;
-float getcColorB=0;
+float getcColorG=0;
+float getcColorB=1;
 
-int getThickness=3;
+int getThickness=5;
+float getcOpacity=0.8f;
+float getcSize=0.5f;
+float getdOpacity=1;
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
 {
+
 }
 
 Dialog::~Dialog()
@@ -77,29 +81,19 @@ Page2::Page2(QWidget *parent)
 Page3::Page3(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *label1 =new QLabel(QObject::tr("String1:"));
+    QLabel *label =new QLabel("请输入钻孔透明度(0-1,越小越透明):");
     text1 =new QLineEdit();
-    QLabel *label2 =new QLabel(QObject::tr("String2:"));
-    text2 =new QLineEdit();
-    QLabel *label3 =new QLabel(QObject::tr("Result:"));
-    text3 =new QLineEdit();
-    QPushButton *btn1 = new QPushButton(QObject::tr("link"));
+    QPushButton *btn1 = new QPushButton("设置");
     QHBoxLayout *hLayout1 = new QHBoxLayout();
     QHBoxLayout *hLayout2 = new QHBoxLayout();
-    QHBoxLayout *hLayout3 = new QHBoxLayout();
     QVBoxLayout *vLayout = new QVBoxLayout;
-    hLayout1->addWidget(label1);
-    hLayout1->addWidget(text1);
+    hLayout1->addWidget(label);
+    hLayout2->addWidget(text1);
     vLayout->addLayout(hLayout1);
-    hLayout2->addWidget(label2);
-    hLayout2->addWidget(text2);
     vLayout->addLayout(hLayout2);
     vLayout->addWidget(btn1,0,Qt::AlignTop);
-    hLayout3->addWidget(label3);
-    hLayout3->addWidget(text3);
-    vLayout->addLayout(hLayout3);
     setLayout(vLayout);
-    connect(btn1,SIGNAL(clicked()),this,SLOT(Link()));
+    connect(btn1,SIGNAL(clicked()),this,SLOT(dOpacity()));
 }
 
 Page4::Page4(QWidget *parent)
@@ -138,85 +132,49 @@ Page4::Page4(QWidget *parent)
 Page5::Page5(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *label1 =new QLabel(QObject::tr("String1:"));
+    QLabel *label =new QLabel("请输入编码大小:");
     text1 =new QLineEdit();
-    QLabel *label2 =new QLabel(QObject::tr("String2:"));
-    text2 =new QLineEdit();
-    QLabel *label3 =new QLabel(QObject::tr("Result:"));
-    text3 =new QLineEdit();
-    QPushButton *btn1 = new QPushButton(QObject::tr("link"));
+    QPushButton *btn1 = new QPushButton("设置");
     QHBoxLayout *hLayout1 = new QHBoxLayout();
     QHBoxLayout *hLayout2 = new QHBoxLayout();
-    QHBoxLayout *hLayout3 = new QHBoxLayout();
     QVBoxLayout *vLayout = new QVBoxLayout;
-    hLayout1->addWidget(label1);
-    hLayout1->addWidget(text1);
+    hLayout1->addWidget(label);
+    hLayout2->addWidget(text1);
     vLayout->addLayout(hLayout1);
-    hLayout2->addWidget(label2);
-    hLayout2->addWidget(text2);
     vLayout->addLayout(hLayout2);
     vLayout->addWidget(btn1,0,Qt::AlignTop);
-    hLayout3->addWidget(label3);
-    hLayout3->addWidget(text3);
-    vLayout->addLayout(hLayout3);
     setLayout(vLayout);
-    connect(btn1,SIGNAL(clicked()),this,SLOT(Link()));
+    connect(btn1,SIGNAL(clicked()),this,SLOT(cSize()));
 }
 
 Page6::Page6(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *label1 =new QLabel(QObject::tr("String1:"));
+    QLabel *label =new QLabel("请输入编码透明度(0-1,越小越透明):");
     text1 =new QLineEdit();
-    QLabel *label2 =new QLabel(QObject::tr("String2:"));
-    text2 =new QLineEdit();
-    QLabel *label3 =new QLabel(QObject::tr("Result:"));
-    text3 =new QLineEdit();
-    QPushButton *btn1 = new QPushButton(QObject::tr("link"));
+    QPushButton *btn1 = new QPushButton("设置");
     QHBoxLayout *hLayout1 = new QHBoxLayout();
     QHBoxLayout *hLayout2 = new QHBoxLayout();
-    QHBoxLayout *hLayout3 = new QHBoxLayout();
     QVBoxLayout *vLayout = new QVBoxLayout;
-    hLayout1->addWidget(label1);
-    hLayout1->addWidget(text1);
+    hLayout1->addWidget(label);
+    hLayout2->addWidget(text1);
     vLayout->addLayout(hLayout1);
-    hLayout2->addWidget(label2);
-    hLayout2->addWidget(text2);
     vLayout->addLayout(hLayout2);
     vLayout->addWidget(btn1,0,Qt::AlignTop);
-    hLayout3->addWidget(label3);
-    hLayout3->addWidget(text3);
-    vLayout->addLayout(hLayout3);
     setLayout(vLayout);
-    connect(btn1,SIGNAL(clicked()),this,SLOT(Link()));
+    connect(btn1,SIGNAL(clicked()),this,SLOT(cOpacity()));
 }
 
 Page7::Page7(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *label1 =new QLabel(QObject::tr("String1:"));
-    text1 =new QLineEdit();
-    QLabel *label2 =new QLabel(QObject::tr("String2:"));
-    text2 =new QLineEdit();
-    QLabel *label3 =new QLabel(QObject::tr("Result:"));
-    text3 =new QLineEdit();
-    QPushButton *btn1 = new QPushButton(QObject::tr("link"));
-    QHBoxLayout *hLayout1 = new QHBoxLayout();
-    QHBoxLayout *hLayout2 = new QHBoxLayout();
-    QHBoxLayout *hLayout3 = new QHBoxLayout();
+    QLabel *label =new QLabel("请点击按钮选择字体：");
+    QPushButton *btn = new QPushButton(QObject::tr("字体选择"));
     QVBoxLayout *vLayout = new QVBoxLayout;
-    hLayout1->addWidget(label1);
-    hLayout1->addWidget(text1);
-    vLayout->addLayout(hLayout1);
-    hLayout2->addWidget(label2);
-    hLayout2->addWidget(text2);
-    vLayout->addLayout(hLayout2);
-    vLayout->addWidget(btn1,0,Qt::AlignTop);
-    hLayout3->addWidget(label3);
-    hLayout3->addWidget(text3);
-    vLayout->addLayout(hLayout3);
+    vLayout->addWidget(label);
+    vLayout->addWidget(btn,0,Qt::AlignTop);
     setLayout(vLayout);
-    connect(btn1,SIGNAL(clicked()),this,SLOT(Link()));
+    connect(btn,SIGNAL(clicked()),this,SLOT(cFont()));
 }
 
 void Page1::Color()
@@ -261,12 +219,11 @@ void Page2::dThickness()
     QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔粗细成功"));
 }
 
-void Page3::Link()
+void Page3::dOpacity()
 {
-    QString str1=text1->text();
-    QString str2=text2->text();
-    QString s = str1 + str2;
-    text3->setText(s);
+    QString str = text1->text();
+    getdOpacity = str.toFloat();
+    QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
 }
 
 void Page4::cColor()
@@ -285,7 +242,6 @@ void Page4::cColor()
     {
         QMessageBox::warning(NULL,QString("设置失败"),QString("设置钻孔颜色成功"));
     }
-
 }
 
 void Page4::showcColor()
@@ -305,26 +261,30 @@ void Page4::showcColor()
     }
 }
 
-void Page5::Link()
+void Page5::cSize()
 {
-    QString str1=text1->text();
-    QString str2=text2->text();
-    QString s = str1 + str2;
-    text3->setText(s);
+    QString str = text1->text();
+    getcSize = str.toFloat();
+    QMessageBox::about(NULL,QString("设置成功"),QString("设置编码大小成功"));
 }
 
-void Page6::Link()
+void Page6::cOpacity()
 {
-    QString str1=text1->text();
-    QString str2=text2->text();
-    QString s = str1 + str2;
-    text3->setText(s);
+    QString str = text1->text();
+    getcOpacity = str.toFloat();
+    QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
 }
 
-void Page7::Link()
+void Page7::cFont()
 {
-    QString str1=text1->text();
-    QString str2=text2->text();
-    QString s = str1 + str2;
-    text3->setText(s);
+    bool ok;
+    QFont font = QFontDialog::getFont(
+                &ok, QFont( "Helvetica [Cronyx]", 10 ), this );
+    if(ok)
+    {
+            // font被设置为用户选择的字体
+    }else
+    {
+            // 用户取消这个对话框，font被设置为初始值，在这里就是Helvetica [Cronyx], 10
+    }
 }

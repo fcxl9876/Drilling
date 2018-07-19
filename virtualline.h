@@ -1,4 +1,4 @@
-#ifndef VIRTUALLINE_H
+﻿#ifndef VIRTUALLINE_H
 #define VIRTUALLINE_H
 
 #include "odbchelper.h"

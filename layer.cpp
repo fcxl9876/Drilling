@@ -1,5 +1,6 @@
 ﻿#include "layer.h"
 
+
 Layer::Layer()
 {
     //插入数据==================================================================
@@ -29,7 +30,7 @@ Layer::Layer()
     pointsMapper->SetInputData(glyphFilter->GetOutput());
     pointsActor = vtkSmartPointer<vtkActor>::New();
     pointsActor->SetMapper(pointsMapper);
-    pointsActor->GetProperty()->SetPointSize(5);
+    pointsActor->GetProperty()->SetPointSize(getThickness);
     pointsActor->GetProperty()->SetColor(getdColorR, getdColorG, getdColorB);
 
     triangulatedMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
@@ -43,22 +44,27 @@ Layer::Layer()
     for(int i = 0; i<m; i++)
     {
 
-        textVectors.push_back(vtkSmartPointer<vtkVectorText>::New());
-        textVectors[i]->SetText(jborehole[i].toLatin1().data());
-        textTransforms.push_back(vtkSmartPointer<vtkTransform>::New());
-        textTransforms[i]->Translate(east1[i], north1[i], altitude1[i]);
-        textTransforms[i]->Scale(2, 2, 2);
-        textTransformFilters.push_back(vtkSmartPointer<vtkTransformFilter>::New());
-        textTransformFilters[i]->SetTransform(textTransforms[i]);
-        textTransformFilters[i]->SetInputConnection(textVectors[i]->GetOutputPort());
-        textAppendPolyDatas.push_back(vtkSmartPointer<vtkAppendPolyData>::New());
-        textAppendPolyDatas[i]->AddInputConnection(textTransformFilters[i]->GetOutputPort());
+                textVectors.push_back(vtkSmartPointer<vtkVectorText>::New());
+                QString str = jborehole[i]+"\n"+"("+QString::number(east1[i],10,2)+","+QString::number(north1[i],10,2)+","+QString::number(altitude1[i],10,2)+")";
+                textVectors[i]->SetText(str.toLatin1().data());
 
-        textPolyDataMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
-        textPolyDataMappers[i]->ImmediateModeRenderingOn();
-        textPolyDataMappers[i]->SetInputConnection(textAppendPolyDatas[i]->GetOutputPort());
-        textActors.push_back(vtkSmartPointer<vtkActor>::New());
-        textActors[i]->SetMapper(textPolyDataMappers[i]);
+                textTransforms.push_back(vtkSmartPointer<vtkTransform>::New());
+                textTransforms[i]->Translate(east1[i], north1[i], altitude1[i]);
+                textTransforms[i]->Scale(getcSize, getcSize, getcSize);    //编码大小
+
+                textTransformFilters.push_back(vtkSmartPointer<vtkTransformFilter>::New());
+                textTransformFilters[i]->SetTransform(textTransforms[i]);
+                textTransformFilters[i]->SetInputConnection(textVectors[i]->GetOutputPort());
+                textAppendPolyDatas.push_back(vtkSmartPointer<vtkAppendPolyData>::New());
+                textAppendPolyDatas[i]->AddInputConnection(textTransformFilters[i]->GetOutputPort());
+
+                textPolyDataMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+                textPolyDataMappers[i]->ImmediateModeRenderingOn();
+                textPolyDataMappers[i]->SetInputConnection(textAppendPolyDatas[i]->GetOutputPort());
+                textActors.push_back(vtkSmartPointer<vtkActor>::New());
+                textActors[i]->SetMapper(textPolyDataMappers[i]);
+                textActors[i]->GetProperty()->SetColor(getcColorR,getcColorG,getcColorB);      //编码颜色
+                textActors[i]->GetProperty()->SetOpacity(getcOpacity);      //编码透明度
 
 //        textSources.push_back(vtkSmartPointer<vtkTextSource>::New());
 //        std::string str = jborehole[i].toStdString();
