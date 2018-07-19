@@ -21,7 +21,7 @@ QString getDattribute;
 addDD::addDD()
 {
     this->setWindowTitle("添加孔迹线信息");
-    this->resize(400,300);
+    this->resize(600,300);
 
     L1 = new QLabel("id:");
     Did = new QLineEdit();
@@ -57,43 +57,102 @@ addDD::addDD()
     confirm = new QPushButton("添加");
     cancel = new QPushButton("取消");
 
-    layout = new QVBoxLayout();
-    layout->addWidget(L1);
-    layout->addWidget(Did);
-    layout->addWidget(L2);
-    layout->addWidget(Djborehole);
-    layout->addWidget(L3);
-    layout->addWidget(Djsample);
-    layout->addWidget(L4);
-    layout->addWidget(Djdepthfrom);
-    layout->addWidget(L5);
-    layout->addWidget(Djdepthto);
-    layout->addWidget(L6);
-    layout->addWidget(Djeastfrom);
-    layout->addWidget(L7);
-    layout->addWidget(Djnorthfrom);
-    layout->addWidget(L8);
-    layout->addWidget(Djaltitudefrom);
-    layout->addWidget(L9);
-    layout->addWidget(Djeastto);
-    layout->addWidget(L10);
-    layout->addWidget(Djnorthto);
-    layout->addWidget(L11);
-    layout->addWidget(Djaltitudeto);
-    layout->addWidget(L12);
-    layout->addWidget(Djlithology);
-    layout->addWidget(L13);
-    layout->addWidget(Djflag);
-    layout->addWidget(L14);
-    layout->addWidget(Dlithologysort);
-    layout->addWidget(L15);
-    layout->addWidget(Dattribute);
-    layout->addWidget(confirm);
-    layout->addWidget(cancel);
+    layout01 = new QHBoxLayout();
+    layout02 = new QHBoxLayout();
+    layout03 = new QHBoxLayout();
+    layout04 = new QHBoxLayout();
+    layout05 = new QHBoxLayout();
+    layout06 = new QHBoxLayout();
+    layout07 = new QHBoxLayout();
+    layout08 = new QHBoxLayout();
+    layout09 = new QHBoxLayout();
+    layout10 = new QHBoxLayout();
+    layout11 = new QHBoxLayout();
+    layout12 = new QHBoxLayout();
+    layout13 = new QHBoxLayout();
+    layout14 = new QHBoxLayout();
+    layout15 = new QHBoxLayout();
 
-    this->setLayout(layout);
+    layout1 = new QVBoxLayout();
+    layout2 = new QVBoxLayout();
+    layout3 = new QHBoxLayout();
+    layout4 = new QHBoxLayout();
+    layout5 = new QVBoxLayout();
+
+    layout01->addWidget(L1);
+    layout01->addWidget(Did);
+
+    layout02->addWidget(L2);
+    layout02->addWidget(Djborehole);
+
+    layout03->addWidget(L3);
+    layout03->addWidget(Djsample);
+
+    layout04->addWidget(L4);
+    layout04->addWidget(Djdepthfrom);
+
+    layout05->addWidget(L5);
+    layout05->addWidget(Djdepthto);
+
+    layout06->addWidget(L6);
+    layout06->addWidget(Djeastfrom);
+
+    layout07->addWidget(L7);
+    layout07->addWidget(Djnorthfrom);
+
+    layout08->addWidget(L8);
+    layout08->addWidget(Djaltitudefrom);
+
+    layout1->addLayout(layout01);
+    layout1->addLayout(layout02);
+    layout1->addLayout(layout03);
+    layout1->addLayout(layout04);
+    layout1->addLayout(layout05);
+    layout1->addLayout(layout06);
+    layout1->addLayout(layout07);
+    layout1->addLayout(layout08);
+
+    layout09->addWidget(L9);
+    layout09->addWidget(Djeastto);
+
+    layout10->addWidget(L10);
+    layout10->addWidget(Djnorthto);
+
+    layout11->addWidget(L11);
+    layout11->addWidget(Djaltitudeto);
+
+    layout12->addWidget(L12);
+    layout12->addWidget(Djlithology);
+
+    layout13->addWidget(L13);
+    layout13->addWidget(Djflag);
+
+    layout14->addWidget(L14);
+    layout14->addWidget(Dlithologysort);
+
+    layout15->addWidget(L15);
+    layout15->addWidget(Dattribute);
+
+    layout2->addLayout(layout09);
+    layout2->addLayout(layout10);
+    layout2->addLayout(layout11);
+    layout2->addLayout(layout12);
+    layout2->addLayout(layout13);
+    layout2->addLayout(layout14);
+    layout2->addLayout(layout15);
+
+    layout3->addLayout(layout1);
+    layout3->addLayout(layout2);
+
+    layout4->addWidget(confirm);
+    layout4->addWidget(cancel);
+
+    layout5->addLayout(layout3);
+    layout5->addLayout(layout4);
+
+    this->setLayout(layout5);
     connect(confirm,SIGNAL(clicked()),this,SLOT(add()));
-    connect(cancel,SIGNAL(clicked()),this,SLOT(exit()));
+    connect(cancel,SIGNAL(clicked()),this,SLOT(close()));
 }
 
 void addDD::add()
@@ -118,9 +177,4 @@ void addDD::add()
 
     odbc.addDrillingDetail(getDid.toInt(),getDjborehole,getDjsample,getDjdepthfrom.toFloat(),getDjdepthto.toFloat(),getDjeastfrom.toFloat(),getDjnorthfrom.toFloat(),getDjaltitudefrom.toFloat(),getDjeastto.toFloat(),getDjnorthto.toFloat(),getDjaltitudeto.toFloat(),getDjlithology,getDjflag,getDlithologysort.toInt(),getDattribute.toFloat());
 
-}
-
-void addDD::exit()
-{
-    this->hide();
 }

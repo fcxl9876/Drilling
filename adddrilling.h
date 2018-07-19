@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
+#include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QPushButton>
 #include "odbchelper.h"
@@ -30,7 +31,6 @@ public:
 
 public slots:
     void add();
-    void exit();
 
 private:
     QLabel *L1;
@@ -56,7 +56,21 @@ private:
     QPushButton *confirm;
     QPushButton *cancel;
 
-    QVBoxLayout *layout;
+    QVBoxLayout *layout1;
+    QVBoxLayout *layout2;
+    QHBoxLayout *layout3;
+    QHBoxLayout *layout4;
+    QVBoxLayout *layout5;
+
+    QHBoxLayout *layout01;
+    QHBoxLayout *layout02;
+    QHBoxLayout *layout03;
+    QHBoxLayout *layout04;
+    QHBoxLayout *layout05;
+    QHBoxLayout *layout06;
+    QHBoxLayout *layout07;
+    QHBoxLayout *layout08;
+    QHBoxLayout *layout09;
 
 };
 
