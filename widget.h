@@ -8,6 +8,7 @@
 #include "adddrillingdetail.h"
 #include "removedrillingdetail.h"
 #include "lithologydrilling.h"
+#include "attribute.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -43,13 +44,12 @@ public slots:
     void slotAddDrillingDetail();
     void slotRemoveDrillingDetail();
 
-
     void slotLithologyDrilling();
     void slotCheckDrilling();
     void slotViewCode();
     void slotHideCode();
 
-
+    void slotAttribute();
 
 private:
     QMenu *drillingView;
@@ -89,6 +89,8 @@ private:
 
     addDD *add2;
     removeDD *remove2;
+
+    attribute *win;
 
 };
 
