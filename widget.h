@@ -60,14 +60,16 @@ private:
 
     QAction *viewDrilling;
     QAction *hideDrilling;
-
     QAction *viewLine;
     QAction *hideLine;
+    QAction *linearDisplay;
+    QAction *columnDisplay;
 
     QAction *lithologyDrilling;
 
     QAction *viewCode;
     QAction *hideCode;
+    QAction *drillingProperties;
 
     QAction *testDrilling;
 
