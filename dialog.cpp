@@ -64,7 +64,7 @@ Page1::Page1(QWidget *parent)
 Page2::Page2(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *label =new QLabel("请输入钻孔粗细:");
+    QLabel *label =new QLabel("请输入钻孔粗细(最低为1,过大可能影响观感):");
     text1 =new QLineEdit();
     QPushButton *btn1 = new QPushButton("设置");
     QHBoxLayout *hLayout1 = new QHBoxLayout();
@@ -133,7 +133,7 @@ Page4::Page4(QWidget *parent)
 Page5::Page5(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *label =new QLabel("请输入编码大小:");
+    QLabel *label =new QLabel("请输入编码大小(最低为0,过大可能影响观感):");
     text1 =new QLineEdit();
     QPushButton *btn1 = new QPushButton("设置");
     QHBoxLayout *hLayout1 = new QHBoxLayout();
@@ -219,18 +219,26 @@ void Page2::dThickness()
 {
     QString str = text1->text();
     getThickness = str.toInt();
-    QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔粗细成功"));
-    rend.layer.pointsActor->GetProperty()->SetPointSize(getThickness);
-    a->GetRenderWindow()->Render();
+    if(getThickness>=1){
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔粗细成功"));
+        rend.layer.pointsActor->GetProperty()->SetPointSize(getThickness);
+        a->GetRenderWindow()->Render();
+    }else{
+        QMessageBox::warning(NULL,QString("Warning"),QString("钻孔粗细错误"));
+    }
 }
 
 void Page3::dOpacity()
 {
     QString str = text1->text();
     getdOpacity = str.toFloat();
-    QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
-    rend.layer.pointsActor->GetProperty()->SetOpacity(getdOpacity);
-    a->GetRenderWindow()->Render();
+    if(getdOpacity>=0&&getdOpacity<=1){
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
+        rend.layer.pointsActor->GetProperty()->SetOpacity(getdOpacity);
+        a->GetRenderWindow()->Render();
+    }else{
+        QMessageBox::warning(NULL,QString("Warning"),QString("钻孔透明度错误"));
+    }
 }
 
 void Page4::cColor()
@@ -277,27 +285,33 @@ void Page4::showcColor()
 void Page5::cSize()
 {
     QString str = text1->text();
-    getcSize = str.toDouble();
-    QMessageBox::about(NULL,QString("设置成功"),QString("设置编码大小成功"));
-//    for(int i = 0; i<m; i++)
-//    {
-//        rend.layer.textTransforms[i]->Scale(getcSize);
-//    }
-//    a->GetRenderWindow()->Render();
-
+    if(getcSize>=0){
+        getcSize = str.toDouble();
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置编码大小成功"));
+        for(int i = 0; i<m; i++)
+        {
+            rend.layer.textTransforms[i]->Scale(getcSize,getcSize,getcSize);
+        }
+        a->GetRenderWindow()->Render();
+    }else{
+        QMessageBox::warning(NULL,QString("Warning"),QString("编码大小错误"));
+    }
 }
 
 void Page6::cOpacity()
 {
     QString str = text1->text();
-    getcOpacity = str.toFloat();
-    QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
-    for(int i = 0; i<m; i++)
-    {
-        rend.layer.textActors[i]->GetProperty()->SetOpacity(getcOpacity);
+    if(getcOpacity>=0&&getcOpacity<=1){
+        getcOpacity = str.toFloat();
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
+        for(int i = 0; i<m; i++)
+        {
+            rend.layer.textActors[i]->GetProperty()->SetOpacity(getcOpacity);
+        }
+        a->GetRenderWindow()->Render();
+    }else{
+        QMessageBox::warning(NULL,QString("Warning"),QString("编码透明度错误"));
     }
-    a->GetRenderWindow()->Render();
-
 }
 
 void Page7::cFont()
@@ -307,9 +321,10 @@ void Page7::cFont()
                 &ok, QFont( "Helvetica [Cronyx]", 10 ), this );
     if(ok)
     {
-            // font被设置为用户选择的字体
+        // font被设置为用户选择的字体
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置字体成功"));
     }else
     {
-            // 用户取消这个对话框，font被设置为初始值，在这里就是Helvetica [Cronyx], 10
+        QMessageBox::warning(NULL,QString("Warning"),QString("字体错误"));
     }
 }
