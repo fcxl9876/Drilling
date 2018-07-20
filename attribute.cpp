@@ -17,7 +17,6 @@ attribute::attribute(QWidget *parent)
     pages->addWidget(new Page4);
     pages->addWidget(new Page5);
     pages->addWidget(new Page6);
-    pages->addWidget(new Page7);
 
     setLists();
 
@@ -62,10 +61,6 @@ void attribute::setLists()
     page6Button->setTextAlignment(Qt::AlignHCenter);
     page6Button->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
-    QListWidgetItem *page7Button = new QListWidgetItem(list);
-    page7Button->setText(tr("编码字体"));
-    page7Button->setTextAlignment(Qt::AlignHCenter);
-    page7Button->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
     connect(list,                                                               //将显示列表与堆栈窗口关联，点击列表中的按键，显示相应的窗口
                 SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),

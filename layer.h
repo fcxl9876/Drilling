@@ -52,6 +52,7 @@ public:
         std::vector<vtkSmartPointer<vtkPolyDataMapper> > textPolyDataMappers;
         std::vector<vtkSmartPointer<vtkActor> > textActors;
         std::vector<vtkSmartPointer<vtkAppendPolyData> > textAppendPolyDatas;
+
 };
 
 
