@@ -15,13 +15,6 @@
 #include <vtkTextActor3D.h>
 #include <vtkTextProperty.h>
 
-
-//#include <vtkTextSource.h>
-//#include <vtkTextMapper.h>
-//#include <vtkTextActor3D.h>
-//#include <vtkActor.h>
-//#include <vtkPolyDataMapper.h>
-
 #include <vtkVectorText.h>
 #include <vtkTransform.h>
 #include <vtkTransformFilter.h>
@@ -29,6 +22,7 @@
 #include <vtkPolyDataMapper.h>
 #include <vtkActor.h>
 #include <vtkAppendPolyData.h>
+
 
 class Layer
 {
