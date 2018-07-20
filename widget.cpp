@@ -32,21 +32,24 @@ Widget::Widget(QWidget *parent)
     hideDrilling->setStatusTip("Drilling hide");
     connect(hideDrilling,SIGNAL(triggered()),this,SLOT(slotHideDrilling()));
 
-    viewLine = new QAction("显示孔迹线",this);
-    viewLine->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
+    viewLine = new QMenu("显示孔迹线",this);
     viewLine->setStatusTip("Drilling view");
-    connect(viewLine,SIGNAL(triggered()),this,SLOT(slotViewLine()));
+
+    linearDisplay = new QAction("线状显示", this);
+    linearDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_N));
+    linearDisplay->setCheckable(true);
+    connect(linearDisplay,SIGNAL(changed()),this,SLOT(slotViewLine()));
+
+    columnDisplay = new QAction("柱状显示", this);
+    columnDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_M));
+    //columnDisplay->setCheckable();
+    columnDisplay->setCheckable(true);
+    connect(columnDisplay,SIGNAL(changed()),this,SLOT(slotViewLine()));
 
     hideLine = new QAction("隐藏孔迹线",this);
     hideLine->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_P));
     hideLine->setStatusTip("Drilling hide");
-    connect(hideLine,SIGNAL(triggered()),this,SLOT(slotHideLine()));
-
-    linearDisplay = new QAction("线状显示", this);
-    linearDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_N));
-
-    columnDisplay = new QAction("柱状显示", this);
-    columnDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_M));
+    connect(hideLine,SIGNAL(triggered(bool)),this,SLOT(slotHideLine()));
 
     lithologyDrilling = new QAction("钻孔分层显示",this);
     lithologyDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
@@ -96,10 +99,10 @@ Widget::Widget(QWidget *parent)
 
     drillingView->addAction(viewDrilling);
     drillingView->addAction(hideDrilling);
-    drillingView->addAction(viewLine);
+    drillingView->addMenu(viewLine);
     drillingView->addAction(hideLine);
-    drillingView->addAction(linearDisplay);
-    drillingView->addAction(columnDisplay);
+    viewLine->addAction(linearDisplay);
+    viewLine->addAction(columnDisplay);
 
     lithologyView->addAction(lithologyDrilling);
 
@@ -153,12 +156,16 @@ void Widget::slotHideDrilling()
 //显示和隐藏孔迹线槽函数
 void Widget::slotViewLine()
 {
-    rend.viewLine();
+    if(linearDisplay->isChecked()) rend.viewLine();
+    if(columnDisplay->isChecked()) rend.viewTube();
+    if(!linearDisplay->isChecked()) rend.hideLine();
+    if(!columnDisplay->isChecked()) rend.hideTube();
     a->GetRenderWindow()->Render();
 }
 void Widget::slotHideLine()
 {
-    rend.hideLine();
+    linearDisplay->setChecked(false);
+    columnDisplay->setChecked(false);
     a->GetRenderWindow()->Render();
 }
 

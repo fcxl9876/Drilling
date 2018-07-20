@@ -61,7 +61,7 @@ private:
 
     QAction *viewDrilling;
     QAction *hideDrilling;
-    QAction *viewLine;
+    QMenu *viewLine;
     QAction *hideLine;
     QAction *linearDisplay;
     QAction *columnDisplay;
