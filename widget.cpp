@@ -156,10 +156,10 @@ void Widget::slotHideDrilling()
 //显示和隐藏孔迹线槽函数
 void Widget::slotViewLine()
 {
-    if(linearDisplay->isChecked()) rend.viewLine();
-    if(columnDisplay->isChecked()) rend.viewTube();
-    if(!linearDisplay->isChecked()) rend.hideLine();
-    if(!columnDisplay->isChecked()) rend.hideTube();
+    if(linearDisplay->isChecked()) { rend.linearDisplayState=true; rend.viewLine(); }
+    if(columnDisplay->isChecked()) { rend.columnDisplayState=true; rend.viewTube(); }
+    if(!linearDisplay->isChecked()) { rend.linearDisplayState=false; rend.hideLine(); }
+    if(!columnDisplay->isChecked()) { rend.columnDisplayState=false; rend.hideTube(); }
     a->GetRenderWindow()->Render();
 }
 void Widget::slotHideLine()
@@ -199,6 +199,7 @@ void Widget::slotLithologyDrilling()
     l = new LithologyDrilling();
     l->show();
     rend.hideLine();
+    rend.hideTube();
     a->GetRenderWindow()->Render();
 }
 
