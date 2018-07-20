@@ -4944,10 +4944,16 @@ void odbchelper::addDrillingData(int a,QString b,QString c,float d,float e,float
     QSqlQuery *query=new QSqlQuery(db);
     QString sql=QString("insert into mycollardata values(%1,'%2','%3',%4,%5,%6,%7,'%8','%9');")
             .arg(a).arg(b).arg(c).arg(d).arg(e).arg(f).arg(g).arg(h).arg(i);
-    query->exec(sql);
+    bool ok=0;
 
-    if (query->isActive()){
+    if(a!=0&&b!=QString("")){
+        ok=query->exec(sql);
+    }
+
+    if(ok){
         QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+    }else if(!ok){
+        QMessageBox::warning(NULL,QString("添加失败"),QString("添加数据到数据库失败"));
     }
 }
 
@@ -4956,10 +4962,16 @@ void odbchelper::removeDrillingData(QString a)
     QSqlQuery *query=new QSqlQuery(db);
     QString sql=QString("delete from mycollardata where jborehole = '%1';")
             .arg(a);
-    query->exec(sql);
+    bool ok=0;
 
-    if (query->isActive()){
-        QMessageBox::about(NULL,QString("删除成功"),QString("删除指定数据成功"));
+    if(a!=QString("")){
+        ok=query->exec(sql);
+    }
+
+    if(ok){
+        QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+    }else if(!ok){
+        QMessageBox::warning(NULL,QString("添加失败"),QString("添加数据到数据库失败"));
     }
 }
 
@@ -4968,10 +4980,16 @@ void odbchelper::addDrillingDetail(int a, QString b, QString c, float d, float e
     QSqlQuery *query=new QSqlQuery(db);
     QString sql=QString("insert into mylithologydata values(%1,'%2','%3',%4,%5,%6,%7,%8,%9,%10,%11,'%12','%13',%14,%15);")
             .arg(a).arg(b).arg(c).arg(d).arg(e).arg(f).arg(g).arg(h).arg(i).arg(j).arg(k).arg(l).arg(m).arg(n).arg(o);
-    query->exec(sql);
+    bool ok=0;
 
-    if (query->isActive()){
+    if(a!=0&&b!=QString("")){
+        ok=query->exec(sql);
+    }
+
+    if(ok){
         QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+    }else if(!ok){
+        QMessageBox::warning(NULL,QString("添加失败"),QString("添加数据到数据库失败"));
     }
 }
 
@@ -4980,9 +4998,15 @@ void odbchelper::removeDrillingDetail(int a, QString b)
     QSqlQuery *query=new QSqlQuery(db);
     QString sql=QString("delete from mylithologydata where (id = %1 and jborehole = '%2');")
             .arg(a).arg(b);
-    query->exec(sql);
+    bool ok=0;
 
-    if (query->isActive()){
-        QMessageBox::about(NULL,QString("删除成功"),QString("删除指定数据成功"));
+    if(a!=0&&b!=QString("")){
+        ok=query->exec(sql);
+    }
+
+    if(ok){
+        QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+    }else if(!ok){
+        QMessageBox::warning(NULL,QString("添加失败"),QString("添加数据到数据库失败"));
     }
 }
