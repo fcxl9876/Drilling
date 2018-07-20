@@ -16,7 +16,7 @@ extern float getcColorB;
 
 extern int getThickness;
 extern float getcOpacity;
-extern float getcSize;
+extern double getcSize;
 extern float getdOpacity;
 
 class Dialog : public QDialog

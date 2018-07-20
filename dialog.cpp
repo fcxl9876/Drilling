@@ -1,4 +1,5 @@
 ﻿#include "dialog.h"
+#include "widget.h"
 #include <QtWidgets>
 
 #pragma execution_character_set("utf-8")
@@ -13,7 +14,7 @@ float getcColorB=1;
 
 int getThickness=5;
 float getcOpacity=0.8f;
-float getcSize=0.5f;
+double getcSize=0.5;
 float getdOpacity=1;
 
 Dialog::Dialog(QWidget *parent)
@@ -189,6 +190,8 @@ void Page1::Color()
         getdColorB = (str3.toFloat())/255;
 
         QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔颜色成功"));
+        rend.layer.pointsActor->GetProperty()->SetColor(getdColorR,getdColorG,getdColorB);
+        a->GetRenderWindow()->Render();
     }else
     {
         QMessageBox::warning(NULL,QString("设置失败"),QString("设置钻孔颜色失败"));
@@ -217,6 +220,8 @@ void Page2::dThickness()
     QString str = text1->text();
     getThickness = str.toInt();
     QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔粗细成功"));
+    rend.layer.pointsActor->GetProperty()->SetPointSize(getThickness);
+    a->GetRenderWindow()->Render();
 }
 
 void Page3::dOpacity()
@@ -224,6 +229,8 @@ void Page3::dOpacity()
     QString str = text1->text();
     getdOpacity = str.toFloat();
     QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
+    rend.layer.pointsActor->GetProperty()->SetOpacity(getdOpacity);
+    a->GetRenderWindow()->Render();
 }
 
 void Page4::cColor()
@@ -237,10 +244,16 @@ void Page4::cColor()
         getcColorG = (str2.toFloat())/255;
         getcColorB = (str3.toFloat())/255;
 
-        QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔颜色成功"));
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置编码颜色成功"));
+        for(int i = 0; i<m; i++)
+        {
+            rend.layer.textActors[i]->GetProperty()->SetColor(getcColorR,getcColorG,getcColorB);
+        }
+        a->GetRenderWindow()->Render();
+
     }else
     {
-        QMessageBox::warning(NULL,QString("设置失败"),QString("设置钻孔颜色成功"));
+        QMessageBox::warning(NULL,QString("设置失败"),QString("设置编码颜色失败"));
     }
 }
 
@@ -264,8 +277,14 @@ void Page4::showcColor()
 void Page5::cSize()
 {
     QString str = text1->text();
-    getcSize = str.toFloat();
+    getcSize = str.toDouble();
     QMessageBox::about(NULL,QString("设置成功"),QString("设置编码大小成功"));
+//    for(int i = 0; i<m; i++)
+//    {
+//        rend.layer.textTransforms[i]->Scale(getcSize);
+//    }
+//    a->GetRenderWindow()->Render();
+
 }
 
 void Page6::cOpacity()
@@ -273,6 +292,12 @@ void Page6::cOpacity()
     QString str = text1->text();
     getcOpacity = str.toFloat();
     QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
+    for(int i = 0; i<m; i++)
+    {
+        rend.layer.textActors[i]->GetProperty()->SetOpacity(getcOpacity);
+    }
+    a->GetRenderWindow()->Render();
+
 }
 
 void Page7::cFont()
