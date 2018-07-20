@@ -52,6 +52,7 @@ Layer::Layer()
                 textTransforms[i]->Translate(east1[i], north1[i], altitude1[i]);
                 textTransforms[i]->Scale(getcSize, getcSize, getcSize);    //编码大小
 
+
                 textTransformFilters.push_back(vtkSmartPointer<vtkTransformFilter>::New());
                 textTransformFilters[i]->SetTransform(textTransforms[i]);
                 textTransformFilters[i]->SetInputConnection(textVectors[i]->GetOutputPort());
@@ -65,6 +66,10 @@ Layer::Layer()
                 textActors[i]->SetMapper(textPolyDataMappers[i]);
                 textActors[i]->GetProperty()->SetColor(getcColorR,getcColorG,getcColorB);      //编码颜色
                 textActors[i]->GetProperty()->SetOpacity(getcOpacity);      //编码透明度
+
+
+
+
 
 //        textSources.push_back(vtkSmartPointer<vtkTextSource>::New());
 //        std::string str = jborehole[i].toStdString();
