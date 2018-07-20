@@ -18,6 +18,21 @@ Line::Line()
         L1_1lineActors[i]->SetMapper(L1_1lineMappers[i]);
         L1_1lineActors[i]->GetProperty()->SetColor(0,1,0);  //孔迹线的属性
         L1_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L1_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L1_1tubeFilters[i]->SetInputConnection(L1_1lineSources[i]->GetOutputPort());
+        L1_1tubeFilters[i]->SetRadius(3);
+        L1_1tubeFilters[i]->SetNumberOfSides(500);
+        L1_1tubeFilters[i]->Update();
+
+        L1_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L1_1tubeMappers[i]->SetInputConnection(L1_1tubeFilters[i]->GetOutputPort());
+
+        L1_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L1_1tubeActors[i]->SetMapper(L1_1tubeMappers[i]);
+        L1_1tubeActors[i]->GetProperty()->SetColor(0,1,0);
+        L1_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L1-2层
@@ -34,6 +49,21 @@ Line::Line()
         L1_2lineActors[i]->SetMapper(L1_2lineMappers[i]);
         L1_2lineActors[i]->GetProperty()->SetColor(0,1,0);  //孔迹线的属性
         L1_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L1_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L1_2tubeFilters[i]->SetInputConnection(L1_2lineSources[i]->GetOutputPort());
+        L1_2tubeFilters[i]->SetRadius(3);
+        L1_2tubeFilters[i]->SetNumberOfSides(500);
+        L1_2tubeFilters[i]->Update();
+
+        L1_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L1_2tubeMappers[i]->SetInputConnection(L1_2tubeFilters[i]->GetOutputPort());
+
+        L1_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L1_2tubeActors[i]->SetMapper(L1_2tubeMappers[i]);
+        L1_2tubeActors[i]->GetProperty()->SetColor(0,1,0);
+        L1_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L2-1层
@@ -50,6 +80,21 @@ Line::Line()
         L2_1lineActors[i]->SetMapper(L2_1lineMappers[i]);
         L2_1lineActors[i]->GetProperty()->SetColor(1,1,0);  //孔迹线的属性
         L2_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L2_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L2_1tubeFilters[i]->SetInputConnection(L2_1lineSources[i]->GetOutputPort());
+        L2_1tubeFilters[i]->SetRadius(3);
+        L2_1tubeFilters[i]->SetNumberOfSides(500);
+        L2_1tubeFilters[i]->Update();
+
+        L2_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L2_1tubeMappers[i]->SetInputConnection(L2_1tubeFilters[i]->GetOutputPort());
+
+        L2_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L2_1tubeActors[i]->SetMapper(L2_1tubeMappers[i]);
+        L2_1tubeActors[i]->GetProperty()->SetColor(1,1,0);
+        L2_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
 
@@ -67,6 +112,21 @@ Line::Line()
         L2_2lineActors[i]->SetMapper(L2_2lineMappers[i]);
         L2_2lineActors[i]->GetProperty()->SetColor(1,0,1);  //孔迹线的属性
         L2_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L2_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L2_2tubeFilters[i]->SetInputConnection(L2_2lineSources[i]->GetOutputPort());
+        L2_2tubeFilters[i]->SetRadius(3);
+        L2_2tubeFilters[i]->SetNumberOfSides(500);
+        L2_2tubeFilters[i]->Update();
+
+        L2_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L2_2tubeMappers[i]->SetInputConnection(L2_2tubeFilters[i]->GetOutputPort());
+
+        L2_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L2_2tubeActors[i]->SetMapper(L2_2tubeMappers[i]);
+        L2_2tubeActors[i]->GetProperty()->SetColor(1,0,1);
+        L2_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L2_3层
@@ -83,6 +143,21 @@ Line::Line()
         L2_3lineActors[i]->SetMapper(L2_3lineMappers[i]);
         L2_3lineActors[i]->GetProperty()->SetColor(0,1,1);  //孔迹线的属性
         L2_3lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L2_3tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L2_3tubeFilters[i]->SetInputConnection(L2_3lineSources[i]->GetOutputPort());
+        L2_3tubeFilters[i]->SetRadius(3);
+        L2_3tubeFilters[i]->SetNumberOfSides(500);
+        L2_3tubeFilters[i]->Update();
+
+        L2_3tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L2_3tubeMappers[i]->SetInputConnection(L2_3tubeFilters[i]->GetOutputPort());
+
+        L2_3tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L2_3tubeActors[i]->SetMapper(L2_3tubeMappers[i]);
+        L2_3tubeActors[i]->GetProperty()->SetColor(0,1,1);
+        L2_3tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L3_1层
@@ -99,6 +174,21 @@ Line::Line()
         L3_1lineActors[i]->SetMapper(L3_1lineMappers[i]);
         L3_1lineActors[i]->GetProperty()->SetColor(0.5,0,0);  //孔迹线的属性
         L3_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L3_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L3_1tubeFilters[i]->SetInputConnection(L3_1lineSources[i]->GetOutputPort());
+        L3_1tubeFilters[i]->SetRadius(3);
+        L3_1tubeFilters[i]->SetNumberOfSides(500);
+        L3_1tubeFilters[i]->Update();
+
+        L3_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L3_1tubeMappers[i]->SetInputConnection(L3_1tubeFilters[i]->GetOutputPort());
+
+        L3_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L3_1tubeActors[i]->SetMapper(L3_1tubeMappers[i]);
+        L3_1tubeActors[i]->GetProperty()->SetColor(0.5,0,0);
+        L3_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L3_2层
@@ -115,6 +205,21 @@ Line::Line()
         L3_2lineActors[i]->SetMapper(L3_2lineMappers[i]);
         L3_2lineActors[i]->GetProperty()->SetColor(0,0.5,0);  //孔迹线的属性
         L3_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L3_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L3_2tubeFilters[i]->SetInputConnection(L3_2lineSources[i]->GetOutputPort());
+        L3_2tubeFilters[i]->SetRadius(3);
+        L3_2tubeFilters[i]->SetNumberOfSides(500);
+        L3_2tubeFilters[i]->Update();
+
+        L3_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L3_2tubeMappers[i]->SetInputConnection(L3_2tubeFilters[i]->GetOutputPort());
+
+        L3_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L3_2tubeActors[i]->SetMapper(L3_2tubeMappers[i]);
+        L3_2tubeActors[i]->GetProperty()->SetColor(0,0.5,0);
+        L3_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L3_3层
@@ -131,6 +236,21 @@ Line::Line()
         L3_3lineActors[i]->SetMapper(L3_3lineMappers[i]);
         L3_3lineActors[i]->GetProperty()->SetColor(0,0,0.5);  //孔迹线的属性
         L3_3lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L3_3tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L3_3tubeFilters[i]->SetInputConnection(L3_3lineSources[i]->GetOutputPort());
+        L3_3tubeFilters[i]->SetRadius(3);
+        L3_3tubeFilters[i]->SetNumberOfSides(500);
+        L3_3tubeFilters[i]->Update();
+
+        L3_3tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L3_3tubeMappers[i]->SetInputConnection(L3_3tubeFilters[i]->GetOutputPort());
+
+        L3_3tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L3_3tubeActors[i]->SetMapper(L3_3tubeMappers[i]);
+        L3_3tubeActors[i]->GetProperty()->SetColor(0,0,0.5);
+        L3_3tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L4_1层
@@ -147,6 +267,21 @@ Line::Line()
         L4_1lineActors[i]->SetMapper(L4_1lineMappers[i]);
         L4_1lineActors[i]->GetProperty()->SetColor(0.5,0.5,0);  //孔迹线的属性
         L4_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L4_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L4_1tubeFilters[i]->SetInputConnection(L4_1lineSources[i]->GetOutputPort());
+        L4_1tubeFilters[i]->SetRadius(3);
+        L4_1tubeFilters[i]->SetNumberOfSides(500);
+        L4_1tubeFilters[i]->Update();
+
+        L4_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L4_1tubeMappers[i]->SetInputConnection(L4_1tubeFilters[i]->GetOutputPort());
+
+        L4_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L4_1tubeActors[i]->SetMapper(L4_1tubeMappers[i]);
+        L4_1tubeActors[i]->GetProperty()->SetColor(0.5,0.5,0);
+        L4_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L4_2层
@@ -163,6 +298,21 @@ Line::Line()
         L4_2lineActors[i]->SetMapper(L4_2lineMappers[i]);
         L4_2lineActors[i]->GetProperty()->SetColor(0.5,0,0.5);  //孔迹线的属性
         L4_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L4_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L4_2tubeFilters[i]->SetInputConnection(L4_2lineSources[i]->GetOutputPort());
+        L4_2tubeFilters[i]->SetRadius(3);
+        L4_2tubeFilters[i]->SetNumberOfSides(500);
+        L4_2tubeFilters[i]->Update();
+
+        L4_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L4_2tubeMappers[i]->SetInputConnection(L4_2tubeFilters[i]->GetOutputPort());
+
+        L4_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L4_2tubeActors[i]->SetMapper(L4_2tubeMappers[i]);
+        L4_2tubeActors[i]->GetProperty()->SetColor(0.5,0,0.5);
+        L4_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L5_1_1层
@@ -179,6 +329,21 @@ Line::Line()
         L5_1_1lineActors[i]->SetMapper(L5_1_1lineMappers[i]);
         L5_1_1lineActors[i]->GetProperty()->SetColor(0,0.5,0.5);  //孔迹线的属性
         L5_1_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L5_1_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L5_1_1tubeFilters[i]->SetInputConnection(L5_1_1lineSources[i]->GetOutputPort());
+        L5_1_1tubeFilters[i]->SetRadius(3);
+        L5_1_1tubeFilters[i]->SetNumberOfSides(500);
+        L5_1_1tubeFilters[i]->Update();
+
+        L5_1_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L5_1_1tubeMappers[i]->SetInputConnection(L5_1_1tubeFilters[i]->GetOutputPort());
+
+        L5_1_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L5_1_1tubeActors[i]->SetMapper(L5_1_1tubeMappers[i]);
+        L5_1_1tubeActors[i]->GetProperty()->SetColor(0,0.5,0.5);
+        L5_1_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L5_1_2层
@@ -195,6 +360,21 @@ Line::Line()
         L5_1_2lineActors[i]->SetMapper(L5_1_2lineMappers[i]);
         L5_1_2lineActors[i]->GetProperty()->SetColor(0.75,0.75,0.75);  //孔迹线的属性
         L5_1_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L5_1_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L5_1_2tubeFilters[i]->SetInputConnection(L5_1_2lineSources[i]->GetOutputPort());
+        L5_1_2tubeFilters[i]->SetRadius(3);
+        L5_1_2tubeFilters[i]->SetNumberOfSides(500);
+        L5_1_2tubeFilters[i]->Update();
+
+        L5_1_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L5_1_2tubeMappers[i]->SetInputConnection(L5_1_2tubeFilters[i]->GetOutputPort());
+
+        L5_1_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L5_1_2tubeActors[i]->SetMapper(L5_1_2tubeMappers[i]);
+        L5_1_2tubeActors[i]->GetProperty()->SetColor(0.75,0.75,0.75);
+        L5_1_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L5_2层
@@ -211,6 +391,21 @@ Line::Line()
         L5_2lineActors[i]->SetMapper(L5_2lineMappers[i]);
         L5_2lineActors[i]->GetProperty()->SetColor(0.5,0.5,0.5);  //孔迹线的属性
         L5_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L5_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L5_2tubeFilters[i]->SetInputConnection(L5_2lineSources[i]->GetOutputPort());
+        L5_2tubeFilters[i]->SetRadius(3);
+        L5_2tubeFilters[i]->SetNumberOfSides(500);
+        L5_2tubeFilters[i]->Update();
+
+        L5_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L5_2tubeMappers[i]->SetInputConnection(L5_2tubeFilters[i]->GetOutputPort());
+
+        L5_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L5_2tubeActors[i]->SetMapper(L5_2tubeMappers[i]);
+        L5_2tubeActors[i]->GetProperty()->SetColor(0.5,0.5,0.5);
+        L5_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L5_3层
@@ -227,6 +422,21 @@ Line::Line()
         L5_3lineActors[i]->SetMapper(L5_3lineMappers[i]);
         L5_3lineActors[i]->GetProperty()->SetColor(0.6,0.6,1);  //孔迹线的属性
         L5_3lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L5_3tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L5_3tubeFilters[i]->SetInputConnection(L5_3lineSources[i]->GetOutputPort());
+        L5_3tubeFilters[i]->SetRadius(3);
+        L5_3tubeFilters[i]->SetNumberOfSides(500);
+        L5_3tubeFilters[i]->Update();
+
+        L5_3tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L5_3tubeMappers[i]->SetInputConnection(L5_3tubeFilters[i]->GetOutputPort());
+
+        L5_3tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L5_3tubeActors[i]->SetMapper(L5_3tubeMappers[i]);
+        L5_3tubeActors[i]->GetProperty()->SetColor(0.6,0.6,1);
+        L5_3tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L5_4层
@@ -243,6 +453,21 @@ Line::Line()
         L5_4lineActors[i]->SetMapper(L5_4lineMappers[i]);
         L5_4lineActors[i]->GetProperty()->SetColor(0.6,0.2,0.4);  //孔迹线的属性
         L5_4lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L5_4tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L5_4tubeFilters[i]->SetInputConnection(L5_4lineSources[i]->GetOutputPort());
+        L5_4tubeFilters[i]->SetRadius(3);
+        L5_4tubeFilters[i]->SetNumberOfSides(500);
+        L5_4tubeFilters[i]->Update();
+
+        L5_4tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L5_4tubeMappers[i]->SetInputConnection(L5_4tubeFilters[i]->GetOutputPort());
+
+        L5_4tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L5_4tubeActors[i]->SetMapper(L5_4tubeMappers[i]);
+        L5_4tubeActors[i]->GetProperty()->SetColor(0.6,0.2,0.4);
+        L5_4tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L6层
@@ -259,6 +484,21 @@ Line::Line()
         L6lineActors[i]->SetMapper(L6lineMappers[i]);
         L6lineActors[i]->GetProperty()->SetColor(1,1,0.8);  //孔迹线的属性
         L6lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L6tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L6tubeFilters[i]->SetInputConnection(L6lineSources[i]->GetOutputPort());
+        L6tubeFilters[i]->SetRadius(3);
+        L6tubeFilters[i]->SetNumberOfSides(500);
+        L6tubeFilters[i]->Update();
+
+        L6tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L6tubeMappers[i]->SetInputConnection(L6tubeFilters[i]->GetOutputPort());
+
+        L6tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L6tubeActors[i]->SetMapper(L6tubeMappers[i]);
+        L6tubeActors[i]->GetProperty()->SetColor(1,1,0.8);
+        L6tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L7_1层
@@ -275,6 +515,21 @@ Line::Line()
         L7_1lineActors[i]->SetMapper(L7_1lineMappers[i]);
         L7_1lineActors[i]->GetProperty()->SetColor(0.8,1,1);  //孔迹线的属性
         L7_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L7_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L7_1tubeFilters[i]->SetInputConnection(L7_1lineSources[i]->GetOutputPort());
+        L7_1tubeFilters[i]->SetRadius(3);
+        L7_1tubeFilters[i]->SetNumberOfSides(500);
+        L7_1tubeFilters[i]->Update();
+
+        L7_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L7_1tubeMappers[i]->SetInputConnection(L7_1tubeFilters[i]->GetOutputPort());
+
+        L7_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L7_1tubeActors[i]->SetMapper(L7_1tubeMappers[i]);
+        L7_1tubeActors[i]->GetProperty()->SetColor(0.8,1,1);
+        L7_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L7_2层
@@ -291,6 +546,21 @@ Line::Line()
         L7_2lineActors[i]->SetMapper(L7_2lineMappers[i]);
         L7_2lineActors[i]->GetProperty()->SetColor(0.4,0,0.4);  //孔迹线的属性
         L7_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L7_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L7_2tubeFilters[i]->SetInputConnection(L7_2lineSources[i]->GetOutputPort());
+        L7_2tubeFilters[i]->SetRadius(3);
+        L7_2tubeFilters[i]->SetNumberOfSides(500);
+        L7_2tubeFilters[i]->Update();
+
+        L7_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L7_2tubeMappers[i]->SetInputConnection(L7_2tubeFilters[i]->GetOutputPort());
+
+        L7_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L7_2tubeActors[i]->SetMapper(L7_2tubeMappers[i]);
+        L7_2tubeActors[i]->GetProperty()->SetColor(0.4,0,0.4);
+        L7_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L8_1层
@@ -307,6 +577,21 @@ Line::Line()
         L8_1lineActors[i]->SetMapper(L8_1lineMappers[i]);
         L8_1lineActors[i]->GetProperty()->SetColor(1,0.5,0.5);  //孔迹线的属性
         L8_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L8_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L8_1tubeFilters[i]->SetInputConnection(L8_1lineSources[i]->GetOutputPort());
+        L8_1tubeFilters[i]->SetRadius(3);
+        L8_1tubeFilters[i]->SetNumberOfSides(500);
+        L8_1tubeFilters[i]->Update();
+
+        L8_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L8_1tubeMappers[i]->SetInputConnection(L8_1tubeFilters[i]->GetOutputPort());
+
+        L8_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L8_1tubeActors[i]->SetMapper(L8_1tubeMappers[i]);
+        L8_1tubeActors[i]->GetProperty()->SetColor(1,0.5,0.5);
+        L8_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L8_2层
@@ -323,6 +608,21 @@ Line::Line()
         L8_2lineActors[i]->SetMapper(L8_2lineMappers[i]);
         L8_2lineActors[i]->GetProperty()->SetColor(1,0.4,0.8);  //孔迹线的属性
         L8_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L8_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L8_2tubeFilters[i]->SetInputConnection(L8_2lineSources[i]->GetOutputPort());
+        L8_2tubeFilters[i]->SetRadius(3);
+        L8_2tubeFilters[i]->SetNumberOfSides(500);
+        L8_2tubeFilters[i]->Update();
+
+        L8_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L8_2tubeMappers[i]->SetInputConnection(L8_2tubeFilters[i]->GetOutputPort());
+
+        L8_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L8_2tubeActors[i]->SetMapper(L8_2tubeMappers[i]);
+        L8_2tubeActors[i]->GetProperty()->SetColor(1,0.4,0.8);
+        L8_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L9_1层
@@ -339,6 +639,21 @@ Line::Line()
         L9_1lineActors[i]->SetMapper(L9_1lineMappers[i]);
         L9_1lineActors[i]->GetProperty()->SetColor(0.8,0.8,0.8);  //孔迹线的属性
         L9_1lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L9_1tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L9_1tubeFilters[i]->SetInputConnection(L9_1lineSources[i]->GetOutputPort());
+        L9_1tubeFilters[i]->SetRadius(3);
+        L9_1tubeFilters[i]->SetNumberOfSides(500);
+        L9_1tubeFilters[i]->Update();
+
+        L9_1tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L9_1tubeMappers[i]->SetInputConnection(L9_1tubeFilters[i]->GetOutputPort());
+
+        L9_1tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L9_1tubeActors[i]->SetMapper(L9_1tubeMappers[i]);
+        L9_1tubeActors[i]->GetProperty()->SetColor(0.8,0.8,0.8);
+        L9_1tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L9_2层
@@ -355,6 +670,21 @@ Line::Line()
         L9_2lineActors[i]->SetMapper(L9_2lineMappers[i]);
         L9_2lineActors[i]->GetProperty()->SetColor(0.2,0.4,1);  //孔迹线的属性
         L9_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L9_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L9_2tubeFilters[i]->SetInputConnection(L9_2lineSources[i]->GetOutputPort());
+        L9_2tubeFilters[i]->SetRadius(3);
+        L9_2tubeFilters[i]->SetNumberOfSides(500);
+        L9_2tubeFilters[i]->Update();
+
+        L9_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L9_2tubeMappers[i]->SetInputConnection(L9_2tubeFilters[i]->GetOutputPort());
+
+        L9_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L9_2tubeActors[i]->SetMapper(L9_2tubeMappers[i]);
+        L9_2tubeActors[i]->GetProperty()->SetColor(0.2,0.4,1);
+        L9_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L10层
@@ -371,6 +701,21 @@ Line::Line()
         L10lineActors[i]->SetMapper(L10lineMappers[i]);
         L10lineActors[i]->GetProperty()->SetColor(1,0,1);  //孔迹线的属性
         L10lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L10tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L10tubeFilters[i]->SetInputConnection(L10lineSources[i]->GetOutputPort());
+        L10tubeFilters[i]->SetRadius(3);
+        L10tubeFilters[i]->SetNumberOfSides(500);
+        L10tubeFilters[i]->Update();
+
+        L10tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L10tubeMappers[i]->SetInputConnection(L10tubeFilters[i]->GetOutputPort());
+
+        L10tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L10tubeActors[i]->SetMapper(L10tubeMappers[i]);
+        L10tubeActors[i]->GetProperty()->SetColor(1,0,1);
+        L10tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L11层
@@ -387,6 +732,21 @@ Line::Line()
         L11lineActors[i]->SetMapper(L11lineMappers[i]);
         L11lineActors[i]->GetProperty()->SetColor(1,1,0);  //孔迹线的属性
         L11lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L11tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L11tubeFilters[i]->SetInputConnection(L11lineSources[i]->GetOutputPort());
+        L11tubeFilters[i]->SetRadius(3);
+        L11tubeFilters[i]->SetNumberOfSides(500);
+        L11tubeFilters[i]->Update();
+
+        L11tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L11tubeMappers[i]->SetInputConnection(L11tubeFilters[i]->GetOutputPort());
+
+        L11tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L11tubeActors[i]->SetMapper(L11tubeMappers[i]);
+        L11tubeActors[i]->GetProperty()->SetColor(1,1,0);
+        L11tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L12层
@@ -403,6 +763,21 @@ Line::Line()
         L12lineActors[i]->SetMapper(L12lineMappers[i]);
         L12lineActors[i]->GetProperty()->SetColor(0.2,0.8,0.8);  //孔迹线的属性
         L12lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L12tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L12tubeFilters[i]->SetInputConnection(L12lineSources[i]->GetOutputPort());
+        L12tubeFilters[i]->SetRadius(3);
+        L12tubeFilters[i]->SetNumberOfSides(500);
+        L12tubeFilters[i]->Update();
+
+        L12tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L12tubeMappers[i]->SetInputConnection(L12tubeFilters[i]->GetOutputPort());
+
+        L12tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L12tubeActors[i]->SetMapper(L12tubeMappers[i]);
+        L12tubeActors[i]->GetProperty()->SetColor(0.2,0.8,0.8);
+        L12tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L13层
@@ -419,6 +794,21 @@ Line::Line()
         L13lineActors[i]->SetMapper(L13lineMappers[i]);
         L13lineActors[i]->GetProperty()->SetColor(0.6,0.8,0);  //孔迹线的属性
         L13lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L13tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L13tubeFilters[i]->SetInputConnection(L13lineSources[i]->GetOutputPort());
+        L13tubeFilters[i]->SetRadius(3);
+        L13tubeFilters[i]->SetNumberOfSides(500);
+        L13tubeFilters[i]->Update();
+
+        L13tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L13tubeMappers[i]->SetInputConnection(L13tubeFilters[i]->GetOutputPort());
+
+        L13tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L13tubeActors[i]->SetMapper(L13tubeMappers[i]);
+        L13tubeActors[i]->GetProperty()->SetColor(0.6,0.8,0);
+        L13tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L13_2层
@@ -435,6 +825,21 @@ Line::Line()
         L13_2lineActors[i]->SetMapper(L13_2lineMappers[i]);
         L13_2lineActors[i]->GetProperty()->SetColor(0.2,0.4,1);  //孔迹线的属性
         L13_2lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L13_2tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L13_2tubeFilters[i]->SetInputConnection(L13_2lineSources[i]->GetOutputPort());
+        L13_2tubeFilters[i]->SetRadius(3);
+        L13_2tubeFilters[i]->SetNumberOfSides(500);
+        L13_2tubeFilters[i]->Update();
+
+        L13_2tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L13_2tubeMappers[i]->SetInputConnection(L13_2tubeFilters[i]->GetOutputPort());
+
+        L13_2tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L13_2tubeActors[i]->SetMapper(L13_2tubeMappers[i]);
+        L13_2tubeActors[i]->GetProperty()->SetColor(0.2,0.4,1);
+        L13_2tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //L14层
@@ -451,6 +856,21 @@ Line::Line()
         L14lineActors[i]->SetMapper(L14lineMappers[i]);
         L14lineActors[i]->GetProperty()->SetColor(1,0.8,0);  //孔迹线的属性
         L14lineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        L14tubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        L14tubeFilters[i]->SetInputConnection(L14lineSources[i]->GetOutputPort());
+        L14tubeFilters[i]->SetRadius(3);
+        L14tubeFilters[i]->SetNumberOfSides(500);
+        L14tubeFilters[i]->Update();
+
+        L14tubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        L14tubeMappers[i]->SetInputConnection(L14tubeFilters[i]->GetOutputPort());
+
+        L14tubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        L14tubeActors[i]->SetMapper(L14tubeMappers[i]);
+        L14tubeActors[i]->GetProperty()->SetColor(1,0.8,0);
+        L14tubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //chazhi层
@@ -467,6 +887,21 @@ Line::Line()
         chazhilineActors[i]->SetMapper(chazhilineMappers[i]);
         chazhilineActors[i]->GetProperty()->SetColor(0.3,0.4,0.5);  //孔迹线的属性
         chazhilineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        chazhitubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        chazhitubeFilters[i]->SetInputConnection(chazhilineSources[i]->GetOutputPort());
+        chazhitubeFilters[i]->SetRadius(3);
+        chazhitubeFilters[i]->SetNumberOfSides(500);
+        chazhitubeFilters[i]->Update();
+
+        chazhitubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        chazhitubeMappers[i]->SetInputConnection(chazhitubeFilters[i]->GetOutputPort());
+
+        chazhitubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        chazhitubeActors[i]->SetMapper(chazhitubeMappers[i]);
+        chazhitubeActors[i]->GetProperty()->SetColor(0.3,0.4,0.5);
+        chazhitubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 
     //bujialayer层
@@ -483,5 +918,20 @@ Line::Line()
         bujialayerlineActors[i]->SetMapper(bujialayerlineMappers[i]);
         bujialayerlineActors[i]->GetProperty()->SetColor(0.5,0.4,1);  //孔迹线的属性
         bujialayerlineActors[i]->GetProperty()->SetLineWidth(3);
+
+        //管道
+        bujialayertubeFilters.push_back(vtkSmartPointer<vtkTubeFilter>::New());
+        bujialayertubeFilters[i]->SetInputConnection(bujialayerlineSources[i]->GetOutputPort());
+        bujialayertubeFilters[i]->SetRadius(3);
+        bujialayertubeFilters[i]->SetNumberOfSides(500);
+        bujialayertubeFilters[i]->Update();
+
+        bujialayertubeMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+        bujialayertubeMappers[i]->SetInputConnection(bujialayertubeFilters[i]->GetOutputPort());
+
+        bujialayertubeActors.push_back(vtkSmartPointer<vtkActor>::New());
+        bujialayertubeActors[i]->SetMapper(bujialayertubeMappers[i]);
+        bujialayertubeActors[i]->GetProperty()->SetColor(0.5,0.4,1);
+        bujialayertubeActors[i]->GetProperty()->SetOpacity(0.5);
     }
 }
