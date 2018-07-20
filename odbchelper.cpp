@@ -4969,9 +4969,9 @@ void odbchelper::removeDrillingData(QString a)
     }
 
     if(ok){
-        QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+        QMessageBox::about(NULL,QString("删除成功"),QString("删除数据成功"));
     }else if(!ok){
-        QMessageBox::warning(NULL,QString("添加失败"),QString("添加数据到数据库失败"));
+        QMessageBox::warning(NULL,QString("删除失败"),QString("删除数据失败"));
     }
 }
 
@@ -5005,8 +5005,8 @@ void odbchelper::removeDrillingDetail(int a, QString b)
     }
 
     if(ok){
-        QMessageBox::about(NULL,QString("添加成功"),QString("添加数据到数据库成功"));
+        QMessageBox::about(NULL,QString("删除成功"),QString("删除数据成功"));
     }else if(!ok){
-        QMessageBox::warning(NULL,QString("添加失败"),QString("添加数据到数据库失败"));
+        QMessageBox::warning(NULL,QString("删除失败"),QString("删除数据失败"));
     }
 }
