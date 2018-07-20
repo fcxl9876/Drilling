@@ -166,17 +166,6 @@ Page6::Page6(QWidget *parent)
     connect(btn1,SIGNAL(clicked()),this,SLOT(cOpacity()));
 }
 
-Page7::Page7(QWidget *parent)
-    : QWidget(parent)
-{
-    QLabel *label =new QLabel("请点击按钮选择字体：");
-    QPushButton *btn = new QPushButton(QObject::tr("字体选择"));
-    QVBoxLayout *vLayout = new QVBoxLayout;
-    vLayout->addWidget(label);
-    vLayout->addWidget(btn,0,Qt::AlignTop);
-    setLayout(vLayout);
-    connect(btn,SIGNAL(clicked()),this,SLOT(cFont()));
-}
 
 void Page1::Color()
 {
@@ -311,20 +300,5 @@ void Page6::cOpacity()
         a->GetRenderWindow()->Render();
     }else{
         QMessageBox::warning(NULL,QString("Warning"),QString("编码透明度错误"));
-    }
-}
-
-void Page7::cFont()
-{
-    bool ok;
-    QFont font = QFontDialog::getFont(
-                &ok, QFont( "Helvetica [Cronyx]", 10 ), this );
-    if(ok)
-    {
-        // font被设置为用户选择的字体
-        QMessageBox::about(NULL,QString("设置成功"),QString("设置字体成功"));
-    }else
-    {
-        QMessageBox::warning(NULL,QString("Warning"),QString("字体错误"));
     }
 }

@@ -117,17 +117,5 @@ public slots:
 
 };
 
-class Page7 : public QWidget
-{
-    Q_OBJECT
-private:
-
-public:
-    Page7(QWidget *parent = 0);
-
-public slots:
-    void cFont();
-
-};
 
 #endif // DIALOG_H
