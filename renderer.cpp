@@ -426,6 +426,376 @@ void Renderer::hideLine()
     }
 }
 
+//显示和隐藏柱状孔迹线=================================================================
+
+//显示柱状孔迹线======================================================================
+void Renderer::viewTube()
+{
+    //L1_1层actor
+    for(int i = 0; i<L1_1; i++)
+    {
+        renderer->AddActor(line.L1_1tubeActors[i]);
+    }
+
+    //L1_2层actor
+    for(int i = 0; i<L1_2; i++)
+    {
+        renderer->AddActor(line.L1_2tubeActors[i]);
+    }
+
+    //L2_1层actor
+    for(int i = 0; i<L2_1; i++)
+    {
+        renderer->AddActor(line.L2_1tubeActors[i]);
+    }
+
+    //L2_2层actor
+    for(int i = 0; i<L2_2; i++)
+    {
+        renderer->AddActor(line.L2_2tubeActors[i]);
+    }
+
+    //L2_3层actor
+    for(int i = 0; i<L2_3; i++)
+    {
+        renderer->AddActor(line.L2_3tubeActors[i]);
+    }
+
+    //L3_1层actor
+    for(int i = 0; i<L3_1; i++)
+    {
+        renderer->AddActor(line.L3_1tubeActors[i]);
+    }
+
+    //L3_2层actor
+    for(int i = 0; i<L3_2; i++)
+    {
+        renderer->AddActor(line.L3_2tubeActors[i]);
+    }
+
+    //L3_3层actor
+    for(int i = 0; i<L3_3; i++)
+    {
+        renderer->AddActor(line.L3_3tubeActors[i]);
+    }
+
+    //L4_1层actor
+    for(int i = 0; i<L4_1; i++)
+    {
+        renderer->AddActor(line.L4_1tubeActors[i]);
+    }
+
+    //L4_2层actor
+    for(int i = 0; i<L4_2; i++)
+    {
+        renderer->AddActor(line.L4_2tubeActors[i]);
+    }
+
+    //L5_1_1层actor
+    for(int i = 0; i<L5_1_1; i++)
+    {
+        renderer->AddActor(line.L5_1_1tubeActors[i]);
+    }
+
+    //L5_1_2层actor
+    for(int i = 0; i<L5_1_2; i++)
+    {
+        renderer->AddActor(line.L5_1_2tubeActors[i]);
+    }
+
+    //L5_2层actor
+    for(int i = 0; i<L5_2; i++)
+    {
+        renderer->AddActor(line.L5_2tubeActors[i]);
+    }
+
+    //L5_3层actor
+    for(int i = 0; i<L5_3; i++)
+    {
+        renderer->AddActor(line.L5_3tubeActors[i]);
+    }
+
+    //L5_4层actor
+    for(int i = 0; i<L5_4; i++)
+    {
+        renderer->AddActor(line.L5_4tubeActors[i]);
+    }
+
+    //L6层actor
+    for(int i = 0; i<L6; i++)
+    {
+        renderer->AddActor(line.L6tubeActors[i]);
+    }
+
+    //L7_1层actor
+    for(int i = 0; i<L7_1; i++)
+    {
+        renderer->AddActor(line.L7_1tubeActors[i]);
+    }
+
+    //L7_2层actor
+    for(int i = 0; i<L7_2; i++)
+    {
+        renderer->AddActor(line.L7_2tubeActors[i]);
+    }
+
+    //L8_1层actor
+    for(int i = 0; i<L8_1; i++)
+    {
+        renderer->AddActor(line.L8_1tubeActors[i]);
+    }
+
+    //L8_2层actor
+    for(int i = 0; i<L8_2; i++)
+    {
+        renderer->AddActor(line.L8_2tubeActors[i]);
+    }
+
+    //L9_1层actor
+    for(int i = 0; i<L9_1; i++)
+    {
+        renderer->AddActor(line.L9_1tubeActors[i]);
+    }
+
+    //L9_2层actor
+    for(int i = 0; i<L9_2; i++)
+    {
+        renderer->AddActor(line.L9_2tubeActors[i]);
+    }
+
+    //L10层actor
+    for(int i = 0; i<L10; i++)
+    {
+        renderer->AddActor(line.L10tubeActors[i]);
+    }
+
+    //L11层actor
+    for(int i = 0; i<L11; i++)
+    {
+        renderer->AddActor(line.L11tubeActors[i]);
+    }
+
+    //L12层actor
+    for(int i = 0; i<L12; i++)
+    {
+        renderer->AddActor(line.L12tubeActors[i]);
+    }
+
+    //L13层actor
+    for(int i = 0; i<L13; i++)
+    {
+        renderer->AddActor(line.L13tubeActors[i]);
+    }
+
+    //L13_2层actor
+    for(int i = 0; i<L13_2; i++)
+    {
+        renderer->AddActor(line.L13_2tubeActors[i]);
+    }
+
+    //L14层actor
+    for(int i = 0; i<L14; i++)
+    {
+        renderer->AddActor(line.L14tubeActors[i]);
+    }
+
+    //chazhi层actor
+    for(int i = 0; i<chazhi; i++)
+    {
+        renderer->AddActor(line.chazhitubeActors[i]);
+    }
+
+    //bujialayer层actor
+    for(int i = 0; i<bujialayer; i++)
+    {
+        renderer->AddActor(line.bujialayertubeActors[i]);
+    }
+}
+
+//隐藏柱状孔迹线============================================================================
+void Renderer::hideTube()
+{
+    //L1_1层actor
+    for(int i = 0; i<L1_1; i++)
+    {
+        renderer->RemoveActor(line.L1_1tubeActors[i]);
+    }
+
+    //L1_2层actor
+    for(int i = 0; i<L1_2; i++)
+    {
+        renderer->RemoveActor(line.L1_2tubeActors[i]);
+    }
+
+    //L2_1层actor
+    for(int i = 0; i<L2_1; i++)
+    {
+        renderer->RemoveActor(line.L2_1tubeActors[i]);
+    }
+
+    //L2_2层actor
+    for(int i = 0; i<L2_2; i++)
+    {
+        renderer->RemoveActor(line.L2_2tubeActors[i]);
+    }
+
+    //L2_3层actor
+    for(int i = 0; i<L2_3; i++)
+    {
+        renderer->RemoveActor(line.L2_3tubeActors[i]);
+    }
+
+    //L3_1层actor
+    for(int i = 0; i<L3_1; i++)
+    {
+        renderer->RemoveActor(line.L3_1tubeActors[i]);
+    }
+
+    //L3_2层actor
+    for(int i = 0; i<L3_2; i++)
+    {
+        renderer->RemoveActor(line.L3_2tubeActors[i]);
+    }
+
+    //L3_3层actor
+    for(int i = 0; i<L3_3; i++)
+    {
+        renderer->RemoveActor(line.L3_3tubeActors[i]);
+    }
+
+    //L4_1层actor
+    for(int i = 0; i<L4_1; i++)
+    {
+        renderer->RemoveActor(line.L4_1tubeActors[i]);
+    }
+
+    //L4_2层actor
+    for(int i = 0; i<L4_2; i++)
+    {
+        renderer->RemoveActor(line.L4_2tubeActors[i]);
+    }
+
+    //L5_1_1层actor
+    for(int i = 0; i<L5_1_1; i++)
+    {
+        renderer->RemoveActor(line.L5_1_1tubeActors[i]);
+    }
+
+    //L5_1_2层actor
+    for(int i = 0; i<L5_1_2; i++)
+    {
+        renderer->RemoveActor(line.L5_1_2tubeActors[i]);
+    }
+
+    //L5_2层actor
+    for(int i = 0; i<L5_2; i++)
+    {
+        renderer->RemoveActor(line.L5_2tubeActors[i]);
+    }
+
+    //L5_3层actor
+    for(int i = 0; i<L5_3; i++)
+    {
+        renderer->RemoveActor(line.L5_3tubeActors[i]);
+    }
+
+    //L5_4层actor
+    for(int i = 0; i<L5_4; i++)
+    {
+        renderer->RemoveActor(line.L5_4tubeActors[i]);
+    }
+
+    //L6层actor
+    for(int i = 0; i<L6; i++)
+    {
+        renderer->RemoveActor(line.L6tubeActors[i]);
+    }
+
+    //L7_1层actor
+    for(int i = 0; i<L7_1; i++)
+    {
+        renderer->RemoveActor(line.L7_1tubeActors[i]);
+    }
+
+    //L7_2层actor
+    for(int i = 0; i<L7_2; i++)
+    {
+        renderer->RemoveActor(line.L7_2tubeActors[i]);
+    }
+
+    //L8_1层actor
+    for(int i = 0; i<L8_1; i++)
+    {
+        renderer->RemoveActor(line.L8_1tubeActors[i]);
+    }
+
+    //L8_2层actor
+    for(int i = 0; i<L8_2; i++)
+    {
+        renderer->RemoveActor(line.L8_2tubeActors[i]);
+    }
+
+    //L9_1层actor
+    for(int i = 0; i<L9_1; i++)
+    {
+        renderer->RemoveActor(line.L9_1tubeActors[i]);
+    }
+
+    //L9_2层actor
+    for(int i = 0; i<L9_2; i++)
+    {
+        renderer->RemoveActor(line.L9_2tubeActors[i]);
+    }
+
+    //L10层actor
+    for(int i = 0; i<L10; i++)
+    {
+        renderer->RemoveActor(line.L10tubeActors[i]);
+    }
+
+    //L11层actor
+    for(int i = 0; i<L11; i++)
+    {
+        renderer->RemoveActor(line.L11tubeActors[i]);
+    }
+
+    //L12层actor
+    for(int i = 0; i<L12; i++)
+    {
+        renderer->RemoveActor(line.L12tubeActors[i]);
+    }
+
+    //L13层actor
+    for(int i = 0; i<L13; i++)
+    {
+        renderer->RemoveActor(line.L13tubeActors[i]);
+    }
+
+    //L13_2层actor
+    for(int i = 0; i<L13_2; i++)
+    {
+        renderer->RemoveActor(line.L13_2tubeActors[i]);
+    }
+
+    //L14层actor
+    for(int i = 0; i<L14; i++)
+    {
+        renderer->RemoveActor(line.L14tubeActors[i]);
+    }
+
+    //chazhi层actor
+    for(int i = 0; i<chazhi; i++)
+    {
+        renderer->RemoveActor(line.chazhitubeActors[i]);
+    }
+
+    //bujialayer层actor
+    for(int i = 0; i<bujialayer; i++)
+    {
+        renderer->RemoveActor(line.bujialayertubeActors[i]);
+    }
+}
+
 
 
 //分层显示钻孔=================================================================================
