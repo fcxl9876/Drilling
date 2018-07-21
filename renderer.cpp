@@ -5,7 +5,6 @@ Renderer::Renderer()
     renderer = vtkSmartPointer<vtkRenderer>::New();
     renderer->SetBackground(0, 0, 0);
 
-    //将Actors添加到renderer里=====================================================
 //    renderer->AddActor(layer.pointsActor);
     this->viewDrilling();
     renderer->AddActor(layer.triangulatedActor);

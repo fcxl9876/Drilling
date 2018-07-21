@@ -1,14 +1,15 @@
 ﻿#ifndef ATTRIBUTE_H
 #define ATTRIBUTE_H
 
+#pragma execution_character_set("utf-8")
+
+#include "dialog.h"
+
 #include <QWidget>
 #include <QListWidget>
 #include <QStackedWidget>
 #include <QtWidgets>
 #include <QHBoxLayout>
-#include "dialog.h"
-
-#pragma execution_character_set("utf-8")
 
 class attribute : public QWidget
 {

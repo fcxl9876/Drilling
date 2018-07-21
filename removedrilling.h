@@ -1,6 +1,10 @@
 ﻿#ifndef REMOVEDRILLING_H
 #define REMOVEDRILLING_H
 
+#pragma execution_character_set("utf-8")
+
+#include "odbchelper.h"
+
 #include <QMainWindow>
 #include <QObject>
 #include <QWidget>
@@ -8,9 +12,6 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QPushButton>
-#include "odbchelper.h"
-
-#pragma execution_character_set("utf-8")
 
 extern QString getjborehole2;
 
@@ -27,10 +28,8 @@ public slots:
 private:
     QLabel *L1;
     QLineEdit *jborehole;
-
     QPushButton *confirm;
     QPushButton *cancel;
-
     QVBoxLayout *layout;
 };
 
