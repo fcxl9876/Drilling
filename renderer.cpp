@@ -3,11 +3,15 @@
 Renderer::Renderer()
 {
     renderer = vtkSmartPointer<vtkRenderer>::New();
-    renderer->SetBackground(0, 0, 0);
+    renderer->SetBackground(0.7, 0.7, 0.7);
 
 //    renderer->AddActor(layer.pointsActor);
     this->viewDrilling();
+    renderer->AddActor(layer.pointsActor2);
     renderer->AddActor(layer.triangulatedActor);
+    renderer->AddActor(layer.triangulatedActor2);
+
+
 
     //实际孔迹线actor==============================================================
 //    this->viewLine();
