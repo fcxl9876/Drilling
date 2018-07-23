@@ -5128,7 +5128,7 @@ double* odbchelper::geteast2()
     int i=0;
 
     QSqlQuery *query1=new QSqlQuery(db);
-    QString sql1="select jnorthfrom from mylithologydata where (lithologysort = 3) order by jborehole;";
+    QString sql1="select jeastfrom from mylithologydata where (lithologysort = 3) order by jborehole;";
     query1->exec(sql1);
 
     while (query1->next()&&i<x) {
