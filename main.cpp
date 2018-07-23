@@ -25,14 +25,14 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-//    Widget *w;
-//    w = new Widget();
-//    w->show();
+    Widget *w;
+    w = new Widget();
+    w->show();
 
-    odbchelper w;
-    for(int i=0;i<sortcount2;i++){
-        qDebug()<<jeast2[i];
-    }
+//    odbchelper w;
+//    for(int i=0;i<sortcount2;i++){
+//        qDebug()<<jeast2[i];
+//    }
 
     return a.exec();
 }
