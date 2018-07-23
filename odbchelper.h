@@ -297,7 +297,8 @@ extern double* jaltitudefrom;
 extern double* jaltitudeto;
 extern QString* jlithology;
 
-extern int sortcount;
+extern int sortcount1;
+extern int sortcount2;
 extern double* jeast1;
 extern double* jnorth1;
 extern double* jaltitude1;
@@ -578,10 +579,11 @@ public:
     void addDrillingDetail(int a, QString b, QString c, float d, float e, float f, float g, float h, float i, float j, float k, QString l, QString m, int n, float o);
     void removeDrillingDetail(int a, QString b);
 
-    double* getsortcount();
+    int getsortcount1();
     double* geteast1();
     double* getnorth1();
     double* getaltitude1();
+    int getsortcount2();
     double* geteast2();
     double* getnorth2();
     double* getaltitude2();

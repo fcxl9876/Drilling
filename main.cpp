@@ -29,5 +29,10 @@ int main(int argc, char *argv[])
     w = new Widget();
     w->show();
 
+//    odbchelper w;
+//    for(int i=0;i<sortcount2;i++){
+//        qDebug()<<jeast2[i];
+//    }
+
     return a.exec();
 }

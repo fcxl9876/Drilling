@@ -291,7 +291,8 @@ double* jaltitudefrom;
 double* jaltitudeto;
 QString* jlithology;
 
-int sortcount;
+int sortcount1;
+int sortcount2;
 
 double* jeast1;
 double* jnorth1;
@@ -793,18 +794,19 @@ odbchelper::odbchelper()
     jlithology=new QString[count];
     jlithology=this->getjlithology();
 
-    sortcount=this->getsortcount();
-    jeast1=new double[sortcount];
+    sortcount1=this->getsortcount1();
+    jeast1=new double[sortcount1];
     jeast1=this->geteast1();
-    jnorth1=new double[sortcount];
+    jnorth1=new double[sortcount1];
     jnorth1=this->getnorth1();
-    jaltitude1=new double[sortcount];
+    jaltitude1=new double[sortcount1];
     jaltitude1=this->getaltitude1();
-    jeast2=new double[sortcount];
+    sortcount2=this->getsortcount2();
+    jeast2=new double[sortcount2];
     jeast2=this->geteast2();
-    jnorth2=new double[sortcount];
+    jnorth2=new double[sortcount2];
     jnorth2=this->getnorth2();
-    jaltitude2=new double[sortcount];
+    jaltitude2=new double[sortcount2];
     jaltitude2=this->getaltitude2();
 
 }
@@ -5033,7 +5035,7 @@ void odbchelper::removeDrillingDetail(int a, QString b)
     }
 }
 
-int odbchelper::getsortcount()
+int odbchelper::getsortcount1()
 {
     int x=0;
     QSqlQuery *query1=new QSqlQuery(db);
@@ -5047,9 +5049,23 @@ int odbchelper::getsortcount()
     return x;
 }
 
+int odbchelper::getsortcount2()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from mylithologydata where (lithologysort = 3);";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
 double* odbchelper::geteast1()
 {
-    int x=getsortcount();
+    int x=getsortcount1();
 
     double *arr = new double[x];
     int i=0;
@@ -5068,7 +5084,7 @@ double* odbchelper::geteast1()
 
 double* odbchelper::getnorth1()
 {
-    int x=getsortcount();
+    int x=getsortcount1();
 
     double *arr = new double[x];
     int i=0;
@@ -5087,7 +5103,7 @@ double* odbchelper::getnorth1()
 
 double* odbchelper::getaltitude1()
 {
-    int x=getsortcount();
+    int x=getsortcount1();
 
     double *arr = new double[x];
     int i=0;
@@ -5106,7 +5122,7 @@ double* odbchelper::getaltitude1()
 
 double* odbchelper::geteast2()
 {
-    int x=getsortcount();
+    int x=getsortcount2();
 
     double *arr = new double[x];
     int i=0;
@@ -5125,7 +5141,7 @@ double* odbchelper::geteast2()
 
 double* odbchelper::getnorth2()
 {
-    int x=getsortcount();
+    int x=getsortcount2();
 
     double *arr = new double[x];
     int i=0;
@@ -5144,7 +5160,7 @@ double* odbchelper::getnorth2()
 
 double* odbchelper::getaltitude2()
 {
-    int x=getsortcount();
+    int x=getsortcount2();
 
     double *arr = new double[x];
     int i=0;
