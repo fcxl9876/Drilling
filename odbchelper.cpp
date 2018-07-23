@@ -291,6 +291,16 @@ double* jaltitudefrom;
 double* jaltitudeto;
 QString* jlithology;
 
+int sortcount;
+
+double* jeast1;
+double* jnorth1;
+double* jaltitude1;
+double* jeast2;
+double* jnorth2;
+double* jaltitude2;
+
+
 odbchelper::odbchelper()
 {
     this->db=QSqlDatabase::addDatabase("QODBC");
@@ -779,11 +789,23 @@ odbchelper::odbchelper()
     jaltitudefrom=new double[count];
     jaltitudefrom=this->getjaltitudefrom();
     jaltitudeto=new double[count];
-
     jaltitudeto=this->getjaltitudeto();
     jlithology=new QString[count];
     jlithology=this->getjlithology();
 
+    sortcount=this->getsortcount();
+    jeast1=new double[sortcount];
+    jeast1=this->geteast1();
+    jnorth1=new double[sortcount];
+    jnorth1=this->getnorth1();
+    jaltitude1=new double[sortcount];
+    jaltitude1=this->getaltitude1();
+    jeast2=new double[sortcount];
+    jeast2=this->geteast2();
+    jnorth2=new double[sortcount];
+    jnorth2=this->getnorth2();
+    jaltitude2=new double[sortcount];
+    jaltitude2=this->getaltitude2();
 
 }
 
@@ -5009,4 +5031,132 @@ void odbchelper::removeDrillingDetail(int a, QString b)
     }else if(!ok){
         QMessageBox::warning(NULL,QString("删除失败"),QString("删除数据失败"));
     }
+}
+
+int odbchelper::getsortcount()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from mylithologydata where (lithologysort = 1);";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::geteast1()
+{
+    int x=getsortcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jeastfrom from mylithologydata where (lithologysort = 1) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getnorth1()
+{
+    int x=getsortcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from mylithologydata where (lithologysort = 1) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getaltitude1()
+{
+    int x=getsortcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jaltitudefrom from mylithologydata where (lithologysort = 1) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::geteast2()
+{
+    int x=getsortcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from mylithologydata where (lithologysort = 3) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getnorth2()
+{
+    int x=getsortcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from mylithologydata where (lithologysort = 3) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getaltitude2()
+{
+    int x=getsortcount();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jaltitudefrom from mylithologydata where (lithologysort = 3) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
 }
