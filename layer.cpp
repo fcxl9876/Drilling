@@ -3,18 +3,20 @@
 
 Layer::Layer()
 {
-    //插入数据==================================================================
+    //插入数据======================================================================================================
     points = vtkSmartPointer<vtkPoints>::New();
     for(int i=0;i<m;i++)
     {
         points->InsertNextPoint(east1[i],north1[i],altitude1[i]);
     }
-    for(int i=0;i<n;i++)
+    points2 = vtkSmartPointer<vtkPoints>::New();
+    for(int i=0;i<sortcount2;i++)
     {
-        points->InsertNextPoint(east2[i],north2[i],altitude2[i]);
+        points2->InsertNextPoint(jeast2[i],jnorth2[i],jaltitude2[i]-100);
     }
 
-    //三角剖分建立地层============================================================
+
+    //三角剖分建立地层========================================================================================
     polydata = vtkSmartPointer<vtkPolyData>::New();
     polydata->SetPoints(points);
 
@@ -40,7 +42,32 @@ Layer::Layer()
     triangulatedActor->GetProperty()->SetOpacity(0.8);
     triangulatedActor->GetProperty()->SetColor(0,0.8,0.4);
 
-    //显示编码===============================================================
+    //第二层
+    polydata2 = vtkSmartPointer<vtkPolyData>::New();
+    polydata2->SetPoints(points2);
+
+    delaunay2 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay2->SetInputData(polydata2);
+    delaunay2->Update();
+
+    glyphFilter2 = vtkSmartPointer<vtkVertexGlyphFilter>::New();
+    glyphFilter2->SetInputData(polydata2);
+    glyphFilter2->Update();
+
+    pointsMapper2 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    pointsMapper2->SetInputData(glyphFilter2->GetOutput());
+    pointsActor2 = vtkSmartPointer<vtkActor>::New();
+    pointsActor2->SetMapper(pointsMapper2);
+    pointsActor2->GetProperty()->SetPointSize(getThickness);
+    pointsActor2->GetProperty()->SetColor(getdColorR, getdColorG, getdColorB);
+
+    triangulatedMapper2 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper2->SetInputData(delaunay2->GetOutput());
+    triangulatedActor2 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor2->SetMapper(triangulatedMapper2);
+    triangulatedActor2->GetProperty()->SetOpacity(0.8);
+    triangulatedActor2->GetProperty()->SetColor(0.5,0.8,0.4);
+    //显示编码================================================================================================
     for(int i = 0; i<m; i++)
     {
         textPropertys.push_back(vtkSmartPointer<vtkTextProperty>::New());
