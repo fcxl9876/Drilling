@@ -1,12 +1,13 @@
 ﻿#ifndef ODBCHELPER_H
 #define ODBCHELPER_H
+
+#pragma execution_character_set("utf-8")
+
 #include "QtSql/qsqlquery.h"
 #include "QtSql/qsqldatabase.h"
 #include <QDebug>
 #include <QMessageBox>
 #include "QtSql/qsqlerror.h"
-
-#pragma execution_character_set("utf-8")
 
 extern int m;
 extern int n;

@@ -11,7 +11,6 @@
 #include <vtkRenderer.h>
 #include <vtkActor.h>
 
-
 class Renderer
 {
 public:

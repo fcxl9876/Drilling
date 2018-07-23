@@ -1,6 +1,8 @@
 ﻿#ifndef ADDDRILLINGDETAIL_H
 #define ADDDRILLINGDETAIL_H
 
+#pragma execution_character_set("utf-8")
+
 #include <QMainWindow>
 #include <QObject>
 #include <QWidget>
@@ -10,8 +12,6 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include "odbchelper.h"
-
-#pragma execution_character_set("utf-8")
 
 extern QString getDid;
 extern QString getDjborehole;

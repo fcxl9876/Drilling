@@ -1,6 +1,8 @@
 ﻿#ifndef WIDGET_H
 #define WIDGET_H
 
+#pragma execution_character_set("utf-8")
+
 #include "layer.h"
 #include "renderer.h"
 #include "adddrilling.h"
@@ -23,8 +25,6 @@
 
 extern Renderer rend;
 extern QVTKWidget *a;
-
-#pragma execution_character_set("utf-8")
 
 class Widget : public QMainWindow
 {
