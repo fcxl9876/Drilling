@@ -44,40 +44,57 @@ public slots:
     void slotRemoveDrilling();
     void slotAddDrillingDetail();
     void slotRemoveDrillingDetail();
-
     void slotLithologyDrilling();
     void slotCheckDrilling();
     void slotViewCode();
     void slotHideCode();
-
     void slotAttribute();
+
+    void slotViewSort();
+    void slotHideSort();
+    void slotViewTop();
+    void slotHideTop();
+    void slotViewBottom();
+    void slotHideBottom();
+    void slotViewBorder();
+    void slotHideBorder();
+    void slotSortAttribute();
 
 private:
     QMenu *drillingView;
-    QMenu *lithologyView;
     QMenu *drillingCode;
-    QMenu *drillingTest;
     QMenu *drillingEdit;
+    QMenu *viewLine;
+    QMenu *sortView;
 
     QAction *viewDrilling;
     QAction *hideDrilling;
-    QMenu *viewLine;
     QAction *hideLine;
     QAction *linearDisplay;
     QAction *columnDisplay;
-
     QAction *lithologyDrilling;
-
     QAction *viewCode;
     QAction *hideCode;
     QAction *drillingProperties;
-
     QAction *testDrilling;
-
     QAction *addDrilling;
     QAction *removeDrilling;
     QAction *addDrillingData;
     QAction *removeDrillingData;
+
+    QMenu *sortMenu;
+    QAction *viewSort;
+    QAction *hideSort;
+    QMenu *topMenu;
+    QAction *viewTop;
+    QAction *hideTop;
+    QMenu *bottomMenu;
+    QAction *viewBottom;
+    QAction *hideBottom;
+    QMenu *borderMenu;
+    QAction *viewBorder;
+    QAction *hideBorder;
+    QAction *sortAttribute;
 
     QPushButton *enterSys;
 
