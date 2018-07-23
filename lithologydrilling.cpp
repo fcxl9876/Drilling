@@ -10,8 +10,7 @@ LithologyDrilling::LithologyDrilling()
     layout = new QVBoxLayout();
     label = new QLabel("请选择需要显示的地层：");
     btn = new QPushButton("确定");
-    connect(btn,SIGNAL(clicked()),this,SLOT(close()));
-
+    connect(btn,SIGNAL(clicked()),this,SLOT(slotOk()));
 
     layout1 = new QHBoxLayout();
     layout2 = new QHBoxLayout();
@@ -26,65 +25,35 @@ LithologyDrilling::LithologyDrilling()
 
     //checkbox=================================================================================
     L1_1CheckBox = new QCheckBox("L1_1层", this);
-    connect(L1_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L1_1OnStateChanged(int)));
     L1_2CheckBox = new QCheckBox("L1_2层", this);
-    connect(L1_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L1_2OnStateChanged(int)));
     L2_1CheckBox = new QCheckBox("L2_1层", this);
-    connect(L2_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L2_1OnStateChanged(int)));
     L2_2CheckBox = new QCheckBox("L2_2层", this);
-    connect(L2_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L2_2OnStateChanged(int)));
     L2_3CheckBox = new QCheckBox("L2_3层", this);
-    connect(L2_3CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L2_3OnStateChanged(int)));
     L3_1CheckBox = new QCheckBox("L3_1层", this);
-    connect(L3_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L3_1OnStateChanged(int)));
     L3_2CheckBox = new QCheckBox("L3_2层", this);
-    connect(L3_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L3_2OnStateChanged(int)));
     L3_3CheckBox = new QCheckBox("L3_3层", this);
-    connect(L3_3CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L3_3OnStateChanged(int)));
     L4_1CheckBox = new QCheckBox("L4_1层", this);
-    connect(L4_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L4_1OnStateChanged(int)));
     L4_2CheckBox = new QCheckBox("L4_2层", this);
-    connect(L4_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L4_2OnStateChanged(int)));
     L5_1_1CheckBox = new QCheckBox("L5_1_1层", this);
-    connect(L5_1_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L5_1_1OnStateChanged(int)));
     L5_1_2CheckBox = new QCheckBox("L5_1_2层", this);
-    connect(L5_1_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L5_1_2OnStateChanged(int)));
     L5_2CheckBox = new QCheckBox("L5_2层", this);
-    connect(L5_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L5_2OnStateChanged(int)));
     L5_3CheckBox = new QCheckBox("L5_3层", this);
-    connect(L5_3CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L5_3OnStateChanged(int)));
     L5_4CheckBox = new QCheckBox("L5_4层", this);
-    connect(L5_4CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L5_4OnStateChanged(int)));
     L6CheckBox = new QCheckBox("L6层", this);
-    connect(L6CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L6OnStateChanged(int)));
     L7_1CheckBox = new QCheckBox("L7_1层", this);
-    connect(L7_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L7_1OnStateChanged(int)));
     L7_2CheckBox = new QCheckBox("L7_2层", this);
-    connect(L7_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L7_2OnStateChanged(int)));
     L8_1CheckBox = new QCheckBox("L8_1层", this);
-    connect(L8_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L8_1OnStateChanged(int)));
     L8_2CheckBox = new QCheckBox("L8_2层", this);
-    connect(L8_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L8_2OnStateChanged(int)));
     L9_1CheckBox = new QCheckBox("L9_1层", this);
-    connect(L9_1CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L9_1OnStateChanged(int)));
     L9_2CheckBox = new QCheckBox("L9_2层", this);
-    connect(L9_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L9_2OnStateChanged(int)));
     L10CheckBox = new QCheckBox("L10层", this);
-    connect(L10CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L10OnStateChanged(int)));
     L11CheckBox = new QCheckBox("L11层", this);
-    connect(L11CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L11OnStateChanged(int)));
     L12CheckBox = new QCheckBox("L12层", this);
-    connect(L12CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L12OnStateChanged(int)));
     L13CheckBox = new QCheckBox("L13层", this);
-    connect(L13CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L13OnStateChanged(int)));
     L13_2CheckBox = new QCheckBox("L13_2层", this);
-    connect(L13_2CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L13_2OnStateChanged(int)));
     L14CheckBox = new QCheckBox("L14层", this);
-    connect(L14CheckBox, SIGNAL(stateChanged(int)), this, SLOT(L14OnStateChanged(int)));
     chazhiCheckBox = new QCheckBox("chazhi层", this);
-    connect(chazhiCheckBox, SIGNAL(stateChanged(int)), this, SLOT(chazhiOnStateChanged(int)));
     bujialayerCheckBox = new QCheckBox("bujialayer层", this);
-    connect(bujialayerCheckBox, SIGNAL(stateChanged(int)), this, SLOT(bujialayerOnStateChanged(int)));
 
     //添加layout======================================================================================
     layout1->addWidget(L1_1CheckBox);
@@ -142,216 +111,127 @@ LithologyDrilling::LithologyDrilling()
     this->setLayout(layout);
 }
 
-
 //checkbox的槽函数========================================================================
-
-void LithologyDrilling::L1_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL1_1();
+void LithologyDrilling::slotOk(){
+    if(L1_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL1_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L1_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL1_2();
+    if(L1_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL1_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L2_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL2_1();
+    if(L2_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL2_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L2_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL2_2();
+    if(L2_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL2_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L2_3OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL2_3();
+    if(L2_3CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL2_3(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L3_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL3_1();
+    if(L3_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL3_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L3_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL3_2();
+    if(L3_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL3_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L3_3OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL3_3();
+    if(L3_3CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL3_3(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L4_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL4_1();
+    if(L4_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL4_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L4_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL4_2();
+    if(L4_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL4_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L5_1_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL5_1_1();
+    if(L5_1_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL5_1_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L5_1_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL5_1_2();
+    if(L5_1_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL5_1_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L5_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL5_2();
+    if(L5_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL5_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L5_3OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL5_3();
+    if(L5_3CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL5_3(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L5_4OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL5_4();
+    if(L5_4CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL5_4(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L6OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL6();
+    if(L6CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL6(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L7_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL7_1();
+    if(L7_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL7_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L7_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL7_2();
+    if(L7_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL7_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L8_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL8_1();
+    if(L8_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL8_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L8_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL8_2();
+    if(L8_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL8_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L9_1OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL9_1();
+    if(L9_1CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL9_1(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L9_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL9_2();
+    if(L9_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL9_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L10OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL10();
+    if(L10CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL10(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L11OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL11();
+    if(L11CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL11(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L12OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL12();
+    if(L12CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL12(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L13OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL13();
+    if(L13CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL13(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L13_2OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL13_2();
+    if(L13_2CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL13_2(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::L14OnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showL14();
+    if(L14CheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showL14(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::chazhiOnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showchazhi();
+    if(chazhiCheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showchazhi(rend.linearDisplayState,rend.columnDisplayState);
     }
-}
-void LithologyDrilling::bujialayerOnStateChanged(int state)
-{
-    if(state == Qt::Checked)
-    {
-        rend.showbujialayer();
+    if(bujialayerCheckBox->isChecked()){
+        if(rend.linearDisplayState || rend.columnDisplayState)
+        rend.showbujialayer(rend.linearDisplayState,rend.columnDisplayState);
     }
+    this->close();
 }

@@ -244,7 +244,7 @@ void Page4::cColor()
         QMessageBox::about(NULL,QString("设置成功"),QString("设置编码颜色成功"));
         for(int i = 0; i<m; i++)
         {
-            rend.layer.textActors[i]->GetProperty()->SetColor(getcColorR,getcColorG,getcColorB);
+            rend.layer.textActors[i]->GetTextProperty()->SetColor(getcColorR,getcColorG,getcColorB);
         }
         a->GetRenderWindow()->Render();
 
@@ -279,7 +279,7 @@ void Page5::cSize()
         QMessageBox::about(NULL,QString("设置成功"),QString("设置编码大小成功"));
         for(int i = 0; i<m; i++)
         {
-            rend.layer.textTransforms[i]->Scale(getcSize,getcSize,getcSize);
+            rend.layer.textActors[i]->GetTextProperty()->SetFontSize(getcSize);
         }
         a->GetRenderWindow()->Render();
     }else{
@@ -295,7 +295,7 @@ void Page6::cOpacity()
         QMessageBox::about(NULL,QString("设置成功"),QString("设置钻孔透明度成功"));
         for(int i = 0; i<m; i++)
         {
-            rend.layer.textActors[i]->GetProperty()->SetOpacity(getcOpacity);
+            rend.layer.textActors[i]->GetTextProperty()->SetOpacity(getcOpacity);
         }
         a->GetRenderWindow()->Render();
     }else{

@@ -1,10 +1,10 @@
 ﻿#ifndef DIALOG_H
 #define DIALOG_H
 
+#pragma execution_character_set("utf-8")
+
 #include <QDialog>
 #include <QtWidgets>
-
-#pragma execution_character_set("utf-8")
 
 extern float getdColorR;
 extern float getdColorG;
