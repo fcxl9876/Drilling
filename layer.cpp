@@ -221,8 +221,21 @@ Layer::Layer()
 
     //围边===================================================================================================
 
+    //地层编号================================================================================================
+//    textActor = vtkSmartPointer<vtkTextActor3D>::New();
+//    textProperty = vtkSmartPointer<vtkTextProperty>::New();
+    QString str1 = QString("L1-1");
+    textActor->SetInput(str1.toLatin1().data());
+    textActor->SetTextProperty(textProperty);
+    textActor->GetTextProperty()->SetFontFamily(20);
+    textActor->GetTextProperty()->SetFontSize(10); // 设置字体大小
+    textActor->SetPosition(east1[0],north1[0],altitude1[0]); // 设置编号位置
+    textActor->GetTextProperty()->SetColor(0, 0, 1); // 设置编码颜色
+    textActor->SetScale(0.2 ,0.2, 0.2); //设置文字大小
+
 }
 
 Layer::~Layer()
 {
+
 }

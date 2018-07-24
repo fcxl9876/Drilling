@@ -18,6 +18,8 @@ Renderer::Renderer()
     renderer->AddActor(layer.triangulatedActor5);
     renderer->AddActor(layer.triangulatedActor6);
 
+    renderer->AddActor(layer.textActor);
+
     //实际孔迹线actor==============================================================
 //    this->viewLine();
 
@@ -113,22 +115,6 @@ void Renderer::slotHideBorder()
 {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
