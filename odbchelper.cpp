@@ -291,6 +291,31 @@ double* jaltitudefrom;
 double* jaltitudeto;
 QString* jlithology;
 
+int sortcount1;
+double* jeast1;
+double* jnorth1;
+double* jaltitude1;
+
+int sortcount3;
+double* jeast3;
+double* jnorth3;
+double* jaltitude3;
+
+int sortcount4;
+double* jeast4;
+double* jnorth4;
+double* jaltitude4;
+
+int sortcount5;
+double* jeast5;
+double* jnorth5;
+double* jaltitude5;
+
+int sortcount6;
+double* jeast6;
+double* jnorth6;
+double* jaltitude6;
+
 odbchelper::odbchelper()
 {
     this->db=QSqlDatabase::addDatabase("QODBC");
@@ -779,10 +804,49 @@ odbchelper::odbchelper()
     jaltitudefrom=new double[count];
     jaltitudefrom=this->getjaltitudefrom();
     jaltitudeto=new double[count];
-
     jaltitudeto=this->getjaltitudeto();
     jlithology=new QString[count];
     jlithology=this->getjlithology();
+
+    sortcount1=this->getsortcount1();
+    jeast1=new double[sortcount1];
+    jeast1=this->geteast1();
+    jnorth1=new double[sortcount1];
+    jnorth1=this->getnorth1();
+    jaltitude1=new double[sortcount1];
+    jaltitude1=this->getaltitude1();
+
+    sortcount3=this->getsortcount3();
+    jeast3=new double[sortcount3];
+    jeast3=this->geteast3();
+    jnorth3=new double[sortcount3];
+    jnorth3=this->getnorth3();
+    jaltitude3=new double[sortcount3];
+    jaltitude3=this->getaltitude3();
+
+    sortcount4=this->getsortcount4();
+    jeast4=new double[sortcount4];
+    jeast4=this->geteast4();
+    jnorth4=new double[sortcount4];
+    jnorth4=this->getnorth4();
+    jaltitude4=new double[sortcount4];
+    jaltitude4=this->getaltitude4();
+
+    sortcount5=this->getsortcount5();
+    jeast5=new double[sortcount5];
+    jeast5=this->geteast5();
+    jnorth5=new double[sortcount5];
+    jnorth5=this->getnorth5();
+    jaltitude5=new double[sortcount5];
+    jaltitude5=this->getaltitude5();
+
+    sortcount6=this->getsortcount6();
+    jeast6=new double[sortcount6];
+    jeast6=this->geteast6();
+    jnorth6=new double[sortcount6];
+    jnorth6=this->getnorth6();
+    jaltitude6=new double[sortcount6];
+    jaltitude6=this->getaltitude6();
 
 
 }
@@ -5009,4 +5073,359 @@ void odbchelper::removeDrillingDetail(int a, QString b)
     }else if(!ok){
         QMessageBox::warning(NULL,QString("删除失败"),QString("删除数据失败"));
     }
+}
+
+int odbchelper::getsortcount1()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from mylithologydata where (lithologysort = 1);";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::geteast1()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jeastfrom from mylithologydata where (lithologysort = 1) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getnorth1()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from mylithologydata where (lithologysort = 1) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getaltitude1()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jaltitudefrom from mylithologydata where (lithologysort = 1) order by jborehole;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+int odbchelper::getsortcount3()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=3;";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::geteast3()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jeastfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=3;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getnorth3()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=3;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getaltitude3()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select max from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=3;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+int odbchelper::getsortcount4()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=4;";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::geteast4()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jeastfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=4;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getnorth4()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=4;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getaltitude4()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select max from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=4;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+int odbchelper::getsortcount5()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=5;";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::geteast5()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jeastfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=5;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getnorth5()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=5;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getaltitude5()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select max from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=5;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+int odbchelper::getsortcount6()
+{
+    int x=0;
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select count(*) from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=6;";
+    query1->exec(sql1);
+
+    while (query1->next()) {
+        x+=query1->value(0).toInt();
+    }
+
+    return x;
+}
+
+double* odbchelper::geteast6()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jeastfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=6;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getnorth6()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select jnorthfrom from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=6;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
+}
+
+double* odbchelper::getaltitude6()
+{
+    int x=getsortcount1();
+
+    double *arr = new double[x];
+    int i=0;
+
+    QSqlQuery *query1=new QSqlQuery(db);
+    QString sql1="select max from (select jborehole,jeastfrom,jnorthfrom,max(jaltitudefrom),min(lithologysort) from (select jborehole,jeastfrom,jnorthfrom,jaltitudefrom,lithologysort from mylithologydata where (lithologysort > 1) order by jborehole,lithologysort) as test group by jborehole,jeastfrom,jnorthfrom order by jborehole,min(lithologysort)) as test2 where min=6;";
+    query1->exec(sql1);
+
+    while (query1->next()&&i<x) {
+        arr[i]=query1->value(0).toDouble();
+        i++;
+    }
+
+    return arr;
 }

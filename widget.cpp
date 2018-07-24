@@ -11,16 +11,14 @@ Widget::Widget(QWidget *parent)
 
     //菜单项实例化
     drillingView = new QMenu(this);//this指当前窗口
-    lithologyView = new QMenu(this);
     drillingCode = new QMenu(this);
-    drillingTest = new QMenu(this);
     drillingEdit = new QMenu(this);
+    sortView = new QMenu(this);
 
     drillingView = menuBar()->addMenu("钻孔显示");
-    lithologyView = menuBar()->addMenu("分层显示");
     drillingCode = menuBar()->addMenu("钻孔编码");
-    drillingTest = menuBar()->addMenu("钻孔检测");
     drillingEdit = menuBar()->addMenu("编辑钻孔");
+    sortView = menuBar()->addMenu("地层展示");
 
     viewDrilling = new QAction("显示钻孔",this);
     viewDrilling->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_V));
@@ -33,7 +31,7 @@ Widget::Widget(QWidget *parent)
     connect(hideDrilling,SIGNAL(triggered()),this,SLOT(slotHideDrilling()));
 
     viewLine = new QMenu("显示孔迹线",this);
-    viewLine->setStatusTip("Drilling view");
+    viewLine->setStatusTip("Line view");
 
     linearDisplay = new QAction("线状显示", this);
     linearDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_N));
@@ -42,7 +40,6 @@ Widget::Widget(QWidget *parent)
 
     columnDisplay = new QAction("柱状显示", this);
     columnDisplay->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_M));
-    //columnDisplay->setCheckable();
     columnDisplay->setCheckable(true);
     connect(columnDisplay,SIGNAL(changed()),this,SLOT(slotViewLine()));
 
@@ -96,26 +93,90 @@ Widget::Widget(QWidget *parent)
     removeDrillingData->setStatusTip("Drilling remove");
     connect(removeDrillingData,SIGNAL(triggered()),this,SLOT(slotRemoveDrillingDetail()));
 
+    sortMenu = new QMenu("地层显示",this);
+    sortMenu->setStatusTip("Sort view menu");
+
+    viewSort = new QAction("地层显示",this);
+    viewSort->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_S));
+    viewSort->setStatusTip("Sort view");
+    connect(viewSort,SIGNAL(triggered()),this,SLOT(slotViewSort()));
+    hideSort = new QAction("地层关闭",this);
+    hideSort->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_B));
+    hideSort->setStatusTip("Sort hide");
+    connect(hideSort,SIGNAL(triggered()),this,SLOT(slotHideSort()));
+
+    topMenu = new QMenu("顶层显示",this);
+    topMenu->setStatusTip("Top view menu");
+
+    viewTop = new QAction("顶层显示",this);
+    viewTop->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
+    viewTop->setStatusTip("Top view");
+    connect(viewTop,SIGNAL(triggered()),this,SLOT(slotViewTop()));
+    hideTop = new QAction("顶层关闭",this);
+    hideTop->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
+    hideTop->setStatusTip("Top hide");
+    connect(hideTop,SIGNAL(triggered()),this,SLOT(slotHideTop()));
+
+    bottomMenu = new QMenu("底层显示",this);
+    bottomMenu->setStatusTip("Bottom view menu");
+
+    viewBottom = new QAction("底层显示",this);
+    viewBottom->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
+    viewBottom->setStatusTip("Bottom view");
+    connect(viewBottom,SIGNAL(triggered()),this,SLOT(slotViewBottom()));
+    hideBottom = new QAction("底层关闭",this);
+    hideBottom->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    hideBottom->setStatusTip("Bottom hide");
+    connect(hideBottom,SIGNAL(triggered()),this,SLOT(slotHideBottom()));
+
+    borderMenu = new QMenu("围边显示",this);
+    borderMenu->setStatusTip("Border view menu");
+
+    viewBorder = new QAction("围边显示",this);
+    viewBorder->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y));
+    viewBorder->setStatusTip("Border view");
+    connect(viewBorder,SIGNAL(triggered()),this,SLOT(slotViewBorder()));
+    hideBorder = new QAction("围边关闭",this);
+    hideBorder->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F));
+    hideBorder->setStatusTip("Border hide");
+    connect(hideBorder,SIGNAL(triggered()),this,SLOT(slotHideBorder()));
+
+    sortAttribute = new QAction("地层属性",this);
+    sortAttribute->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_G));
+    sortAttribute->setStatusTip("Sort attribute");
+    connect(sortAttribute,SIGNAL(triggered()),this,SLOT(slotSortAttribute()));
 
     drillingView->addAction(viewDrilling);
     drillingView->addAction(hideDrilling);
     drillingView->addMenu(viewLine);
-    drillingView->addAction(hideLine);
     viewLine->addAction(linearDisplay);
     viewLine->addAction(columnDisplay);
-
-    lithologyView->addAction(lithologyDrilling);
+    drillingView->addAction(hideLine);
+    drillingView->addAction(lithologyDrilling);
 
     drillingCode->addAction(viewCode);
     drillingCode->addAction(hideCode);
     drillingCode->addAction(drillingProperties);
 
-    drillingTest->addAction(testDrilling);
-
     drillingEdit->addAction(addDrilling);
     drillingEdit->addAction(removeDrilling);
     drillingEdit->addAction(addDrillingData);
     drillingEdit->addAction(removeDrillingData);
+    drillingEdit->addAction(testDrilling);
+
+    sortView->addMenu(sortMenu);
+    sortMenu->addAction(viewSort);
+    sortMenu->addAction(hideSort);
+    sortView->addMenu(topMenu);
+    topMenu->addAction(viewTop);
+    topMenu->addAction(hideTop);
+    sortView->addMenu(bottomMenu);
+    bottomMenu->addAction(viewBottom);
+    bottomMenu->addAction(hideBottom);
+    sortView->addMenu(borderMenu);
+    borderMenu->addAction(viewBorder);
+    borderMenu->addAction(hideBorder);
+    sortView->addAction(sortAttribute);
 
     menuBar()->hide();
 
@@ -310,3 +371,48 @@ void Widget::slotAttribute()
     win->show();
 }
 
+void Widget::slotViewSort()
+{
+
+}
+
+void Widget::slotHideSort()
+{
+
+}
+
+void Widget::slotViewTop()
+{
+
+}
+
+void Widget::slotHideTop()
+{
+
+}
+
+void Widget::slotViewBottom()
+{
+
+}
+
+void Widget::slotHideBottom()
+{
+
+}
+
+void Widget::slotViewBorder()
+{
+
+}
+
+void Widget::slotHideBorder()
+{
+
+}
+
+void Widget::slotSortAttribute()
+{
+    win1 = new sortattribute();
+    win1->show();
+}
