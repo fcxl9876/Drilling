@@ -224,15 +224,12 @@ void Page9::nColor()
 
 void Page9::shownColor()
 {
-    QColor c = QColorDialog::getColor(Qt::green);//静态方法，默认为绿色，括号中的参数为默认颜色
+    QColor c = QColorDialog::getColor(Qt::blue);//静态方法，默认为蓝色，括号中的参数为默认颜色
     if(c.isValid())
     {
         QString r=QString::number(c.red(),10);
         QString g=QString::number(c.green(),10);
         QString b=QString::number(c.blue(),10);
-        text1=new QLineEdit();
-        text2=new QLineEdit();
-        text3=new QLineEdit();
         text1->setText(r);
         text2->setText(g);
         text3->setText(b);
