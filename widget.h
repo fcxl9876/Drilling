@@ -11,6 +11,7 @@
 #include "removedrillingdetail.h"
 #include "lithologydrilling.h"
 #include "attribute.h"
+#include "sortattribute.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -109,7 +110,7 @@ private:
     removeDD *remove2;
 
     attribute *win;
-
+    sortattribute *win1;
 };
 
 #endif // WIDGET_H
