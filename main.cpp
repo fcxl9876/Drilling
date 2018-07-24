@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
     w->show();
 
 //    odbchelper w;
-//    for(int i=0;i<sortcount2;i++){
-//        qDebug()<<jeast2[i];
+//    for(int i=0;i<sortcount6;i++){
+//        qDebug()<<"("<<jeast6[i]<<","<<jnorth6[i]<<","<<jaltitude6[i]<<")";
 //    }
 
     return a.exec();
