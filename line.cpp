@@ -9,7 +9,7 @@ Line::Line()
     {
         L1_1lineSources.push_back(vtkSmartPointer<vtkLineSource>::New());   //L1_1lineSources
         L1_1lineSources[i]->SetPoint1(jeastfromL1_1[i],jnorthfromL1_1[i],jaltitudefromL1_1[i]);
-        L1_1lineSources[i]->SetPoint2(jeasttoL1_1[i],jnorthtoL1_1[i],jaltitudetoL1_1[i]-100);
+        L1_1lineSources[i]->SetPoint2(jeasttoL1_1[i],jnorthtoL1_1[i],jaltitudetoL1_1[i]);
 
         L1_1lineMappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());   //L1_1lineMappers
         L1_1lineMappers[i]->SetInputConnection(L1_1lineSources[i]->GetOutputPort());
