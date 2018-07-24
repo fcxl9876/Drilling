@@ -10,10 +10,10 @@ Layer::Layer()
         points->InsertNextPoint(east1[i],north1[i],altitude1[i]);
     }
     points2 = vtkSmartPointer<vtkPoints>::New();
-    for(int i=0;i<sortcount2;i++)
-    {
-        points2->InsertNextPoint(jeast2[i],jnorth2[i],jaltitude2[i]-100);
-    }
+//    for(int i=0;i<sortcount2;i++)
+//    {
+//        points2->InsertNextPoint(jeast2[i],jnorth2[i],jaltitude2[i]-100);
+//    }
 
 
     //三角剖分建立地层========================================================================================
@@ -72,7 +72,7 @@ Layer::Layer()
     {
         textPropertys.push_back(vtkSmartPointer<vtkTextProperty>::New());
         textActors.push_back(vtkSmartPointer<vtkTextActor3D>::New());
-        QString str = jborehole[i]+"\n"+"("+QString::number(east1[i],10,2)+","+QString::number(north1[i],10,2)+","+QString::number(altitude1[i],10,2)+")";
+        QString str = QString::number(i,10,2)+" "+jborehole[i]+"\n"+"("+QString::number(east1[i],10,2)+","+QString::number(north1[i],10,2)+","+QString::number(altitude1[i],10,2)+")";
         textActors[i]->SetInput(str.toLatin1().data());
         textActors[i]->SetTextProperty(textPropertys[i]);
         textActors[i]->GetTextProperty()->SetFontFamily(20);

@@ -298,13 +298,30 @@ extern double* jaltitudeto;
 extern QString* jlithology;
 
 extern int sortcount1;
-extern int sortcount2;
 extern double* jeast1;
 extern double* jnorth1;
 extern double* jaltitude1;
-extern double* jeast2;
-extern double* jnorth2;
-extern double* jaltitude2;
+
+extern int sortcount3;
+extern double* jeast3;
+extern double* jnorth3;
+extern double* jaltitude3;
+
+extern int sortcount4;
+extern double* jeast4;
+extern double* jnorth4;
+extern double* jaltitude4;
+
+extern int sortcount5;
+extern double* jeast5;
+extern double* jnorth5;
+extern double* jaltitude5;
+
+extern int sortcount6;
+extern double* jeast6;
+extern double* jnorth6;
+extern double* jaltitude6;
+
 
 class odbchelper
 {
@@ -583,10 +600,26 @@ public:
     double* geteast1();
     double* getnorth1();
     double* getaltitude1();
-    int getsortcount2();
-    double* geteast2();
-    double* getnorth2();
-    double* getaltitude2();
+
+    int getsortcount3();
+    double* geteast3();
+    double* getnorth3();
+    double* getaltitude3();
+
+    int getsortcount4();
+    double* geteast4();
+    double* getnorth4();
+    double* getaltitude4();
+
+    int getsortcount5();
+    double* geteast5();
+    double* getnorth5();
+    double* getaltitude5();
+
+    int getsortcount6();
+    double* geteast6();
+    double* getnorth6();
+    double* getaltitude6();
 
 };
 
