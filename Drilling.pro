@@ -153,7 +153,9 @@ SOURCES += \
     adddrillingdetail.cpp \
     removedrillingdetail.cpp \
     attribute.cpp \
-    dialog.cpp
+    dialog.cpp \
+    sortattribute.cpp \
+    sortdialog.cpp
 
 HEADERS += \
         widget.h \
@@ -168,4 +170,6 @@ HEADERS += \
     adddrillingdetail.h \
     removedrillingdetail.h \
     attribute.h \
-    dialog.h
+    dialog.h \
+    sortattribute.h \
+    sortdialog.h

@@ -413,5 +413,6 @@ void Widget::slotHideBorder()
 
 void Widget::slotSortAttribute()
 {
-
+    win1 = new sortattribute();
+    win1->show();
 }

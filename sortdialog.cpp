@@ -1,0 +1,275 @@
+﻿#include "sortdialog.h"
+#include "widget.h"
+#include <QtWidgets>
+
+#pragma execution_character_set("utf-8")
+
+float getlColorR=0;
+float getlColorG=1;
+float getlColorB=0;
+
+float getnColorR=0;
+float getnColorG=0;
+float getnColorB=1;
+
+float getnOpacity=0.8f;
+double getnSize=0.5;
+float getlOpacity=1;
+
+sortdialog::sortdialog(QWidget *parent)
+    : QDialog(parent)
+{
+
+}
+
+sortdialog::~sortdialog()
+{
+
+}
+
+Page7::Page7(QWidget *parent)
+    : QWidget(parent)
+{
+    QLabel *label =new QLabel("请使用调色盘或手动输入要调整颜色的RGB值：");
+    QLabel *label1 =new QLabel("R:");
+    text1 =new QLineEdit();
+    QLabel *label2 =new QLabel("G:");
+    text2 =new QLineEdit();
+    QLabel *label3 =new QLabel("B:");
+    text3 =new QLineEdit();
+    QPushButton *btn1 = new QPushButton(QObject::tr("调色盘"));
+    QPushButton *btn2 = new QPushButton(QObject::tr("确认"));
+    QHBoxLayout *hLayout1 = new QHBoxLayout();
+    QHBoxLayout *hLayout2 = new QHBoxLayout();
+    QHBoxLayout *hLayout3 = new QHBoxLayout();
+    QVBoxLayout *vLayout = new QVBoxLayout;
+    vLayout->addWidget(label);
+    hLayout1->addWidget(label1);
+    hLayout1->addWidget(text1);
+    vLayout->addLayout(hLayout1);
+    hLayout2->addWidget(label2);
+    hLayout2->addWidget(text2);
+    vLayout->addLayout(hLayout2);
+    hLayout3->addWidget(label3);
+    hLayout3->addWidget(text3);
+    vLayout->addLayout(hLayout3);
+    vLayout->addWidget(btn1,0,Qt::AlignTop);
+    vLayout->addWidget(btn2,0,Qt::AlignTop);
+    setLayout(vLayout);
+    connect(btn1,SIGNAL(clicked()),this,SLOT(showColor()));
+    connect(btn2,SIGNAL(clicked()),this,SLOT(Color()));
+}
+
+Page8::Page8(QWidget *parent)
+    : QWidget(parent)
+{
+    QLabel *label =new QLabel("请输入地层透明度(0-1,越小越透明):");
+    text1 =new QLineEdit();
+    QPushButton *btn1 = new QPushButton("设置");
+    QHBoxLayout *hLayout1 = new QHBoxLayout();
+    QHBoxLayout *hLayout2 = new QHBoxLayout();
+    QVBoxLayout *vLayout = new QVBoxLayout;
+    hLayout1->addWidget(label);
+    hLayout2->addWidget(text1);
+    vLayout->addLayout(hLayout1);
+    vLayout->addLayout(hLayout2);
+    vLayout->addWidget(btn1,0,Qt::AlignTop);
+    setLayout(vLayout);
+    connect(btn1,SIGNAL(clicked()),this,SLOT(lOpacity()));
+}
+
+Page9::Page9(QWidget *parent)
+    : QWidget(parent)
+{
+    QLabel *label =new QLabel("请使用调色盘或手动输入要调整颜色的RGB值");
+    QLabel *label1 =new QLabel("R:");
+    text1 =new QLineEdit();
+    QLabel *label2 =new QLabel("G:");
+    text2 =new QLineEdit();
+    QLabel *label3 =new QLabel("B:");
+    text3 =new QLineEdit();
+    QPushButton *btn1 = new QPushButton(QObject::tr("调色盘"));
+    QPushButton *btn2 = new QPushButton(QObject::tr("确认"));
+    QHBoxLayout *hLayout1 = new QHBoxLayout();
+    QHBoxLayout *hLayout2 = new QHBoxLayout();
+    QHBoxLayout *hLayout3 = new QHBoxLayout();
+    QVBoxLayout *vLayout = new QVBoxLayout;
+    vLayout->addWidget(label);
+    hLayout1->addWidget(label1);
+    hLayout1->addWidget(text1);
+    vLayout->addLayout(hLayout1);
+    hLayout2->addWidget(label2);
+    hLayout2->addWidget(text2);
+    vLayout->addLayout(hLayout2);
+    hLayout3->addWidget(label3);
+    hLayout3->addWidget(text3);
+    vLayout->addLayout(hLayout3);
+    vLayout->addWidget(btn1,0,Qt::AlignTop);
+    vLayout->addWidget(btn2,0,Qt::AlignTop);
+    setLayout(vLayout);
+    connect(btn1,SIGNAL(clicked()),this,SLOT(shownColor()));
+    connect(btn2,SIGNAL(clicked()),this,SLOT(nColor()));
+}
+
+Page10::Page10(QWidget *parent)
+    : QWidget(parent)
+{
+    QLabel *label =new QLabel("请输入编号大小(最低为0,过大可能影响观感):");
+    text1 =new QLineEdit();
+    QPushButton *btn1 = new QPushButton("设置");
+    QHBoxLayout *hLayout1 = new QHBoxLayout();
+    QHBoxLayout *hLayout2 = new QHBoxLayout();
+    QVBoxLayout *vLayout = new QVBoxLayout;
+    hLayout1->addWidget(label);
+    hLayout2->addWidget(text1);
+    vLayout->addLayout(hLayout1);
+    vLayout->addLayout(hLayout2);
+    vLayout->addWidget(btn1,0,Qt::AlignTop);
+    setLayout(vLayout);
+    connect(btn1,SIGNAL(clicked()),this,SLOT(nSize()));
+}
+
+Page11::Page11(QWidget *parent)
+    : QWidget(parent)
+{
+    QLabel *label =new QLabel("请输入编号透明度(0-1,越小越透明):");
+    text1 =new QLineEdit();
+    QPushButton *btn1 = new QPushButton("设置");
+    QHBoxLayout *hLayout1 = new QHBoxLayout();
+    QHBoxLayout *hLayout2 = new QHBoxLayout();
+    QVBoxLayout *vLayout = new QVBoxLayout;
+    hLayout1->addWidget(label);
+    hLayout2->addWidget(text1);
+    vLayout->addLayout(hLayout1);
+    vLayout->addLayout(hLayout2);
+    vLayout->addWidget(btn1,0,Qt::AlignTop);
+    setLayout(vLayout);
+    connect(btn1,SIGNAL(clicked()),this,SLOT(nOpacity()));
+}
+
+
+void Page7::Color()
+{
+    QString str1=text1->text();
+    QString str2=text2->text();
+    QString str3=text3->text();
+    if(str1.toFloat()>=0 && str1.toFloat()<=255 && str2.toFloat()>=0 && str2.toFloat()<=255 && str2.toFloat()>=0 && str2.toFloat()<=255)
+    {
+        getlColorR = (str1.toFloat())/255;
+        getlColorG = (str2.toFloat())/255;
+        getlColorB = (str3.toFloat())/255;
+
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置地层颜色成功"));
+//        rend.layer.pointsActor->GetProperty()->SetColor(getdColorR,getdColorG,getdColorB);
+//        a->GetRenderWindow()->Render();
+    }else
+    {
+        QMessageBox::warning(NULL,QString("设置失败"),QString("设置地层颜色失败"));
+    }
+}
+
+void Page7::showColor()
+{
+    QColor c = QColorDialog::getColor(Qt::green);//静态方法，默认为绿色，括号中的参数为默认颜色
+    if(c.isValid())
+    {
+        QString r=QString::number(c.red(),10);
+        QString g=QString::number(c.green(),10);
+        QString b=QString::number(c.blue(),10);
+        text1->setText(r);
+        text2->setText(g);
+        text3->setText(b);
+    }else
+    {
+        QMessageBox::warning(NULL,QString("Warning"),QString("颜色错误"));
+    }
+}
+
+void Page8::lOpacity()
+{
+    QString str = text1->text();
+    getdOpacity = str.toFloat();
+    if(getdOpacity>=0&&getdOpacity<=1){
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置地层透明度成功"));
+//        rend.layer.pointsActor->GetProperty()->SetOpacity(getlOpacity);
+//        a->GetRenderWindow()->Render();
+    }else{
+        QMessageBox::warning(NULL,QString("Warning"),QString("地层透明度错误"));
+    }
+}
+
+void Page9::nColor()
+{
+    QString str1=text1->text();
+    QString str2=text2->text();
+    QString str3=text3->text();
+    if(str1.toFloat()>=0 && str1.toFloat()<=255 && str2.toFloat()>=0 && str2.toFloat()<=255 && str2.toFloat()>=0 && str2.toFloat()<=255)
+    {
+        getnColorR = (str1.toFloat())/255;
+        getnColorG = (str2.toFloat())/255;
+        getnColorB = (str3.toFloat())/255;
+
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置编号颜色成功"));
+//        for(int i = 0; i<m; i++)
+//        {
+//            rend.layer.textActors[i]->GetTextProperty()->SetColor(getcColorR,getcColorG,getcColorB);
+//        }
+//        a->GetRenderWindow()->Render();
+
+    }else
+    {
+        QMessageBox::warning(NULL,QString("设置失败"),QString("设置编号颜色失败"));
+    }
+}
+
+void Page9::shownColor()
+{
+    QColor c = QColorDialog::getColor(Qt::green);//静态方法，默认为绿色，括号中的参数为默认颜色
+    if(c.isValid())
+    {
+        QString r=QString::number(c.red(),10);
+        QString g=QString::number(c.green(),10);
+        QString b=QString::number(c.blue(),10);
+        text1=new QLineEdit();
+        text2=new QLineEdit();
+        text3=new QLineEdit();
+        text1->setText(r);
+        text2->setText(g);
+        text3->setText(b);
+    }else
+    {
+        QMessageBox::warning(NULL,QString("Warning"),QString("颜色错误"));
+    }
+}
+
+void Page10::nSize()
+{
+    QString str = text1->text();
+    if(getnSize>=0){
+        getnSize = str.toDouble();
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置编号大小成功"));
+//        for(int i = 0; i<m; i++)
+//        {
+//            rend.layer.textActors[i]->GetTextProperty()->SetFontSize(getcSize);
+//        }
+//        a->GetRenderWindow()->Render();
+    }else{
+        QMessageBox::warning(NULL,QString("Warning"),QString("编号大小错误"));
+    }
+}
+
+void Page11::nOpacity()
+{
+    QString str = text1->text();
+    if(getnOpacity>=0&&getnOpacity<=1){
+        getnOpacity = str.toFloat();
+        QMessageBox::about(NULL,QString("设置成功"),QString("设置编号透明度成功"));
+//        for(int i = 0; i<m; i++)
+//        {
+//            rend.layer.textActors[i]->GetTextProperty()->SetOpacity(getcOpacity);
+//        }
+//        a->GetRenderWindow()->Render();
+    }else{
+        QMessageBox::warning(NULL,QString("Warning"),QString("编号透明度错误"));
+    }
+}
