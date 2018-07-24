@@ -188,11 +188,16 @@ void Page7::showColor()
 void Page8::lOpacity()
 {
     QString str = text1->text();
-    getdOpacity = str.toFloat();
-    if(getdOpacity>=0&&getdOpacity<=1){
+    getlOpacity = str.toFloat();
+    if(getlOpacity>=0&&getlOpacity<=1){
         QMessageBox::about(NULL,QString("设置成功"),QString("设置地层透明度成功"));
-//        rend.layer.pointsActor->GetProperty()->SetOpacity(getlOpacity);
-//        a->GetRenderWindow()->Render();
+        rend.layer.triangulatedActor->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor2->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor3->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor4->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor5->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor6->GetProperty()->SetOpacity(getlOpacity);
+        a->GetRenderWindow()->Render();
     }else{
         QMessageBox::warning(NULL,QString("Warning"),QString("地层透明度错误"));
     }

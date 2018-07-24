@@ -95,6 +95,8 @@ public:
 
     std::vector<vtkSmartPointer<vtkTextActor3D> > textActors;
     std::vector<vtkSmartPointer<vtkTextProperty> > textPropertys;
+    vtkSmartPointer<vtkTextActor3D> textActor;
+    vtkSmartPointer<vtkTextProperty> textProperty;
 
     //围边
 
