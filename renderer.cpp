@@ -5,12 +5,12 @@ Renderer::Renderer()
     renderer = vtkSmartPointer<vtkRenderer>::New();
     renderer->SetBackground(0.7, 0.7, 0.7);
 
-    renderer->AddActor(layer.pointsActor);
-    renderer->AddActor(layer.pointsActor2);
-    renderer->AddActor(layer.pointsActor3);
-    renderer->AddActor(layer.pointsActor4);
-    renderer->AddActor(layer.pointsActor5);
-    renderer->AddActor(layer.pointsActor6);
+//    renderer->AddActor(layer.pointsActor);
+//    renderer->AddActor(layer.pointsActor2);
+//    renderer->AddActor(layer.pointsActor3);
+//    renderer->AddActor(layer.pointsActor4);
+//    renderer->AddActor(layer.pointsActor5);
+//    renderer->AddActor(layer.pointsActor6);
     renderer->AddActor(layer.triangulatedActor);
     renderer->AddActor(layer.triangulatedActor2);
     renderer->AddActor(layer.triangulatedActor3);
@@ -28,10 +28,10 @@ Renderer::Renderer()
 //    }
 
     //显示和隐藏编码
-    for(int i = 0; i<m ; i++)
-    {
-        renderer->AddActor(layer.textActors[i]);
-    }
+//    for(int i = 0; i<m ; i++)
+//    {
+//        renderer->AddActor(layer.textActors[i]);
+//    }
 
 }
 
@@ -45,7 +45,6 @@ void Renderer::hideDrilling()
 {
     renderer->RemoveActor(layer.pointsActor);
 }
-
 
 //显示和隐藏编码====================================================================
 void Renderer::viewCode()
@@ -62,6 +61,75 @@ void Renderer::hideCode()
         renderer->RemoveActor(layer.textActors[i]);
     }
 }
+
+//地层展示=========================================================================
+void Renderer::slotViewSort() // 地层显示
+{
+    renderer->AddActor(layer.triangulatedActor);
+    renderer->AddActor(layer.triangulatedActor2);
+    renderer->AddActor(layer.triangulatedActor3);
+    renderer->AddActor(layer.triangulatedActor4);
+    renderer->AddActor(layer.triangulatedActor5);
+    renderer->AddActor(layer.triangulatedActor6);
+}
+void Renderer::slotHideSort()
+{
+    renderer->RemoveActor(layer.triangulatedActor);
+    renderer->RemoveActor(layer.triangulatedActor2);
+    renderer->RemoveActor(layer.triangulatedActor3);
+    renderer->RemoveActor(layer.triangulatedActor4);
+    renderer->RemoveActor(layer.triangulatedActor5);
+    renderer->RemoveActor(layer.triangulatedActor6);
+}
+void Renderer::slotViewTop() // 顶层显示
+{
+    renderer->AddActor(layer.triangulatedActor);
+}
+void Renderer::slotHideTop()
+{
+    renderer->RemoveActor(layer.triangulatedActor);
+}
+void Renderer::slotViewBottom() // 地层显示
+{
+    renderer->AddActor(layer.triangulatedActor2);
+    renderer->AddActor(layer.triangulatedActor3);
+    renderer->AddActor(layer.triangulatedActor4);
+    renderer->AddActor(layer.triangulatedActor5);
+    renderer->AddActor(layer.triangulatedActor6);
+}
+void Renderer::slotHideBottom()
+{
+    renderer->RemoveActor(layer.triangulatedActor2);
+    renderer->RemoveActor(layer.triangulatedActor3);
+    renderer->RemoveActor(layer.triangulatedActor4);
+    renderer->RemoveActor(layer.triangulatedActor5);
+    renderer->RemoveActor(layer.triangulatedActor6);
+}
+void Renderer::slotViewBorder() // 围边显示
+{
+
+}
+void Renderer::slotHideBorder()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //显示和隐藏孔迹线=================================================================
@@ -803,7 +871,6 @@ void Renderer::hideTube()
         renderer->RemoveActor(line.bujialayertubeActors[i]);
     }
 }
-
 
 
 //分层显示钻孔=================================================================================
