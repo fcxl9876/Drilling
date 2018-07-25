@@ -88,6 +88,7 @@ void Renderer::slotViewSort() // 地层显示
     this->slotViewTop();
     this->slotViewBottom();
     this->slotViewBorder();
+    renderer->AddActor(layer.textActor);
 }
 void Renderer::slotHideSort()
 {
@@ -100,7 +101,7 @@ void Renderer::slotHideSort()
     this->slotHideTop();
     this->slotHideBottom();
     this->slotHideBorder();
-
+    renderer->RemoveActor(layer.textActor);
 }
 void Renderer::slotViewTop() // 顶层显示
 {
