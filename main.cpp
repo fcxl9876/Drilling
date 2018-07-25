@@ -29,7 +29,5 @@ int main(int argc, char *argv[])
     w = new Widget();
     w->show();
 
-//      qDebug()<<east1[29];
-
     return a.exec();
 }

@@ -96,15 +96,9 @@ private:
     QMenu *borderMenu;
     QAction *viewBorder;
     QAction *hideBorder;
-//    QAction *sortStretch; // 地层拉伸
     QAction *sortAttribute;
-
     QPushButton *enterSys;
-
-//    Renderer rend;
     Layer *layer;
-
-
     addD *add;
     removeD *remove;
 

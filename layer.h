@@ -22,7 +22,6 @@
 #include <vtkAppendPolyData.h>
 #include <vtkTextProperty.h>
 #include <vtkTextActor.h>
-
 #include <vtkSurfaceReconstructionFilter.h>
 #include <vtkContourFilter.h>
 #include <vtkVertexGlyphFilter.h>
@@ -61,46 +60,31 @@ public:
     vtkSmartPointer<vtkPoints> points2;
     vtkSmartPointer<vtkPolyData> polydata2;
     vtkSmartPointer<vtkDelaunay2D> delaunay2;
-//    vtkSmartPointer<vtkVertexGlyphFilter> glyphFilter2;
-//    vtkSmartPointer<vtkPolyDataMapper> pointsMapper2;
     vtkSmartPointer<vtkPolyDataMapper> triangulatedMapper2;
-//    vtkSmartPointer<vtkActor> pointsActor2;
     vtkSmartPointer<vtkActor> triangulatedActor2;
 
     vtkSmartPointer<vtkPoints> points3;
     vtkSmartPointer<vtkPolyData> polydata3;
     vtkSmartPointer<vtkDelaunay2D> delaunay3;
-//    vtkSmartPointer<vtkVertexGlyphFilter> glyphFilter3;
-//    vtkSmartPointer<vtkPolyDataMapper> pointsMapper3;
     vtkSmartPointer<vtkPolyDataMapper> triangulatedMapper3;
-//    vtkSmartPointer<vtkActor> pointsActor3;
     vtkSmartPointer<vtkActor> triangulatedActor3;
 
     vtkSmartPointer<vtkPoints> points4;
     vtkSmartPointer<vtkPolyData> polydata4;
     vtkSmartPointer<vtkDelaunay2D> delaunay4;
-//    vtkSmartPointer<vtkVertexGlyphFilter> glyphFilter4;
-//    vtkSmartPointer<vtkPolyDataMapper> pointsMapper4;
     vtkSmartPointer<vtkPolyDataMapper> triangulatedMapper4;
-//    vtkSmartPointer<vtkActor> pointsActor4;
     vtkSmartPointer<vtkActor> triangulatedActor4;
 
     vtkSmartPointer<vtkPoints> points5;
     vtkSmartPointer<vtkPolyData> polydata5;
     vtkSmartPointer<vtkDelaunay2D> delaunay5;
-//    vtkSmartPointer<vtkVertexGlyphFilter> glyphFilter5;
-//    vtkSmartPointer<vtkPolyDataMapper> pointsMapper5;
     vtkSmartPointer<vtkPolyDataMapper> triangulatedMapper5;
-//    vtkSmartPointer<vtkActor> pointsActor5;
     vtkSmartPointer<vtkActor> triangulatedActor5;
 
     vtkSmartPointer<vtkPoints> points6;
     vtkSmartPointer<vtkPolyData> polydata6;
     vtkSmartPointer<vtkDelaunay2D> delaunay6;
-//    vtkSmartPointer<vtkVertexGlyphFilter> glyphFilter6;
-//    vtkSmartPointer<vtkPolyDataMapper> pointsMapper6;
     vtkSmartPointer<vtkPolyDataMapper> triangulatedMapper6;
-//    vtkSmartPointer<vtkActor> pointsActor6;
     vtkSmartPointer<vtkActor> triangulatedActor6;
 
     //钻孔编码
@@ -175,8 +159,6 @@ public:
 
     //围边EX
     vtkSmartPointer<vtkActor> planeActor;
-
-
 };
 
 

@@ -4,51 +4,9 @@ Renderer::Renderer()
 {
     renderer = vtkSmartPointer<vtkRenderer>::New();
     renderer->SetBackground(0.7, 0.7, 0.7);
-
-//    renderer->AddActor(layer.pointsActor);
-//    renderer->AddActor(layer.pointsActor2);
-//    renderer->AddActor(layer.pointsActor3);
-//    renderer->AddActor(layer.pointsActor4);
-//    renderer->AddActor(layer.pointsActor5);
-//    renderer->AddActor(layer.pointsActor6);
-    renderer->AddActor(layer.triangulatedActor);
-    renderer->AddActor(layer.triangulatedActor2);
-    renderer->AddActor(layer.triangulatedActor3);
-    renderer->AddActor(layer.triangulatedActor4);
-    renderer->AddActor(layer.triangulatedActor5);
-    renderer->AddActor(layer.triangulatedActor6);
-
-    //地层围边
-    renderer->AddActor(layer.triangulatedActor7);
-    renderer->AddActor(layer.triangulatedActor8);
-    renderer->AddActor(layer.triangulatedActor9);
-    renderer->AddActor(layer.triangulatedActor10);
-    renderer->AddActor(layer.triangulatedActor11);
-    renderer->AddActor(layer.triangulatedActor12);
-    renderer->AddActor(layer.triangulatedActor13);
-    renderer->AddActor(layer.triangulatedActor14);
-    renderer->AddActor(layer.triangulatedActor15);
-    renderer->AddActor(layer.planeActor);
-
-//    renderer->AddActor(layer.textActor);
-
-    //实际孔迹线actor==============================================================
-//    this->viewLine();
-
-    //虚拟孔迹线actor==============================================================
-//    for(int i = 0; i<n; i++)
-//    {
-//        renderer->AddActor(virtualLine.virtualLineActors[i]);
-//    }
-
-    //显示和隐藏编码
-//    for(int i = 0; i<m ; i++)
-//    {
-//        renderer->AddActor(layer.textActors[i]);
-//    }
-
+    this->viewDrilling(); // 显示钻孔
+    this->slotViewTop(); // 显示顶板
 }
-
 
 //显示和隐藏钻孔====================================================================
 void Renderer::viewDrilling()
