@@ -371,37 +371,44 @@ void Widget::slotAttribute()
     win->show();
 }
 
-void Widget::slotViewSort()
+//地层展示
+void Widget::slotViewSort() // 地层显示
 {
-
+    rend.slotViewSort();
+    a->GetRenderWindow()->Render();
 }
 
 void Widget::slotHideSort()
 {
-
+    rend.slotHideSort();
+    a->GetRenderWindow()->Render();
 }
 
-void Widget::slotViewTop()
+void Widget::slotViewTop() // 顶层显示
 {
-
+    rend.slotViewTop();
+    a->GetRenderWindow()->Render();
 }
 
 void Widget::slotHideTop()
 {
-
+    rend.slotHideTop();
+    a->GetRenderWindow()->Render();
 }
 
-void Widget::slotViewBottom()
+void Widget::slotViewBottom() // 底层显示
 {
-
+    rend.slotViewBottom();
+    a->GetRenderWindow()->Render();
 }
 
 void Widget::slotHideBottom()
 {
-
+    rend.slotHideBottom();
+    a->GetRenderWindow()->Render();
 }
 
-void Widget::slotViewBorder()
+void Widget::slotViewBorder() // 围边显示
 {
 
 }

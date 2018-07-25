@@ -24,6 +24,16 @@ public:
     void viewCode();
     void hideCode();
 
+    //地层展示
+    void slotViewSort(); // 地层显示
+    void slotHideSort();
+    void slotViewTop(); // 顶层显示
+    void slotHideTop();
+    void slotViewBottom(); // 地层显示
+    void slotHideBottom();
+    void slotViewBorder(); // 围边显示
+    void slotHideBorder();
+
     void showL1_1(bool linearDisplay,bool columnDisplay);
     void showL1_2(bool linearDisplay,bool columnDisplay);
     void showL2_1(bool linearDisplay,bool columnDisplay);
