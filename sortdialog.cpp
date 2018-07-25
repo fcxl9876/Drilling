@@ -4,10 +4,6 @@
 
 #pragma execution_character_set("utf-8")
 
-float getlColorR=0;
-float getlColorG=1;
-float getlColorB=0;
-
 float getnColorR=0;
 float getnColorG=0;
 float getnColorB=1;
@@ -25,39 +21,6 @@ sortdialog::sortdialog(QWidget *parent)
 sortdialog::~sortdialog()
 {
 
-}
-
-Page7::Page7(QWidget *parent)
-    : QWidget(parent)
-{
-    QLabel *label =new QLabel("请使用调色盘或手动输入要调整颜色的RGB值：");
-    QLabel *label1 =new QLabel("R:");
-    text1 =new QLineEdit();
-    QLabel *label2 =new QLabel("G:");
-    text2 =new QLineEdit();
-    QLabel *label3 =new QLabel("B:");
-    text3 =new QLineEdit();
-    QPushButton *btn1 = new QPushButton(QObject::tr("调色盘"));
-    QPushButton *btn2 = new QPushButton(QObject::tr("确认"));
-    QHBoxLayout *hLayout1 = new QHBoxLayout();
-    QHBoxLayout *hLayout2 = new QHBoxLayout();
-    QHBoxLayout *hLayout3 = new QHBoxLayout();
-    QVBoxLayout *vLayout = new QVBoxLayout;
-    vLayout->addWidget(label);
-    hLayout1->addWidget(label1);
-    hLayout1->addWidget(text1);
-    vLayout->addLayout(hLayout1);
-    hLayout2->addWidget(label2);
-    hLayout2->addWidget(text2);
-    vLayout->addLayout(hLayout2);
-    hLayout3->addWidget(label3);
-    hLayout3->addWidget(text3);
-    vLayout->addLayout(hLayout3);
-    vLayout->addWidget(btn1,0,Qt::AlignTop);
-    vLayout->addWidget(btn2,0,Qt::AlignTop);
-    setLayout(vLayout);
-    connect(btn1,SIGNAL(clicked()),this,SLOT(showColor()));
-    connect(btn2,SIGNAL(clicked()),this,SLOT(Color()));
 }
 
 Page8::Page8(QWidget *parent)
@@ -145,44 +108,6 @@ Page11::Page11(QWidget *parent)
     vLayout->addWidget(btn1,0,Qt::AlignTop);
     setLayout(vLayout);
     connect(btn1,SIGNAL(clicked()),this,SLOT(nOpacity()));
-}
-
-
-void Page7::Color()
-{
-    QString str1=text1->text();
-    QString str2=text2->text();
-    QString str3=text3->text();
-    if(str1.toFloat()>=0 && str1.toFloat()<=255 && str2.toFloat()>=0 && str2.toFloat()<=255 && str2.toFloat()>=0 && str2.toFloat()<=255)
-    {
-        getlColorR = (str1.toFloat())/255;
-        getlColorG = (str2.toFloat())/255;
-        getlColorB = (str3.toFloat())/255;
-
-        QMessageBox::about(NULL,QString("设置成功"),QString("设置地层颜色成功"));
-//        rend.layer.pointsActor->GetProperty()->SetColor(getdColorR,getdColorG,getdColorB);
-//        a->GetRenderWindow()->Render();
-    }else
-    {
-        QMessageBox::warning(NULL,QString("设置失败"),QString("设置地层颜色失败"));
-    }
-}
-
-void Page7::showColor()
-{
-    QColor c = QColorDialog::getColor(Qt::green);//静态方法，默认为绿色，括号中的参数为默认颜色
-    if(c.isValid())
-    {
-        QString r=QString::number(c.red(),10);
-        QString g=QString::number(c.green(),10);
-        QString b=QString::number(c.blue(),10);
-        text1->setText(r);
-        text2->setText(g);
-        text3->setText(b);
-    }else
-    {
-        QMessageBox::warning(NULL,QString("Warning"),QString("颜色错误"));
-    }
 }
 
 void Page8::lOpacity()
