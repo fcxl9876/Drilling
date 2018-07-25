@@ -122,6 +122,16 @@ void Page8::lOpacity()
         rend.layer.triangulatedActor4->GetProperty()->SetOpacity(getlOpacity);
         rend.layer.triangulatedActor5->GetProperty()->SetOpacity(getlOpacity);
         rend.layer.triangulatedActor6->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor7->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor8->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor9->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor10->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor11->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor12->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor13->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor14->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.triangulatedActor15->GetProperty()->SetOpacity(getlOpacity);
+        rend.layer.planeActor->GetProperty()->SetOpacity(getlOpacity);
         a->GetRenderWindow()->Render();
     }else{
         QMessageBox::warning(NULL,QString("Warning"),QString("地层透明度错误"));
