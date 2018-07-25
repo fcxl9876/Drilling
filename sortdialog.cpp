@@ -13,7 +13,7 @@ float getnColorG=0;
 float getnColorB=1;
 
 float getnOpacity=0.8f;
-double getnSize=0.5;
+double getnSize=30;
 float getlOpacity=0.5f;
 
 sortdialog::sortdialog(QWidget *parent)
@@ -215,11 +215,8 @@ void Page9::nColor()
         getnColorB = (str3.toFloat())/255;
 
         QMessageBox::about(NULL,QString("设置成功"),QString("设置编号颜色成功"));
-//        for(int i = 0; i<m; i++)
-//        {
-//            rend.layer.textActors[i]->GetTextProperty()->SetColor(getcColorR,getcColorG,getcColorB);
-//        }
-//        a->GetRenderWindow()->Render();
+        rend.layer.textActor->GetTextProperty()->SetColor(getnColorR,getnColorG,getnColorB);
+        a->GetRenderWindow()->Render();
 
     }else
     {
@@ -250,11 +247,8 @@ void Page10::nSize()
     if(getnSize>=0){
         getnSize = str.toDouble();
         QMessageBox::about(NULL,QString("设置成功"),QString("设置编号大小成功"));
-//        for(int i = 0; i<m; i++)
-//        {
-//            rend.layer.textActors[i]->GetTextProperty()->SetFontSize(getcSize);
-//        }
-//        a->GetRenderWindow()->Render();
+        rend.layer.textActor->GetTextProperty()->SetFontSize(getnSize);
+        a->GetRenderWindow()->Render();
     }else{
         QMessageBox::warning(NULL,QString("Warning"),QString("编号大小错误"));
     }
@@ -266,11 +260,8 @@ void Page11::nOpacity()
     if(getnOpacity>=0&&getnOpacity<=1){
         getnOpacity = str.toFloat();
         QMessageBox::about(NULL,QString("设置成功"),QString("设置编号透明度成功"));
-//        for(int i = 0; i<m; i++)
-//        {
-//            rend.layer.textActors[i]->GetTextProperty()->SetOpacity(getcOpacity);
-//        }
-//        a->GetRenderWindow()->Render();
+        rend.layer.textActor->GetTextProperty()->SetOpacity(getnOpacity);
+        a->GetRenderWindow()->Render();
     }else{
         QMessageBox::warning(NULL,QString("Warning"),QString("编号透明度错误"));
     }
