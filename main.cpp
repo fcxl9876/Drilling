@@ -29,10 +29,7 @@ int main(int argc, char *argv[])
     w = new Widget();
     w->show();
 
-//    odbchelper w;
-//    for(int i=0;i<sortcount6;i++){
-//        qDebug()<<"("<<jeast6[i]<<","<<jnorth6[i]<<","<<jaltitude6[i]<<")";
-//    }
+//      qDebug()<<east1[29];
 
     return a.exec();
 }

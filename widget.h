@@ -59,6 +59,7 @@ public slots:
     void slotHideBottom();
     void slotViewBorder();
     void slotHideBorder();
+//    void slotSortStretch(); // 地层拉伸
     void slotSortAttribute();
 
 private:
@@ -95,6 +96,7 @@ private:
     QMenu *borderMenu;
     QAction *viewBorder;
     QAction *hideBorder;
+//    QAction *sortStretch; // 地层拉伸
     QAction *sortAttribute;
 
     QPushButton *enterSys;
