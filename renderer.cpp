@@ -79,21 +79,28 @@ void Renderer::hideCode()
 //地层展示=========================================================================
 void Renderer::slotViewSort() // 地层显示
 {
-    renderer->AddActor(layer.triangulatedActor);
-    renderer->AddActor(layer.triangulatedActor2);
-    renderer->AddActor(layer.triangulatedActor3);
-    renderer->AddActor(layer.triangulatedActor4);
-    renderer->AddActor(layer.triangulatedActor5);
-    renderer->AddActor(layer.triangulatedActor6);
+//    renderer->AddActor(layer.triangulatedActor);
+//    renderer->AddActor(layer.triangulatedActor2);
+//    renderer->AddActor(layer.triangulatedActor3);
+//    renderer->AddActor(layer.triangulatedActor4);
+//    renderer->AddActor(layer.triangulatedActor5);
+//    renderer->AddActor(layer.triangulatedActor6);
+    this->slotViewTop();
+    this->slotViewBottom();
+    this->slotViewBorder();
 }
 void Renderer::slotHideSort()
 {
-    renderer->RemoveActor(layer.triangulatedActor);
-    renderer->RemoveActor(layer.triangulatedActor2);
-    renderer->RemoveActor(layer.triangulatedActor3);
-    renderer->RemoveActor(layer.triangulatedActor4);
-    renderer->RemoveActor(layer.triangulatedActor5);
-    renderer->RemoveActor(layer.triangulatedActor6);
+//    renderer->RemoveActor(layer.triangulatedActor);
+//    renderer->RemoveActor(layer.triangulatedActor2);
+//    renderer->RemoveActor(layer.triangulatedActor3);
+//    renderer->RemoveActor(layer.triangulatedActor4);
+//    renderer->RemoveActor(layer.triangulatedActor5);
+//    renderer->RemoveActor(layer.triangulatedActor6);
+    this->slotHideTop();
+    this->slotHideBottom();
+    this->slotHideBorder();
+
 }
 void Renderer::slotViewTop() // 顶层显示
 {
@@ -103,7 +110,7 @@ void Renderer::slotHideTop()
 {
     renderer->RemoveActor(layer.triangulatedActor);
 }
-void Renderer::slotViewBottom() // 地层显示
+void Renderer::slotViewBottom() // 底层显示
 {
     renderer->AddActor(layer.triangulatedActor2);
     renderer->AddActor(layer.triangulatedActor3);
@@ -121,11 +128,29 @@ void Renderer::slotHideBottom()
 }
 void Renderer::slotViewBorder() // 围边显示
 {
-
+    renderer->AddActor(layer.triangulatedActor7);
+    renderer->AddActor(layer.triangulatedActor8);
+    renderer->AddActor(layer.triangulatedActor9);
+    renderer->AddActor(layer.triangulatedActor10);
+    renderer->AddActor(layer.triangulatedActor11);
+    renderer->AddActor(layer.triangulatedActor12);
+    renderer->AddActor(layer.triangulatedActor13);
+    renderer->AddActor(layer.triangulatedActor14);
+    renderer->AddActor(layer.triangulatedActor15);
+    renderer->AddActor(layer.planeActor);
 }
 void Renderer::slotHideBorder()
 {
-
+    renderer->RemoveActor(layer.triangulatedActor7);
+    renderer->RemoveActor(layer.triangulatedActor8);
+    renderer->RemoveActor(layer.triangulatedActor9);
+    renderer->RemoveActor(layer.triangulatedActor10);
+    renderer->RemoveActor(layer.triangulatedActor11);
+    renderer->RemoveActor(layer.triangulatedActor12);
+    renderer->RemoveActor(layer.triangulatedActor13);
+    renderer->RemoveActor(layer.triangulatedActor14);
+    renderer->RemoveActor(layer.triangulatedActor15);
+    renderer->RemoveActor(layer.planeActor);
 }
 
 

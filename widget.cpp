@@ -141,8 +141,12 @@ Widget::Widget(QWidget *parent)
     hideBorder->setStatusTip("Border hide");
     connect(hideBorder,SIGNAL(triggered()),this,SLOT(slotHideBorder()));
 
+//    sortStretch = new QAction("地层拉伸",this);
+//    sortStretch->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_G));
+//    connect(sortStretch,SIGNAL(triggered()),this,SLOT(slotSortStretch()));
+
     sortAttribute = new QAction("地层属性",this);
-    sortAttribute->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_G));
+    sortAttribute->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_J));
     sortAttribute->setStatusTip("Sort attribute");
     connect(sortAttribute,SIGNAL(triggered()),this,SLOT(slotSortAttribute()));
 
@@ -176,6 +180,7 @@ Widget::Widget(QWidget *parent)
     sortView->addMenu(borderMenu);
     borderMenu->addAction(viewBorder);
     borderMenu->addAction(hideBorder);
+//    sortView->addAction(sortStretch); // 地层拉伸
     sortView->addAction(sortAttribute);
 
     menuBar()->hide();
@@ -410,15 +415,22 @@ void Widget::slotHideBottom()
 
 void Widget::slotViewBorder() // 围边显示
 {
-
+    rend.slotViewBorder();
+    a->GetRenderWindow()->Render();
 }
 
 void Widget::slotHideBorder()
 {
-
+    rend.slotHideBorder();
+    a->GetRenderWindow()->Render();
 }
 
-void Widget::slotSortAttribute()
+//void Widget::slotSortStretch() // 地层拉伸
+//{
+
+//}
+
+void Widget::slotSortAttribute() // 地层属性
 {
     win1 = new sortattribute();
     win1->show();
