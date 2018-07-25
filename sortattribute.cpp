@@ -11,8 +11,7 @@ sortattribute::sortattribute(QWidget *parent)
     list->setCurrentRow(0);
 
     pages = new QStackedWidget;
-    pages->addWidget(new Page7);             //往堆栈窗口里面添加页面
-    pages->addWidget(new Page8);
+    pages->addWidget(new Page8);    //往堆栈窗口里面添加页面
     pages->addWidget(new Page9);
     pages->addWidget(new Page10);
     pages->addWidget(new Page11);
@@ -30,12 +29,7 @@ sortattribute::sortattribute(QWidget *parent)
 
 void sortattribute::setLists()
 {
-    QListWidgetItem *page7Button = new QListWidgetItem(list);                   //设置显示列表
-    page7Button->setText(tr("地层颜色"));
-    page7Button->setTextAlignment(Qt::AlignHCenter);
-    page7Button->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-
-    QListWidgetItem *page8Button = new QListWidgetItem(list);
+    QListWidgetItem *page8Button = new QListWidgetItem(list);                   //设置显示列表
     page8Button->setText(tr("地层透明度"));
     page8Button->setTextAlignment(Qt::AlignHCenter);
     page8Button->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);

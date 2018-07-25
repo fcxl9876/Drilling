@@ -5,10 +5,6 @@
 #include <QDialog>
 #include <QtWidgets>
 
-extern float getlColorR;
-extern float getlColorG;
-extern float getlColorB;
-
 extern float getnColorR;
 extern float getnColorG;
 extern float getnColorB;
@@ -24,23 +20,6 @@ class sortdialog : public QDialog
 public:
     sortdialog(QWidget *parent = 0);
     ~sortdialog();
-};
-
-class Page7 : public QWidget
-{
-    Q_OBJECT
-private:
-    QLineEdit *text1;
-    QLineEdit *text2;
-    QLineEdit *text3;
-
-public:
-    Page7(QWidget *parent = 0);
-
-public slots:
-    void Color();
-    void showColor();
-
 };
 
 class Page8 : public QWidget
