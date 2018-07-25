@@ -14,7 +14,7 @@ float getnColorB=1;
 
 float getnOpacity=0.8f;
 double getnSize=0.5;
-float getlOpacity=1;
+float getlOpacity=0.5f;
 
 sortdialog::sortdialog(QWidget *parent)
     : QDialog(parent)

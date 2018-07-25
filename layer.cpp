@@ -1,6 +1,5 @@
 ﻿#include "layer.h"
 
-
 Layer::Layer()
 {
     //插入数据======================================================================================================
@@ -44,9 +43,99 @@ Layer::Layer()
     }
 
 
-    //围边
+    //围边1-1
+    points7 = vtkSmartPointer<vtkPoints>::New();
+    points7->InsertNextPoint(east1[6],north1[6],altitude1[6]);
+    points7->InsertNextPoint(east1[5],north1[5],altitude1[5]);
+    points7->InsertNextPoint(east1[6]+0.1,north1[6]+0.1,altitude1[6]-102);
+    points7->InsertNextPoint(east1[5]+0.1,north1[5]+0.1,altitude1[5]-102);
 
+    //围边1-2
+    points8 = vtkSmartPointer<vtkPoints>::New();
+    points8->InsertNextPoint(east1[5],north1[5],altitude1[5]);
+    points8->InsertNextPoint(east1[41],north1[41],altitude1[41]);
+    points8->InsertNextPoint(east1[9],north1[9],altitude1[9]);
+    points8->InsertNextPoint(east1[55],north1[55],altitude1[55]);
+    points8->InsertNextPoint(east1[56],north1[56],altitude1[56]);
 
+    points8->InsertNextPoint(east1[5]+0.1,north1[5]+0.1,altitude1[5]-102);
+    points8->InsertNextPoint(east1[41]+0.1,north1[41]+0.1,altitude1[41]-102);
+    points8->InsertNextPoint(east1[9]+0.1,north1[9]+0.1,altitude1[9]-102);
+    points8->InsertNextPoint(east1[55]+0.1,north1[55]+0.1,altitude1[55]-102);
+    points8->InsertNextPoint(east1[56]+0.1,north1[56]+0.1,altitude1[56]-102);
+
+    //围边1-3
+    points9 = vtkSmartPointer<vtkPoints>::New();
+    points9->InsertNextPoint(east1[56],north1[56],altitude1[56]);
+    points9->InsertNextPoint(east1[7],north1[7],altitude1[7]);
+    points9->InsertNextPoint(east1[56]+0.1,north1[56]+0.1,altitude1[56]-102);
+    points9->InsertNextPoint(east1[7]+0.1,north1[7]+0.1,altitude1[7]-102);
+
+    //围边2-1
+    points10 = vtkSmartPointer<vtkPoints>::New();
+    points10->InsertNextPoint(east1[7],north1[7],altitude1[7]);
+    points10->InsertNextPoint(east1[62],north1[62],altitude1[62]);
+    points10->InsertNextPoint(east1[45],north1[45],altitude1[45]);
+    points10->InsertNextPoint(east1[49],north1[49],altitude1[49]);
+
+    points10->InsertNextPoint(east1[7]+0.1,north1[7]+0.1,altitude1[7]-102);
+    points10->InsertNextPoint(east1[62]+0.1,north1[62]+0.1,altitude1[62]-102);
+    points10->InsertNextPoint(east1[45]+0.1,north1[45]+0.1,altitude1[45]-102);
+    points10->InsertNextPoint(east1[49]+0.1,north1[49]+0.1,altitude1[49]-102);
+
+    //围边2-2
+    points11 = vtkSmartPointer<vtkPoints>::New();
+    points11->InsertNextPoint(east1[49],north1[49],altitude1[49]);
+    points11->InsertNextPoint(east1[48],north1[48],altitude1[48]);
+
+    points11->InsertNextPoint(east1[49]+0.1,north1[49]+0.1,altitude1[49]-102);
+    points11->InsertNextPoint(east1[48]+0.1,north1[48]+0.1,altitude1[48]-102);
+
+    //围边2-3
+    points12 = vtkSmartPointer<vtkPoints>::New();
+    points12->InsertNextPoint(east1[48],north1[48],altitude1[48]);
+    points12->InsertNextPoint(east1[29],north1[29],altitude1[29]);
+    points12->InsertNextPoint(east1[30],north1[30],altitude1[30]);
+
+    points12->InsertNextPoint(east1[48]+0.1,north1[48]+0.1,altitude1[48]-102);
+    points12->InsertNextPoint(east1[29]+0.1,north1[29]+0.1,altitude1[29]-102);
+    points12->InsertNextPoint(east1[30]+0.1,north1[30]+0.1,altitude1[30]-102);
+
+    //围边3-1
+    points13 = vtkSmartPointer<vtkPoints>::New();
+    points13->InsertNextPoint(east1[50],north1[50],altitude1[50]);
+    points13->InsertNextPoint(east1[53],north1[53],altitude1[53]);
+    points13->InsertNextPoint(east1[52],north1[52],altitude1[52]);
+    points13->InsertNextPoint(east1[3],north1[3],altitude1[3]);
+
+    points13->InsertNextPoint(east1[50]+0.1,north1[50]+0.1,altitude1[50]-102);
+    points13->InsertNextPoint(east1[53]+0.1,north1[53]+0.1,altitude1[53]-102);
+    points13->InsertNextPoint(east1[52]+0.1,north1[52]+0.1,altitude1[52]-102);
+    points13->InsertNextPoint(east1[3]+0.1,north1[3]+0.1,altitude1[3]-102);
+
+    //围边3-2
+    points14 = vtkSmartPointer<vtkPoints>::New();
+    points14->InsertNextPoint(east1[3],north1[3],altitude1[3]);
+    points14->InsertNextPoint(east1[0],north1[0],altitude1[0]);
+    points14->InsertNextPoint(east1[32],north1[32],altitude1[32]);
+
+    points14->InsertNextPoint(east1[3]+0.1,north1[3]+0.1,altitude1[3]-102);
+    points14->InsertNextPoint(east1[0]+0.1,north1[0]+0.1,altitude1[0]-102);
+    points14->InsertNextPoint(east1[32]+0.1,north1[32]+0.1,altitude1[32]-102);
+
+    //围边4
+    points15 = vtkSmartPointer<vtkPoints>::New();
+    points15->InsertNextPoint(east1[32],north1[32],altitude1[32]);
+    points15->InsertNextPoint(east1[31],north1[31],altitude1[31]);
+    points15->InsertNextPoint(east1[2],north1[2],altitude1[2]);
+    points15->InsertNextPoint(east1[4],north1[4],altitude1[4]);
+    points15->InsertNextPoint(east1[6],north1[6],altitude1[6]);
+
+    points15->InsertNextPoint(east1[32]+0.1,north1[32]+0.1,altitude1[32]-102);
+    points15->InsertNextPoint(east1[31]+0.1,north1[31]+0.1,altitude1[31]-102);
+    points15->InsertNextPoint(east1[2]+0.1,north1[2]+0.1,altitude1[2]-102);
+    points15->InsertNextPoint(east1[4]+0.1,north1[4]+0.1,altitude1[4]-102);
+    points15->InsertNextPoint(east1[6]+0.1,north1[6]+0.1,altitude1[6]-102);
 
     //三角剖分建立地层========================================================================================
     polydata = vtkSmartPointer<vtkPolyData>::New();
@@ -219,7 +308,153 @@ Layer::Layer()
         textActors[i]->SetScale(0.2 ,0.2, 0.2); //设置文字大小
     }
 
-    //围边===================================================================================================
+    //围边1-1==================================================================================================
+    polydata7 = vtkSmartPointer<vtkPolyData>::New();
+    polydata7->SetPoints(points7);
+
+    delaunay7 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay7->SetInputData(polydata7);
+    delaunay7->Update();
+
+    triangulatedMapper7 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper7->SetInputData(delaunay7->GetOutput());
+    triangulatedActor7 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor7->SetMapper(triangulatedMapper7);
+    triangulatedActor7->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor7->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边1-2================================================================================================
+    polydata8 = vtkSmartPointer<vtkPolyData>::New();
+    polydata8->SetPoints(points8);
+
+    delaunay8 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay8->SetInputData(polydata8);
+    delaunay8->Update();
+
+    triangulatedMapper8 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper8->SetInputData(delaunay8->GetOutput());
+    triangulatedActor8 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor8->SetMapper(triangulatedMapper8);
+    triangulatedActor8->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor8->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边1-3================================================================================================
+    polydata9 = vtkSmartPointer<vtkPolyData>::New();
+    polydata9->SetPoints(points9);
+
+    delaunay9 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay9->SetInputData(polydata9);
+    delaunay9->Update();
+
+    triangulatedMapper9 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper9->SetInputData(delaunay9->GetOutput());
+    triangulatedActor9 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor9->SetMapper(triangulatedMapper9);
+    triangulatedActor9->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor9->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边2-1================================================================================================
+    polydata10 = vtkSmartPointer<vtkPolyData>::New();
+    polydata10->SetPoints(points10);
+
+    delaunay10 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay10->SetInputData(polydata10);
+    delaunay10->Update();
+
+    triangulatedMapper10 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper10->SetInputData(delaunay10->GetOutput());
+    triangulatedActor10 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor10->SetMapper(triangulatedMapper10);
+    triangulatedActor10->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor10->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边2-2================================================================================================
+    polydata11 = vtkSmartPointer<vtkPolyData>::New();
+    polydata11->SetPoints(points11);
+
+    delaunay11 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay11->SetInputData(polydata11);
+    delaunay11->Update();
+
+    triangulatedMapper11 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper11->SetInputData(delaunay11->GetOutput());
+    triangulatedActor11 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor11->SetMapper(triangulatedMapper11);
+    triangulatedActor11->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor11->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边2-3================================================================================================
+    polydata12 = vtkSmartPointer<vtkPolyData>::New();
+    polydata12->SetPoints(points12);
+
+    delaunay12 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay12->SetInputData(polydata12);
+    delaunay12->Update();
+
+    triangulatedMapper12 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper12->SetInputData(delaunay12->GetOutput());
+    triangulatedActor12 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor12->SetMapper(triangulatedMapper12);
+    triangulatedActor12->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor12->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边3-1================================================================================================
+    polydata13 = vtkSmartPointer<vtkPolyData>::New();
+    polydata13->SetPoints(points13);
+
+    delaunay13 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay13->SetInputData(polydata13);
+    delaunay13->Update();
+
+    triangulatedMapper13 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper13->SetInputData(delaunay13->GetOutput());
+    triangulatedActor13 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor13->SetMapper(triangulatedMapper13);
+    triangulatedActor13->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor13->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边3-2================================================================================================
+    polydata14 = vtkSmartPointer<vtkPolyData>::New();
+    polydata14->SetPoints(points14);
+
+    delaunay14 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay14->SetInputData(polydata14);
+    delaunay14->Update();
+
+    triangulatedMapper14 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper14->SetInputData(delaunay14->GetOutput());
+    triangulatedActor14 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor14->SetMapper(triangulatedMapper14);
+    triangulatedActor14->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor14->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边4==================================================================================================
+    polydata15 = vtkSmartPointer<vtkPolyData>::New();
+    polydata15->SetPoints(points15);
+
+    delaunay15 = vtkSmartPointer<vtkDelaunay2D>::New();
+    delaunay15->SetInputData(polydata15);
+    delaunay15->Update();
+
+    triangulatedMapper15 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    triangulatedMapper15->SetInputData(delaunay15->GetOutput());
+    triangulatedActor15 = vtkSmartPointer<vtkActor>::New();
+    triangulatedActor15->SetMapper(triangulatedMapper15);
+    triangulatedActor15->GetProperty()->SetOpacity(getlOpacity);
+    triangulatedActor15->GetProperty()->SetColor(0.9,0.9,0.98);
+
+    //围边EX
+    vtkSmartPointer<vtkPlaneSource> planeSource = vtkSmartPointer<vtkPlaneSource>::New();
+    planeSource->SetOrigin(east1[50], north1[50], altitude1[50]);
+    planeSource->SetPoint1(east1[30], north1[30], altitude1[30]);
+    planeSource->SetPoint2(east1[50], north1[50], altitude1[50]-102);
+    vtkSmartPointer<vtkPolyDataMapper> planeMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+    planeMapper->SetInputConnection(planeSource->GetOutputPort());
+    planeActor = vtkSmartPointer<vtkActor>::New();
+    planeActor->SetMapper(planeMapper);
+    planeActor->GetProperty()->SetColor(0.9,0.9,0.98);
+    planeActor->GetProperty()->SetOpacity(getlOpacity);
+
 
     //地层编号================================================================================================
 //    textActor = vtkSmartPointer<vtkTextActor3D>::New();

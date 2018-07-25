@@ -18,6 +18,18 @@ Renderer::Renderer()
     renderer->AddActor(layer.triangulatedActor5);
     renderer->AddActor(layer.triangulatedActor6);
 
+    //地层围边
+    renderer->AddActor(layer.triangulatedActor7);
+    renderer->AddActor(layer.triangulatedActor8);
+    renderer->AddActor(layer.triangulatedActor9);
+    renderer->AddActor(layer.triangulatedActor10);
+    renderer->AddActor(layer.triangulatedActor11);
+    renderer->AddActor(layer.triangulatedActor12);
+    renderer->AddActor(layer.triangulatedActor13);
+    renderer->AddActor(layer.triangulatedActor14);
+    renderer->AddActor(layer.triangulatedActor15);
+    renderer->AddActor(layer.planeActor);
+
 //    renderer->AddActor(layer.textActor);
 
     //实际孔迹线actor==============================================================
