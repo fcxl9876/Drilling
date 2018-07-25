@@ -103,10 +103,12 @@ public:
 //    vtkSmartPointer<vtkActor> pointsActor6;
     vtkSmartPointer<vtkActor> triangulatedActor6;
 
+    //钻孔编码
     std::vector<vtkSmartPointer<vtkTextActor3D> > textActors;
     std::vector<vtkSmartPointer<vtkTextProperty> > textPropertys;
-//    vtkSmartPointer<vtkTextActor3D> textActor;
-//    vtkSmartPointer<vtkTextProperty> textProperty;
+    //地层编号
+    vtkSmartPointer<vtkTextActor3D> textActor;
+    vtkSmartPointer<vtkTextProperty> textProperty;
 
     //围边1-1
     vtkSmartPointer<vtkPoints> points7;
